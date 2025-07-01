@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYC Nightlife Fashion - Look Your Best | NYNightlife.com</title>
+    <meta name="description" content="Look your best with curated fashion picks for NYC's nightlife scene. From designer to affordable chic, discover the perfect outfits for clubs, bars, and events.">
+    <meta name="keywords" content="NYC nightlife fashion, New York club outfits, nightlife style NYC, club fashion NYC, party outfits NYC">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="NYC Nightlife Fashion - Look Your Best | NYNightlife.com">
+    <meta property="og:description" content="Look your best with curated fashion picks for NYC's nightlife scene from designer to affordable chic.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nynightlife.com/nightlife-fashion">
+    <meta property="og:image" content="https://nynightlife.com/images/fashion-og.jpg">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NYC Nightlife Fashion - Look Your Best | NYNightlife.com">
+    <meta name="twitter:description" content="Look your best with curated fashion picks for NYC's nightlife scene from designer to affordable chic.">
+    <meta name="twitter:image" content="https://nynightlife.com/images/fashion-twitter.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://nynightlife.com/nightlife-fashion">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Times Square Dark Theme Colors */
+            --primary-neon: #ff0080;
+            --secondary-neon: #00ffff;
+            --accent-yellow: #ffff00;
+            --accent-orange: #ff6600;
+            --accent-purple: #8a2be2;
+            --accent-green: #00ff41;
+            
+            /* Dark Background Colors */
+            --bg-dark: #0a0a0a;
+            --bg-darker: #000000;
+            --bg-card: #1a1a1a;
+            --bg-card-hover: #2a2a2a;
+            
+            /* Text Colors */
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --text-muted: #888888;
+            
+            /* Neon Gradients */
+            --gradient-neon-pink: linear-gradient(135deg, #ff0080 0%, #ff4da6 100%);
+            --gradient-neon-cyan: linear-gradient(135deg, #00ffff 0%, #4dffff 100%);
+            --gradient-neon-multi: linear-gradient(135deg, #ff0080 0%, #00ffff 25%, #ffff00 50%, #ff6600 75%, #8a2be2 100%);
+            --gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            
+            /* Shadows and Effects */
+            --neon-glow-pink: 0 0 20px rgba(255, 0, 128, 0.5);
+            --neon-glow-cyan: 0 0 20px rgba(0, 255, 255, 0.5);
+            --neon-glow-yellow: 0 0 20px rgba(255, 255, 0, 0.5);
+            --dark-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-dark);
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 0, 128, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 255, 0, 0.05) 0%, transparent 50%);
+            z-index: -1;
+            animation: backgroundPulse 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes backgroundPulse {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            background: var(--bg-darker);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 0, 128, 0.3);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient-neon-multi);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: var(--neon-glow-pink);
+            animation: logoGlow 3s ease-in-out infinite alternate;
+            text-decoration: none;
+        }
+
+        @keyframes logoGlow {
+            0% { filter: brightness(1); }
+            100% { filter: brightness(1.3); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-neon);
+            background: rgba(255, 0, 128, 0.1);
+            box-shadow: var(--neon-glow-pink);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--bg-dark);
+            padding: 8rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background-image: url("images/khpzSCNSm51w.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient-neon-pink);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: var(--neon-glow-pink);
+            animation: titlePulse 4s ease-in-out infinite;
+        }
+
+        @keyframes titlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .breadcrumb {
+            margin-bottom: 2rem;
+        }
+
+        .breadcrumb a {
+            color: var(--secondary-neon);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary-neon);
+        }
+
+        .breadcrumb span {
+            color: var(--text-muted);
+            margin: 0 0.5rem;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 4rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: var(--gradient-neon-pink);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: var(--neon-glow-pink);
+        }
+
+        /* Fashion Categories */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .category-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--dark-shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 1px solid rgba(255, 0, 128, 0.2);
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(60deg, transparent 40%, rgba(255, 0, 128, 0.1) 50%, transparent 60%);
+            transform: rotate(45deg);
+            animation: cardShine 5s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .category-card:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes cardShine {
+            0% { transform: rotate(45deg) translate(-100%, -100%); }
+            100% { transform: rotate(45deg) translate(100%, 100%); }
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
+            border-color: var(--primary-neon);
+        }
+
+        .category-image {
+            width: 100%;
+            height: 200px;
+            background: var(--gradient-neon-pink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .category-content {
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .category-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .category-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .category-items {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .category-items li {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .category-items li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            color: var(--accent-yellow);
+        }
+
+        .price-range {
+            background: rgba(255, 0, 128, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 0, 128, 0.2);
+        }
+
+        .price-title {
+            color: var(--primary-neon);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-details {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .category-cta {
+            display: inline-block;
+            background: var(--gradient-neon-pink);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--neon-glow-pink);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .category-cta:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 0 25px rgba(255, 0, 128, 0.8);
+            color: white;
+        }
+
+        /* Style Guide Section */
+        .style-guide {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 4rem 0;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .guide-card {
+            background: var(--bg-darker);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .guide-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-neon);
+            margin-bottom: 1rem;
+        }
+
+        .guide-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .guide-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: var(--bg-darker);
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-neon);
+        }
+
+        .social-icons {
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary-neon);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .guide-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .style-guide {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .category-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container nav">
+            <a href="index.html" class="logo">NYNightlife</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#picks">Top Picks</a></li>
+                    <li><a href="index.html#blog">Blog</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>></span>
+                <a href="index.html#picks">Top Picks</a>
+                <span>></span>
+                <span>Nightlife Fashion</span>
+            </div>
+            <h1 class="hero-title">NYC Nightlife Fashion</h1>
+            <p class="hero-subtitle">Look your best with curated fashion picks for NYC's nightlife scene. From designer to affordable chic, discover the perfect outfits for clubs, bars, and exclusive events.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="categories-grid">
+                <!-- Category 1: Designer Luxury -->
+                <div class="category-card">
+                    <div class="category-image">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3 class="category-name">Designer Luxury</h3>
+                        <p class="category-description">High-end designer pieces perfect for NYC's most exclusive venues and VIP events. Make a statement with luxury fashion.</p>
+                        <ul class="category-items">
+                            <li>Designer cocktail dresses</li>
+                            <li>Luxury handbags and clutches</li>
+                            <li>Premium leather jackets</li>
+                            <li>Statement jewelry pieces</li>
+                            <li>Designer heels and boots</li>
+                        </ul>
+                        <div class="price-range">
+                            <div class="price-title">Price Range</div>
+                            <div class="price-details">$500 - $3,000+ • Investment pieces • Timeless style</div>
+                        </div>
+                        <a href="#" class="category-cta">Shop Luxury</a>
+                    </div>
+                </div>
+
+                <!-- Category 2: Trendy Chic -->
+                <div class="category-card">
+                    <div class="category-image">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3 class="category-name">Trendy Chic</h3>
+                        <p class="category-description">On-trend pieces that capture NYC's fashion-forward spirit. Perfect for rooftop bars and trendy nightlife spots.</p>
+                        <ul class="category-items">
+                            <li>Bodycon mini dresses</li>
+                            <li>Crop tops and high-waisted bottoms</li>
+                            <li>Statement blazers</li>
+                            <li>Trendy accessories</li>
+                            <li>Fashion-forward sneakers</li>
+                        </ul>
+                        <div class="price-range">
+                            <div class="price-title">Price Range</div>
+                            <div class="price-details">$100 - $500 • Contemporary brands • Latest trends</div>
+                        </div>
+                        <a href="#" class="category-cta">Shop Trendy</a>
+                    </div>
+                </div>
+
+                <!-- Category 3: Affordable Chic -->
+                <div class="category-card">
+                    <div class="category-image">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3 class="category-name">Affordable Chic</h3>
+                        <p class="category-description">Budget-friendly options that don't compromise on style. Look amazing without breaking the bank for NYC nightlife.</p>
+                        <ul class="category-items">
+                            <li>Stylish party dresses</li>
+                            <li>Versatile going-out tops</li>
+                            <li>Affordable statement jewelry</li>
+                            <li>Trendy shoes under $100</li>
+                            <li>Budget-friendly accessories</li>
+                        </ul>
+                        <div class="price-range">
+                            <div class="price-title">Price Range</div>
+                            <div class="price-details">$25 - $150 • Fast fashion • Great value</div>
+                        </div>
+                        <a href="#" class="category-cta">Shop Affordable</a>
+                    </div>
+                </div>
+
+                <!-- Category 4: Men's Nightlife -->
+                <div class="category-card">
+                    <div class="category-image">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3 class="category-name">Men's Nightlife</h3>
+                        <p class="category-description">Sharp, sophisticated looks for the modern NYC gentleman. From smart casual to formal club attire.</p>
+                        <ul class="category-items">
+                            <li>Tailored button-down shirts</li>
+                            <li>Designer jeans and chinos</li>
+                            <li>Luxury watches and accessories</li>
+                            <li>Premium sneakers and dress shoes</li>
+                            <li>Statement jackets and blazers</li>
+                        </ul>
+                        <div class="price-range">
+                            <div class="price-title">Price Range</div>
+                            <div class="price-details">$75 - $800 • Men's contemporary • Quality basics</div>
+                        </div>
+                        <a href="#" class="category-cta">Shop Men's</a>
+                    </div>
+                </div>
+
+                <!-- Category 5: Seasonal Essentials -->
+                <div class="category-card">
+                    <div class="category-image">
+                        <i class="fas fa-snowflake"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3 class="category-name">Seasonal Essentials</h3>
+                        <p class="category-description">Weather-appropriate nightlife fashion for NYC's changing seasons. Stay stylish year-round.</p>
+                        <ul class="category-items">
+                            <li>Winter coats and faux fur</li>
+                            <li>Summer party dresses</li>
+                            <li>Fall leather jackets</li>
+                            <li>Spring lightweight layers</li>
+                            <li>Weather-resistant accessories</li>
+                        </ul>
+                        <div class="price-range">
+                            <div class="price-title">Price Range</div>
+                            <div class="price-details">$50 - $400 • Seasonal updates • Weather-appropriate</div>
+                        </div>
+                        <a href="#" class="category-cta">Shop Seasonal</a>
+                    </div>
+                </div>
+
+                <!-- Category 6: Accessories & Beauty -->
+                <div class="category-card">
+                    <div class="category-image">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3 class="category-name">Accessories & Beauty</h3>
+                        <p class="category-description">Complete your nightlife look with the perfect accessories and beauty essentials for NYC's vibrant scene.</p>
+                        <ul class="category-items">
+                            <li>Statement earrings and necklaces</li>
+                            <li>Designer handbags and clutches</li>
+                            <li>Long-lasting makeup products</li>
+                            <li>Hair styling tools and products</li>
+                            <li>Fragrance and beauty sets</li>
+                        </ul>
+                        <div class="price-range">
+                            <div class="price-title">Price Range</div>
+                            <div class="price-details">$20 - $300 • Beauty essentials • Finishing touches</div>
+                        </div>
+                        <a href="#" class="category-cta">Shop Beauty</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="style-guide">
+        <div class="container">
+            <h2 class="section-title">NYC Nightlife Style Guide</h2>
+            <div class="guide-grid">
+                <div class="guide-card">
+                    <div class="guide-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3 class="guide-title">Upscale Clubs</h3>
+                    <p class="guide-description">Dress to impress with cocktail attire, designer pieces, and polished looks for high-end venues.</p>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-icon">
+                        <i class="fas fa-cocktail"></i>
+                    </div>
+                    <h3 class="guide-title">Rooftop Bars</h3>
+                    <p class="guide-description">Smart casual with a trendy twist. Think chic dresses, stylish separates, and comfortable heels.</p>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3 class="guide-title">Dance Clubs</h3>
+                    <p class="guide-description">Comfortable yet stylish pieces that move with you. Breathable fabrics and secure accessories.</p>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-icon">
+                        <i class="fas fa-wine-glass"></i>
+                    </div>
+                    <h3 class="guide-title">Wine Bars</h3>
+                    <p class="guide-description">Sophisticated casual wear. Elevated basics, quality fabrics, and understated elegance.</p>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-icon">
+                        <i class="fas fa-snowflake"></i>
+                    </div>
+                    <h3 class="guide-title">Winter Nights</h3>
+                    <p class="guide-description">Layer stylishly with chic coats, warm accessories, and weather-appropriate footwear.</p>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <h3 class="guide-title">Summer Events</h3>
+                    <p class="guide-description">Light, breathable fabrics in vibrant colors. Perfect for outdoor venues and rooftop parties.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#picks">Top Picks</a></li>
+                <li><a href="index.html#blog">Blog</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+            <p>&copy; 2024 NYNightlife.com. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

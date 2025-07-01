@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYC Attraction Passes - Discounted Adventures | NYNightlife.com</title>
+    <meta name="description" content="Explore NYC's iconic attractions with discounted passes. Perfect for date ideas and tourist adventures with savings on museums, tours, and experiences.">
+    <meta name="keywords" content="NYC attraction passes, New York tourist passes, NYC museum passes, discounted NYC attractions, NYC sightseeing passes">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="NYC Attraction Passes - Discounted Adventures | NYNightlife.com">
+    <meta property="og:description" content="Explore NYC's iconic attractions with discounted passes perfect for date ideas and tourist adventures.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nynightlife.com/attraction-passes">
+    <meta property="og:image" content="https://nynightlife.com/images/attractions-og.jpg">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NYC Attraction Passes - Discounted Adventures | NYNightlife.com">
+    <meta name="twitter:description" content="Explore NYC's iconic attractions with discounted passes perfect for date ideas and tourist adventures.">
+    <meta name="twitter:image" content="https://nynightlife.com/images/attractions-twitter.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://nynightlife.com/attraction-passes">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Times Square Dark Theme Colors */
+            --primary-neon: #ff0080;
+            --secondary-neon: #00ffff;
+            --accent-yellow: #ffff00;
+            --accent-orange: #ff6600;
+            --accent-purple: #8a2be2;
+            --accent-green: #00ff41;
+            
+            /* Dark Background Colors */
+            --bg-dark: #0a0a0a;
+            --bg-darker: #000000;
+            --bg-card: #1a1a1a;
+            --bg-card-hover: #2a2a2a;
+            
+            /* Text Colors */
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --text-muted: #888888;
+            
+            /* Neon Gradients */
+            --gradient-neon-pink: linear-gradient(135deg, #ff0080 0%, #ff4da6 100%);
+            --gradient-neon-cyan: linear-gradient(135deg, #00ffff 0%, #4dffff 100%);
+            --gradient-neon-multi: linear-gradient(135deg, #ff0080 0%, #00ffff 25%, #ffff00 50%, #ff6600 75%, #8a2be2 100%);
+            --gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            
+            /* Shadows and Effects */
+            --neon-glow-pink: 0 0 20px rgba(255, 0, 128, 0.5);
+            --neon-glow-cyan: 0 0 20px rgba(0, 255, 255, 0.5);
+            --neon-glow-yellow: 0 0 20px rgba(255, 255, 0, 0.5);
+            --dark-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-dark);
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 0, 128, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 255, 0, 0.05) 0%, transparent 50%);
+            z-index: -1;
+            animation: backgroundPulse 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes backgroundPulse {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            background: var(--bg-darker);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 0, 128, 0.3);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient-neon-multi);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: var(--neon-glow-pink);
+            animation: logoGlow 3s ease-in-out infinite alternate;
+            text-decoration: none;
+        }
+
+        @keyframes logoGlow {
+            0% { filter: brightness(1); }
+            100% { filter: brightness(1.3); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-neon);
+            background: rgba(255, 0, 128, 0.1);
+            box-shadow: var(--neon-glow-pink);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--bg-dark);
+            padding: 8rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background-image: url("images/khpzSCNSm51w.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient-neon-cyan);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: var(--neon-glow-cyan);
+            animation: titlePulse 4s ease-in-out infinite;
+        }
+
+        @keyframes titlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .breadcrumb {
+            margin-bottom: 2rem;
+        }
+
+        .breadcrumb a {
+            color: var(--secondary-neon);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary-neon);
+        }
+
+        .breadcrumb span {
+            color: var(--text-muted);
+            margin: 0 0.5rem;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 4rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: var(--gradient-neon-cyan);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: var(--neon-glow-cyan);
+        }
+
+        /* Attraction Passes Grid */
+        .passes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .pass-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--dark-shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 1px solid rgba(0, 255, 65, 0.2);
+        }
+
+        .pass-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(60deg, transparent 40%, rgba(0, 255, 65, 0.1) 50%, transparent 60%);
+            transform: rotate(45deg);
+            animation: cardShine 5s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .pass-card:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes cardShine {
+            0% { transform: rotate(45deg) translate(-100%, -100%); }
+            100% { transform: rotate(45deg) translate(100%, 100%); }
+        }
+
+        .pass-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
+            border-color: var(--accent-green);
+        }
+
+        .pass-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--accent-green) 0%, var(--secondary-neon) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .pass-content {
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .pass-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .pass-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .pass-type {
+            color: var(--accent-green);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .pass-savings {
+            text-align: right;
+        }
+
+        .savings-badge {
+            background: var(--gradient-neon-multi);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .savings-text {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            display: block;
+            margin-top: 0.3rem;
+        }
+
+        .pass-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .pass-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .pass-features li {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .pass-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        .pass-pricing {
+            background: rgba(0, 255, 65, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(0, 255, 65, 0.2);
+        }
+
+        .pricing-title {
+            color: var(--accent-green);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-details {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .pass-cta {
+            display: inline-block;
+            background: var(--gradient-neon-cyan);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--neon-glow-cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .pass-cta:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
+            color: white;
+        }
+
+        /* Attractions Section */
+        .attractions-section {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 4rem 0;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+        }
+
+        .attractions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .attraction-card {
+            background: var(--bg-darker);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            text-align: center;
+        }
+
+        .attraction-icon {
+            font-size: 2.5rem;
+            color: var(--accent-purple);
+            margin-bottom: 1rem;
+        }
+
+        .attraction-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .attraction-category {
+            color: var(--accent-purple);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .attraction-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: var(--bg-darker);
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-neon);
+        }
+
+        .social-icons {
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary-neon);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .passes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .attractions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .attractions-section {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .pass-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container nav">
+            <a href="index.html" class="logo">NYNightlife</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#picks">Top Picks</a></li>
+                    <li><a href="index.html#blog">Blog</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>></span>
+                <a href="index.html#picks">Top Picks</a>
+                <span>></span>
+                <span>Attraction Passes</span>
+            </div>
+            <h1 class="hero-title">NYC Attraction Passes</h1>
+            <p class="hero-subtitle">Explore NYC's iconic attractions with discounted passes. Perfect for date ideas and tourist adventures with savings on museums, tours, and unforgettable experiences.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="passes-grid">
+                <!-- Pass 1: New York CityPASS -->
+                <div class="pass-card">
+                    <div class="pass-image">
+                        <i class="fas fa-city"></i>
+                    </div>
+                    <div class="pass-content">
+                        <div class="pass-header">
+                            <div>
+                                <h3 class="pass-name">New York CityPASS</h3>
+                                <div class="pass-type">Premium Attractions</div>
+                            </div>
+                            <div class="pass-savings">
+                                <div class="savings-badge">Save 40%</div>
+                                <span class="savings-text">vs. individual tickets</span>
+                            </div>
+                        </div>
+                        <p class="pass-description">Visit 6 top NYC attractions including Empire State Building, 9/11 Memorial & Museum, and choice of Statue of Liberty or Circle Line Cruise.</p>
+                        <ul class="pass-features">
+                            <li>Empire State Building Observatory</li>
+                            <li>American Museum of Natural History</li>
+                            <li>9/11 Memorial & Museum</li>
+                            <li>Statue of Liberty & Ellis Island OR Circle Line Cruise</li>
+                            <li>Top of the Rock OR Guggenheim Museum</li>
+                            <li>Intrepid Sea, Air & Space Museum OR Brooklyn Bridge</li>
+                        </ul>
+                        <div class="pass-pricing">
+                            <div class="pricing-title">Pass Details</div>
+                            <div class="pricing-details">$136 adult • $112 youth (6-17) • Valid for 9 consecutive days • Skip some lines</div>
+                        </div>
+                        <a href="#" class="pass-cta">Buy CityPASS</a>
+                    </div>
+                </div>
+
+                <!-- Pass 2: New York Pass -->
+                <div class="pass-card">
+                    <div class="pass-image">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <div class="pass-content">
+                        <div class="pass-header">
+                            <div>
+                                <h3 class="pass-name">The New York Pass</h3>
+                                <div class="pass-type">All-Inclusive</div>
+                            </div>
+                            <div class="pass-savings">
+                                <div class="savings-badge">Save 50%</div>
+                                <span class="savings-text">on 100+ attractions</span>
+                            </div>
+                        </div>
+                        <p class="pass-description">Access to 100+ attractions, tours, and experiences. Perfect for visitors who want to see everything NYC has to offer.</p>
+                        <ul class="pass-features">
+                            <li>100+ attractions and tours included</li>
+                            <li>Skip the line at select attractions</li>
+                            <li>Free guidebook and mobile app</li>
+                            <li>Hop-on hop-off bus tours</li>
+                            <li>Museums, tours, and experiences</li>
+                            <li>Flexible duration options</li>
+                        </ul>
+                        <div class="pass-pricing">
+                            <div class="pricing-title">Pass Details</div>
+                            <div class="pricing-details">From $109 (1-day) to $269 (7-day) • Child discounts available • Digital delivery</div>
+                        </div>
+                        <a href="#" class="pass-cta">Get NY Pass</a>
+                    </div>
+                </div>
+
+                <!-- Pass 3: Explorer Pass -->
+                <div class="pass-card">
+                    <div class="pass-image">
+                        <i class="fas fa-compass"></i>
+                    </div>
+                    <div class="pass-content">
+                        <div class="pass-header">
+                            <div>
+                                <h3 class="pass-name">New York Explorer Pass</h3>
+                                <div class="pass-type">Choose Your Own</div>
+                            </div>
+                            <div class="pass-savings">
+                                <div class="pass-savings">
+                                <div class="savings-badge">Save 35%</div>
+                                <span class="savings-text">choose 2-10 attractions</span>
+                            </div>
+                            </div>
+                        </div>
+                        <p class="pass-description">Choose 2, 3, 4, 5, 7, or 10 attractions from a list of 90+ options. Perfect for customizing your NYC experience.</p>
+                        <ul class="pass-features">
+                            <li>Choose from 90+ attractions</li>
+                            <li>Valid for 60 days from first use</li>
+                            <li>Skip the line at select attractions</li>
+                            <li>Mobile tickets available</li>
+                            <li>Flexible itinerary planning</li>
+                            <li>Great for short visits</li>
+                        </ul>
+                        <div class="pass-pricing">
+                            <div class="pricing-title">Pass Details</div>
+                            <div class="pricing-details">From $69 (2 attractions) to $259 (10 attractions) • 60-day validity • Instant delivery</div>
+                        </div>
+                        <a href="#" class="pass-cta">Explore NYC</a>
+                    </div>
+                </div>
+
+                <!-- Pass 4: Sightseeing Pass -->
+                <div class="pass-card">
+                    <div class="pass-image">
+                        <i class="fas fa-binoculars"></i>
+                    </div>
+                    <div class="pass-content">
+                        <div class="pass-header">
+                            <div>
+                                <h3 class="pass-name">Sightseeing DAY Pass</h3>
+                                <div class="pass-type">Unlimited Daily</div>
+                            </div>
+                            <div class="pass-savings">
+                                <div class="savings-badge">Unlimited</div>
+                                <span class="savings-text">attractions per day</span>
+                            </div>
+                        </div>
+                        <p class="pass-description">Unlimited access to 100+ attractions for 1, 2, 3, 4, 5, 6, 7, or 10 consecutive days. See as much as you can!</p>
+                        <ul class="pass-features">
+                            <li>Unlimited attractions per day</li>
+                            <li>100+ attractions included</li>
+                            <li>Consecutive day validity</li>
+                            <li>Hop-on hop-off bus tours</li>
+                            <li>Skip the line benefits</li>
+                            <li>Mobile app with maps</li>
+                        </ul>
+                        <div class="pass-pricing">
+                            <div class="pricing-title">Pass Details</div>
+                            <div class="pricing-details">From $109 (1-day) to $329 (10-day) • Consecutive days only • Best for intensive sightseeing</div>
+                        </div>
+                        <a href="#" class="pass-cta">Start Sightseeing</a>
+                    </div>
+                </div>
+
+                <!-- Pass 5: Museum Pass -->
+                <div class="pass-card">
+                    <div class="pass-image">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="pass-content">
+                        <div class="pass-header">
+                            <div>
+                                <h3 class="pass-name">NYC Museum Pass</h3>
+                                <div class="pass-type">Culture & Arts</div>
+                            </div>
+                            <div class="pass-savings">
+                                <div class="savings-badge">Save 30%</div>
+                                <span class="savings-text">on museum admissions</span>
+                            </div>
+                        </div>
+                        <p class="pass-description">Access to NYC's world-class museums including MoMA, Met Museum, Guggenheim, and more. Perfect for art and culture lovers.</p>
+                        <ul class="pass-features">
+                            <li>Metropolitan Museum of Art</li>
+                            <li>Museum of Modern Art (MoMA)</li>
+                            <li>Guggenheim Museum</li>
+                            <li>Brooklyn Museum</li>
+                            <li>New York Historical Society</li>
+                            <li>Special exhibitions included</li>
+                        </ul>
+                        <div class="pass-pricing">
+                            <div class="pricing-title">Pass Details</div>
+                            <div class="pricing-details">$89 for 7-day access • Student discounts available • Perfect for culture enthusiasts</div>
+                        </div>
+                        <a href="#" class="pass-cta">Explore Museums</a>
+                    </div>
+                </div>
+
+                <!-- Pass 6: Food & Culture Pass -->
+                <div class="pass-card">
+                    <div class="pass-image">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="pass-content">
+                        <div class="pass-header">
+                            <div>
+                                <h3 class="pass-name">NYC Food & Culture Pass</h3>
+                                <div class="pass-type">Culinary Adventures</div>
+                            </div>
+                            <div class="pass-savings">
+                                <div class="savings-badge">Save 25%</div>
+                                <span class="savings-text">on food tours & tastings</span>
+                            </div>
+                        </div>
+                        <p class="pass-description">Combine sightseeing with culinary experiences. Food tours, tastings, and cultural attractions all in one pass.</p>
+                        <ul class="pass-features">
+                            <li>Food tours in different neighborhoods</li>
+                            <li>Wine and beer tastings</li>
+                            <li>Cooking classes and demonstrations</li>
+                            <li>Cultural attractions included</li>
+                            <li>Local restaurant discounts</li>
+                            <li>Insider foodie experiences</li>
+                        </ul>
+                        <div class="pass-pricing">
+                            <div class="pricing-title">Pass Details</div>
+                            <div class="pricing-details">$149 for 5 experiences • 30-day validity • Perfect for food lovers and dates</div>
+                        </div>
+                        <a href="#" class="pass-cta">Taste NYC</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="attractions-section">
+        <div class="container">
+            <h2 class="section-title">Popular NYC Attractions</h2>
+            <div class="attractions-grid">
+                <div class="attraction-card">
+                    <div class="attraction-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="attraction-name">Empire State Building</h3>
+                    <div class="attraction-category">Iconic Landmark</div>
+                    <p class="attraction-description">Art Deco masterpiece with breathtaking 360° views from the 86th floor observatory</p>
+                </div>
+                <div class="attraction-card">
+                    <div class="attraction-icon">
+                        <i class="fas fa-statue-of-liberty"></i>
+                    </div>
+                    <h3 class="attraction-name">Statue of Liberty</h3>
+                    <div class="attraction-category">National Monument</div>
+                    <p class="attraction-description">Symbol of freedom and democracy, accessible by ferry from Battery Park</p>
+                </div>
+                <div class="attraction-card">
+                    <div class="attraction-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="attraction-name">Museum of Modern Art</h3>
+                    <div class="attraction-category">Art Museum</div>
+                    <p class="attraction-description">World's most influential modern and contemporary art collection</p>
+                </div>
+                <div class="attraction-card">
+                    <div class="attraction-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <h3 class="attraction-name">Central Park</h3>
+                    <div class="attraction-category">Urban Oasis</div>
+                    <p class="attraction-description">843-acre green space perfect for walks, picnics, and outdoor activities</p>
+                </div>
+                <div class="attraction-card">
+                    <div class="attraction-icon">
+                        <i class="fas fa-bridge"></i>
+                    </div>
+                    <h3 class="attraction-name">Brooklyn Bridge</h3>
+                    <div class="attraction-category">Historic Bridge</div>
+                    <p class="attraction-description">Iconic suspension bridge offering stunning views of Manhattan skyline</p>
+                </div>
+                <div class="attraction-card">
+                    <div class="attraction-icon">
+                        <i class="fas fa-theater-masks"></i>
+                    </div>
+                    <h3 class="attraction-name">Broadway Shows</h3>
+                    <div class="attraction-category">Entertainment</div>
+                    <p class="attraction-description">World-class theater productions in the heart of Times Square</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#picks">Top Picks</a></li>
+                <li><a href="index.html#blog">Blog</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+            <p>&copy; 2024 NYNightlife.com. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

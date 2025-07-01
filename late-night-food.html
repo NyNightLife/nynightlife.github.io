@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Late Night Food Delivery NYC - 24/7 Eats | NYNightlife.com</title>
+    <meta name="description" content="Satisfy your post-party cravings with NYC's best late-night food delivery options. Available 24/7 for when the night is young and hunger strikes.">
+    <meta name="keywords" content="NYC late night food delivery, 24 hour food delivery NYC, late night eats NYC, post party food NYC">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Late Night Food Delivery NYC - 24/7 Eats | NYNightlife.com">
+    <meta property="og:description" content="Satisfy your post-party cravings with NYC's best late-night food delivery options available 24/7.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nynightlife.com/late-night-food">
+    <meta property="og:image" content="https://nynightlife.com/images/late-night-food-og.jpg">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Late Night Food Delivery NYC - 24/7 Eats | NYNightlife.com">
+    <meta name="twitter:description" content="Satisfy your post-party cravings with NYC's best late-night food delivery options available 24/7.">
+    <meta name="twitter:image" content="https://nynightlife.com/images/late-night-food-twitter.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://nynightlife.com/late-night-food">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Times Square Dark Theme Colors */
+            --primary-neon: #ff0080;
+            --secondary-neon: #00ffff;
+            --accent-yellow: #ffff00;
+            --accent-orange: #ff6600;
+            --accent-purple: #8a2be2;
+            --accent-green: #00ff41;
+            
+            /* Dark Background Colors */
+            --bg-dark: #0a0a0a;
+            --bg-darker: #000000;
+            --bg-card: #1a1a1a;
+            --bg-card-hover: #2a2a2a;
+            
+            /* Text Colors */
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --text-muted: #888888;
+            
+            /* Neon Gradients */
+            --gradient-neon-pink: linear-gradient(135deg, #ff0080 0%, #ff4da6 100%);
+            --gradient-neon-cyan: linear-gradient(135deg, #00ffff 0%, #4dffff 100%);
+            --gradient-neon-multi: linear-gradient(135deg, #ff0080 0%, #00ffff 25%, #ffff00 50%, #ff6600 75%, #8a2be2 100%);
+            --gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            
+            /* Shadows and Effects */
+            --neon-glow-pink: 0 0 20px rgba(255, 0, 128, 0.5);
+            --neon-glow-cyan: 0 0 20px rgba(0, 255, 255, 0.5);
+            --neon-glow-yellow: 0 0 20px rgba(255, 255, 0, 0.5);
+            --dark-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-dark);
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 0, 128, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 255, 0, 0.05) 0%, transparent 50%);
+            z-index: -1;
+            animation: backgroundPulse 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes backgroundPulse {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            background: var(--bg-darker);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 0, 128, 0.3);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient-neon-multi);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: var(--neon-glow-pink);
+            animation: logoGlow 3s ease-in-out infinite alternate;
+            text-decoration: none;
+        }
+
+        @keyframes logoGlow {
+            0% { filter: brightness(1); }
+            100% { filter: brightness(1.3); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-neon);
+            background: rgba(255, 0, 128, 0.1);
+            box-shadow: var(--neon-glow-pink);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--bg-dark);
+            padding: 8rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background-image: url("images/khpzSCNSm51w.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient-neon-multi);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: var(--neon-glow-pink);
+            animation: titlePulse 4s ease-in-out infinite;
+        }
+
+        @keyframes titlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .breadcrumb {
+            margin-bottom: 2rem;
+        }
+
+        .breadcrumb a {
+            color: var(--secondary-neon);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary-neon);
+        }
+
+        .breadcrumb span {
+            color: var(--text-muted);
+            margin: 0 0.5rem;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 4rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: var(--gradient-neon-multi);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: var(--neon-glow-pink);
+        }
+
+        /* Food Categories Grid */
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .food-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--dark-shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 1px solid rgba(255, 102, 0, 0.2);
+        }
+
+        .food-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(60deg, transparent 40%, rgba(255, 102, 0, 0.1) 50%, transparent 60%);
+            transform: rotate(45deg);
+            animation: cardShine 5s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .food-card:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes cardShine {
+            0% { transform: rotate(45deg) translate(-100%, -100%); }
+            100% { transform: rotate(45deg) translate(100%, 100%); }
+        }
+
+        .food-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
+            border-color: var(--accent-orange);
+        }
+
+        .food-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-yellow) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .food-content {
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .food-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .food-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .food-type {
+            color: var(--accent-orange);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .food-hours {
+            text-align: right;
+        }
+
+        .hours-badge {
+            background: var(--gradient-neon-multi);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .delivery-time {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            display: block;
+            margin-top: 0.3rem;
+        }
+
+        .food-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .food-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .feature-icon {
+            color: var(--accent-green);
+            width: 16px;
+        }
+
+        .food-pricing {
+            background: rgba(255, 102, 0, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 102, 0, 0.2);
+        }
+
+        .pricing-title {
+            color: var(--accent-orange);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-details {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .food-cta {
+            display: inline-block;
+            background: var(--gradient-neon-multi);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--neon-glow-yellow);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .food-cta:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 0 25px rgba(255, 102, 0, 0.8);
+            color: white;
+        }
+
+        /* Tips Section */
+        .tips-section {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 4rem 0;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tip-card {
+            background: var(--bg-darker);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .tip-icon {
+            font-size: 2rem;
+            color: var(--secondary-neon);
+            margin-bottom: 1rem;
+        }
+
+        .tip-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .tip-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: var(--bg-darker);
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-neon);
+        }
+
+        .social-icons {
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary-neon);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .food-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tips-section {
+                padding: 2rem;
+            }
+
+            .food-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .food-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container nav">
+            <a href="index.html" class="logo">NYNightlife</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#picks">Top Picks</a></li>
+                    <li><a href="index.html#blog">Blog</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>></span>
+                <a href="index.html#picks">Top Picks</a>
+                <span>></span>
+                <span>Late Night Food</span>
+            </div>
+            <h1 class="hero-title">Late Night Food Delivery</h1>
+            <p class="hero-subtitle">Satisfy your post-party cravings with NYC's best late-night food delivery options. Available 24/7 for when the night is young and hunger strikes.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="food-grid">
+                <!-- Food Option 1: Joe's Pizza -->
+                <div class="food-card">
+                    <div class="food-image">
+                        <i class="fas fa-pizza-slice"></i>
+                    </div>
+                    <div class="food-content">
+                        <div class="food-header">
+                            <div>
+                                <h3 class="food-name">Joe's Pizza</h3>
+                                <div class="food-type">Classic NY Pizza</div>
+                            </div>
+                            <div class="food-hours">
+                                <div class="hours-badge">24/7</div>
+                                <span class="delivery-time">15-25 min</span>
+                            </div>
+                        </div>
+                        <p class="food-description">Authentic New York pizza slices delivered hot to your door. The perfect late-night fuel with classic cheese, pepperoni, and specialty slices.</p>
+                        <div class="food-features">
+                            <div class="feature">
+                                <i class="fas fa-clock feature-icon"></i>
+                                <span>24/7 Delivery</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-fire feature-icon"></i>
+                                <span>Always Hot</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-dollar-sign feature-icon"></i>
+                                <span>Budget Friendly</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-star feature-icon"></i>
+                                <span>NYC Classic</span>
+                            </div>
+                        </div>
+                        <div class="food-pricing">
+                            <div class="pricing-title">Pricing & Delivery</div>
+                            <div class="pricing-details">$3-8 per slice • $2.99 delivery fee • $15 minimum order</div>
+                        </div>
+                        <a href="#" class="food-cta">Order Now</a>
+                    </div>
+                </div>
+
+                <!-- Food Option 2: Halal Guys -->
+                <div class="food-card">
+                    <div class="food-image">
+                        <i class="fas fa-drumstick-bite"></i>
+                    </div>
+                    <div class="food-content">
+                        <div class="food-header">
+                            <div>
+                                <h3 class="food-name">The Halal Guys</h3>
+                                <div class="food-type">Middle Eastern</div>
+                            </div>
+                            <div class="food-hours">
+                                <div class="hours-badge">Until 4 AM</div>
+                                <span class="delivery-time">20-30 min</span>
+                            </div>
+                        </div>
+                        <p class="food-description">Famous chicken and lamb over rice platters with white and hot sauce. Hearty portions perfect for sharing after a night out.</p>
+                        <div class="food-features">
+                            <div class="feature">
+                                <i class="fas fa-utensils feature-icon"></i>
+                                <span>Large Portions</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-pepper-hot feature-icon"></i>
+                                <span>Signature Sauces</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-heart feature-icon"></i>
+                                <span>Comfort Food</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-users feature-icon"></i>
+                                <span>Great for Sharing</span>
+                            </div>
+                        </div>
+                        <div class="food-pricing">
+                            <div class="pricing-title">Pricing & Delivery</div>
+                            <div class="pricing-details">$8-15 per platter • $3.49 delivery fee • $20 minimum order</div>
+                        </div>
+                        <a href="#" class="food-cta">Order Now</a>
+                    </div>
+                </div>
+
+                <!-- Food Option 3: Insomnia Cookies -->
+                <div class="food-card">
+                    <div class="food-image">
+                        <i class="fas fa-cookie-bite"></i>
+                    </div>
+                    <div class="food-content">
+                        <div class="food-header">
+                            <div>
+                                <h3 class="food-name">Insomnia Cookies</h3>
+                                <div class="food-type">Desserts & Sweets</div>
+                            </div>
+                            <div class="food-hours">
+                                <div class="hours-badge">Until 3 AM</div>
+                                <span class="delivery-time">15-25 min</span>
+                            </div>
+                        </div>
+                        <p class="food-description">Warm, gooey cookies delivered late night. Perfect sweet ending to your night with classic chocolate chip, double chocolate, and seasonal flavors.</p>
+                        <div class="food-features">
+                            <div class="feature">
+                                <i class="fas fa-thermometer-half feature-icon"></i>
+                                <span>Served Warm</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-ice-cream feature-icon"></i>
+                                <span>Ice Cream Available</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-gift feature-icon"></i>
+                                <span>Perfect for Groups</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-smile feature-icon"></i>
+                                <span>Sweet Treats</span>
+                            </div>
+                        </div>
+                        <div class="food-pricing">
+                            <div class="pricing-title">Pricing & Delivery</div>
+                            <div class="pricing-details">$2-4 per cookie • $2.99 delivery fee • $12 minimum order</div>
+                        </div>
+                        <a href="#" class="food-cta">Order Now</a>
+                    </div>
+                </div>
+
+                <!-- Food Option 4: Katz's Delicatessen -->
+                <div class="food-card">
+                    <div class="food-image">
+                        <i class="fas fa-hamburger"></i>
+                    </div>
+                    <div class="food-content">
+                        <div class="food-header">
+                            <div>
+                                <h3 class="food-name">Katz's Delicatessen</h3>
+                                <div class="food-type">Jewish Deli</div>
+                            </div>
+                            <div class="food-hours">
+                                <div class="hours-badge">Until 2 AM</div>
+                                <span class="delivery-time">25-35 min</span>
+                            </div>
+                        </div>
+                        <p class="food-description">Legendary pastrami sandwiches and classic deli fare. A NYC institution serving massive sandwiches perfect for late-night cravings.</p>
+                        <div class="food-features">
+                            <div class="feature">
+                                <i class="fas fa-award feature-icon"></i>
+                                <span>NYC Institution</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-weight-hanging feature-icon"></i>
+                                <span>Huge Portions</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-meat feature-icon"></i>
+                                <span>Premium Meats</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-history feature-icon"></i>
+                                <span>Since 1888</span>
+                            </div>
+                        </div>
+                        <div class="food-pricing">
+                            <div class="pricing-title">Pricing & Delivery</div>
+                            <div class="pricing-details">$18-28 per sandwich • $4.99 delivery fee • $25 minimum order</div>
+                        </div>
+                        <a href="#" class="food-cta">Order Now</a>
+                    </div>
+                </div>
+
+                <!-- Food Option 5: Xi'an Famous Foods -->
+                <div class="food-card">
+                    <div class="food-image">
+                        <i class="fas fa-bowl-food"></i>
+                    </div>
+                    <div class="food-content">
+                        <div class="food-header">
+                            <div>
+                                <h3 class="food-name">Xi'an Famous Foods</h3>
+                                <div class="food-type">Chinese Noodles</div>
+                            </div>
+                            <div class="food-hours">
+                                <div class="hours-badge">Until 1 AM</div>
+                                <span class="delivery-time">20-30 min</span>
+                            </div>
+                        </div>
+                        <p class="food-description">Spicy hand-pulled noodles and Chinese street food. Bold flavors and satisfying bowls perfect for late-night comfort.</p>
+                        <div class="food-features">
+                            <div class="feature">
+                                <i class="fas fa-fire feature-icon"></i>
+                                <span>Spicy Options</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-hand-paper feature-icon"></i>
+                                <span>Hand-Pulled Noodles</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-leaf feature-icon"></i>
+                                <span>Fresh Ingredients</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-globe-asia feature-icon"></i>
+                                <span>Authentic Flavors</span>
+                            </div>
+                        </div>
+                        <div class="food-pricing">
+                            <div class="pricing-title">Pricing & Delivery</div>
+                            <div class="pricing-details">$10-16 per bowl • $3.99 delivery fee • $18 minimum order</div>
+                        </div>
+                        <a href="#" class="food-cta">Order Now</a>
+                    </div>
+                </div>
+
+                <!-- Food Option 6: Seamless/Grubhub 24/7 -->
+                <div class="food-card">
+                    <div class="food-image">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="food-content">
+                        <div class="food-header">
+                            <div>
+                                <h3 class="food-name">24/7 Delivery Apps</h3>
+                                <div class="food-type">Multiple Cuisines</div>
+                            </div>
+                            <div class="food-hours">
+                                <div class="hours-badge">24/7</div>
+                                <span class="delivery-time">Varies</span>
+                            </div>
+                        </div>
+                        <p class="food-description">Access hundreds of late-night restaurants through delivery apps. From sushi to tacos, find exactly what you're craving any time of night.</p>
+                        <div class="food-features">
+                            <div class="feature">
+                                <i class="fas fa-list feature-icon"></i>
+                                <span>Endless Options</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-map-marker-alt feature-icon"></i>
+                                <span>Real-Time Tracking</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-credit-card feature-icon"></i>
+                                <span>Easy Payment</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-star feature-icon"></i>
+                                <span>Reviews & Ratings</span>
+                            </div>
+                        </div>
+                        <div class="food-pricing">
+                            <div class="pricing-title">Pricing & Delivery</div>
+                            <div class="pricing-details">Varies by restaurant • Service fees apply • Promo codes available</div>
+                        </div>
+                        <a href="#" class="food-cta">Browse Apps</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tips-section">
+        <div class="container">
+            <h2 class="section-title">Late Night Ordering Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="tip-title">Check Hours</h3>
+                    <p class="tip-description">Restaurant hours can change, especially late night. Always verify current hours and availability before ordering.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3 class="tip-title">Minimum Orders</h3>
+                    <p class="tip-description">Most late-night delivery has higher minimums. Consider ordering for your group to meet requirements and split costs.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3 class="tip-title">Longer Wait Times</h3>
+                    <p class="tip-description">Late-night delivery typically takes longer due to fewer drivers and higher demand. Order early and be patient.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="tip-title">Tip Generously</h3>
+                    <p class="tip-description">Late-night delivery drivers work hard in challenging conditions. Show appreciation with generous tips.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#picks">Top Picks</a></li>
+                <li><a href="index.html#blog">Blog</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+            <p>&copy; 2024 NYNightlife.com. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

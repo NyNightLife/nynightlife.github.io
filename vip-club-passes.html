@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYC VIP Club Passes - Skip the Lines | NYNightlife.com</title>
+    <meta name="description" content="Skip the lines and experience NYC's hottest clubs like a VIP. Exclusive access to the city's premier nightlife venues with guaranteed entry and premium perks.">
+    <meta name="keywords" content="NYC VIP club passes, New York nightclub VIP, NYC club guest list, VIP nightlife NYC, club passes NYC">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="NYC VIP Club Passes - Skip the Lines | NYNightlife.com">
+    <meta property="og:description" content="Skip the lines and experience NYC's hottest clubs like a VIP with exclusive access and premium perks.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nynightlife.com/vip-club-passes">
+    <meta property="og:image" content="https://nynightlife.com/images/vip-clubs-og.jpg">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NYC VIP Club Passes - Skip the Lines | NYNightlife.com">
+    <meta name="twitter:description" content="Skip the lines and experience NYC's hottest clubs like a VIP with exclusive access and premium perks.">
+    <meta name="twitter:image" content="https://nynightlife.com/images/vip-clubs-twitter.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://nynightlife.com/vip-club-passes">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Times Square Dark Theme Colors */
+            --primary-neon: #ff0080;
+            --secondary-neon: #00ffff;
+            --accent-yellow: #ffff00;
+            --accent-orange: #ff6600;
+            --accent-purple: #8a2be2;
+            --accent-green: #00ff41;
+            
+            /* Dark Background Colors */
+            --bg-dark: #0a0a0a;
+            --bg-darker: #000000;
+            --bg-card: #1a1a1a;
+            --bg-card-hover: #2a2a2a;
+            
+            /* Text Colors */
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --text-muted: #888888;
+            
+            /* Neon Gradients */
+            --gradient-neon-pink: linear-gradient(135deg, #ff0080 0%, #ff4da6 100%);
+            --gradient-neon-cyan: linear-gradient(135deg, #00ffff 0%, #4dffff 100%);
+            --gradient-neon-multi: linear-gradient(135deg, #ff0080 0%, #00ffff 25%, #ffff00 50%, #ff6600 75%, #8a2be2 100%);
+            --gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            
+            /* Shadows and Effects */
+            --neon-glow-pink: 0 0 20px rgba(255, 0, 128, 0.5);
+            --neon-glow-cyan: 0 0 20px rgba(0, 255, 255, 0.5);
+            --neon-glow-yellow: 0 0 20px rgba(255, 255, 0, 0.5);
+            --dark-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-dark);
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 0, 128, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 255, 0, 0.05) 0%, transparent 50%);
+            z-index: -1;
+            animation: backgroundPulse 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes backgroundPulse {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            background: var(--bg-darker);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 0, 128, 0.3);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient-neon-multi);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: var(--neon-glow-pink);
+            animation: logoGlow 3s ease-in-out infinite alternate;
+            text-decoration: none;
+        }
+
+        @keyframes logoGlow {
+            0% { filter: brightness(1); }
+            100% { filter: brightness(1.3); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-neon);
+            background: rgba(255, 0, 128, 0.1);
+            box-shadow: var(--neon-glow-pink);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--bg-dark);
+            padding: 8rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background-image: url("images/khpzSCNSm51w.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient-neon-multi);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: var(--neon-glow-pink);
+            animation: titlePulse 4s ease-in-out infinite;
+        }
+
+        @keyframes titlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .breadcrumb {
+            margin-bottom: 2rem;
+        }
+
+        .breadcrumb a {
+            color: var(--secondary-neon);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary-neon);
+        }
+
+        .breadcrumb span {
+            color: var(--text-muted);
+            margin: 0 0.5rem;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 4rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: var(--gradient-neon-multi);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: var(--neon-glow-pink);
+        }
+
+        /* VIP Passes Grid */
+        .passes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .pass-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--dark-shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 0, 0.2);
+        }
+
+        .pass-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(60deg, transparent 40%, rgba(255, 255, 0, 0.1) 50%, transparent 60%);
+            transform: rotate(45deg);
+            animation: cardShine 5s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .pass-card:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes cardShine {
+            0% { transform: rotate(45deg) translate(-100%, -100%); }
+            100% { transform: rotate(45deg) translate(100%, 100%); }
+        }
+
+        .pass-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
+            border-color: var(--accent-yellow);
+        }
+
+        .pass-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .pass-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            background: var(--gradient-neon-multi);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            box-shadow: var(--neon-glow-pink);
+        }
+
+        .pass-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .pass-tier {
+            color: var(--accent-yellow);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pass-description {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .pass-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pass-features li {
+            color: var(--text-secondary);
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .pass-features li::before {
+            content: '★';
+            position: absolute;
+            left: 0;
+            color: var(--accent-yellow);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .pass-pricing {
+            background: rgba(255, 255, 0, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 0, 0.2);
+            text-align: center;
+        }
+
+        .pricing-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-yellow);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-period {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .pricing-details {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .pass-cta {
+            display: inline-block;
+            background: var(--gradient-neon-multi);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--neon-glow-yellow);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            width: 100%;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .pass-cta:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 0 25px rgba(255, 255, 0, 0.8);
+            color: white;
+        }
+
+        /* Clubs Section */
+        .clubs-section {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 4rem 0;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .clubs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .club-card {
+            background: var(--bg-darker);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 0, 128, 0.2);
+            text-align: center;
+        }
+
+        .club-icon {
+            font-size: 2.5rem;
+            color: var(--primary-neon);
+            margin-bottom: 1rem;
+        }
+
+        .club-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .club-location {
+            color: var(--secondary-neon);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .club-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: var(--bg-darker);
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-neon);
+        }
+
+        .social-icons {
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary-neon);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .passes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .clubs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .clubs-section {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .pass-card {
+                padding: 1.5rem;
+            }
+
+            .pricing-amount {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container nav">
+            <a href="index.html" class="logo">NYNightlife</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#picks">Top Picks</a></li>
+                    <li><a href="index.html#blog">Blog</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>></span>
+                <a href="index.html#picks">Top Picks</a>
+                <span>></span>
+                <span>VIP Club Passes</span>
+            </div>
+            <h1 class="hero-title">NYC VIP Club Passes</h1>
+            <p class="hero-subtitle">Skip the lines and experience NYC's hottest clubs like a VIP. Exclusive access to the city's premier nightlife venues with guaranteed entry and premium perks.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="passes-grid">
+                <!-- VIP Pass 1: Elite Access -->
+                <div class="pass-card">
+                    <div class="pass-header">
+                        <div class="pass-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3 class="pass-name">Elite Access Pass</h3>
+                        <div class="pass-tier">Premium Tier</div>
+                    </div>
+                    <p class="pass-description">The ultimate VIP experience with access to NYC's most exclusive clubs, priority entry, and premium perks at 15+ venues.</p>
+                    <ul class="pass-features">
+                        <li>Skip the line at 15+ premium clubs</li>
+                        <li>Guaranteed entry even when sold out</li>
+                        <li>Complimentary coat check</li>
+                        <li>Priority bar service</li>
+                        <li>Access to VIP areas</li>
+                        <li>Dedicated concierge support</li>
+                        <li>Guest list for +1</li>
+                    </ul>
+                    <div class="pass-pricing">
+                        <div class="pricing-amount">$299</div>
+                        <div class="pricing-period">per month</div>
+                        <div class="pricing-details">Includes all venues • Cancel anytime • 7-day free trial</div>
+                    </div>
+                    <a href="#" class="pass-cta">Get Elite Access</a>
+                </div>
+
+                <!-- VIP Pass 2: Club Hopper -->
+                <div class="pass-card">
+                    <div class="pass-header">
+                        <div class="pass-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="pass-name">Club Hopper Pass</h3>
+                        <div class="pass-tier">Standard Tier</div>
+                    </div>
+                    <p class="pass-description">Perfect for nightlife enthusiasts who want to explore multiple venues with priority access and special perks.</p>
+                    <ul class="pass-features">
+                        <li>Priority entry at 10+ clubs</li>
+                        <li>Reduced cover charges</li>
+                        <li>Express entry lanes</li>
+                        <li>Drink specials and discounts</li>
+                        <li>Event notifications</li>
+                        <li>Mobile app access</li>
+                    </ul>
+                    <div class="pass-pricing">
+                        <div class="pricing-amount">$149</div>
+                        <div class="pricing-period">per month</div>
+                        <div class="pricing-details">10+ venues included • Flexible membership • No commitment</div>
+                    </div>
+                    <a href="#" class="pass-cta">Start Club Hopping</a>
+                </div>
+
+                <!-- VIP Pass 3: Weekend Warrior -->
+                <div class="pass-card">
+                    <div class="pass-header">
+                        <div class="pass-icon">
+                            <i class="fas fa-calendar-weekend"></i>
+                        </div>
+                        <h3 class="pass-name">Weekend Warrior</h3>
+                        <div class="pass-tier">Weekend Only</div>
+                    </div>
+                    <p class="pass-description">Designed for weekend party-goers who want VIP treatment at the hottest Friday and Saturday night spots.</p>
+                    <ul class="pass-features">
+                        <li>Weekend-only club access</li>
+                        <li>Skip lines Friday & Saturday</li>
+                        <li>Late-night venue access</li>
+                        <li>Group booking discounts</li>
+                        <li>Special event invitations</li>
+                    </ul>
+                    <div class="pass-pricing">
+                        <div class="pricing-amount">$99</div>
+                        <div class="pricing-period">per month</div>
+                        <div class="pricing-details">Weekend access only • Perfect for casual party-goers</div>
+                    </div>
+                    <a href="#" class="pass-cta">Weekend Access</a>
+                </div>
+
+                <!-- VIP Pass 4: Rooftop Exclusive -->
+                <div class="pass-card">
+                    <div class="pass-header">
+                        <div class="pass-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3 class="pass-name">Rooftop Exclusive</h3>
+                        <div class="pass-tier">Specialty Pass</div>
+                    </div>
+                    <p class="pass-description">Exclusive access to NYC's premier rooftop clubs and sky-high venues with panoramic city views.</p>
+                    <ul class="pass-features">
+                        <li>Rooftop venue priority access</li>
+                        <li>Skyline view reservations</li>
+                        <li>Outdoor terrace privileges</li>
+                        <li>Weather protection guarantees</li>
+                        <li>Sunset hour specials</li>
+                    </ul>
+                    <div class="pass-pricing">
+                        <div class="pricing-amount">$199</div>
+                        <div class="pricing-period">per month</div>
+                        <div class="pricing-details">Rooftop venues only • Seasonal adjustments • City view guaranteed</div>
+                    </div>
+                    <a href="#" class="pass-cta">Sky High Access</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="clubs-section">
+        <div class="container">
+            <h2 class="section-title">Featured Partner Clubs</h2>
+            <div class="clubs-grid">
+                <div class="club-card">
+                    <div class="club-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3 class="club-name">Marquee New York</h3>
+                    <div class="club-location">Chelsea</div>
+                    <p class="club-description">World-renowned superclub with top DJs and celebrity sightings</p>
+                </div>
+                <div class="club-card">
+                    <div class="club-icon">
+                        <i class="fas fa-cocktail"></i>
+                    </div>
+                    <h3 class="club-name">1 OAK</h3>
+                    <div class="club-location">Chelsea</div>
+                    <p class="club-description">Upscale nightclub known for A-list celebrities and exclusive parties</p>
+                </div>
+                <div class="club-card">
+                    <div class="club-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3 class="club-name">PHD Rooftop</h3>
+                    <div class="club-location">Meatpacking District</div>
+                    <p class="club-description">Trendy rooftop lounge with stunning city views and VIP cabanas</p>
+                </div>
+                <div class="club-card">
+                    <div class="club-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="club-name">LAVO</h3>
+                    <div class="club-location">Midtown East</div>
+                    <p class="club-description">Italian restaurant by day, high-energy nightclub by night</p>
+                </div>
+                <div class="club-card">
+                    <div class="club-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="club-name">Beauty & Essex</h3>
+                    <div class="club-location">Lower East Side</div>
+                    <p class="club-description">Hidden speakeasy-style venue behind a pawn shop facade</p>
+                </div>
+                <div class="club-card">
+                    <div class="club-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3 class="club-name">House of Yes</h3>
+                    <div class="club-location">Bushwick, Brooklyn</div>
+                    <p class="club-description">Avant-garde performance venue with immersive themed parties</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#picks">Top Picks</a></li>
+                <li><a href="index.html#blog">Blog</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+            <p>&copy; 2024 NYNightlife.com. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
