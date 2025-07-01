@@ -344,14 +344,14 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0, 0, 0, 0.7); /* Dark overlay */
+            background-color: rgba(0, 0, 0, 0.95); /* Dark overlay */
             filter: grayscale(100%); /* Greyscale effect */
-            opacity: 0.95; /* Further adjusted opacity for maximum contrast */
+            z-index: 0;
         }
 
-        @keyframes heroLights {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+        .hero-content {
+            position: relative;
+            z-index: 1;
         }
 
         .hero-title {
@@ -417,30 +417,27 @@
             font-weight: 700;
             text-align: center;
             margin-bottom: 3rem;
-            background: var(--gradient-neon-cyan);
+            background: var(--gradient-neon-multi);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: var(--neon-glow-cyan);
+            text-shadow: var(--neon-glow-pink);
         }
 
-        /* Top Picks Section */
-        .top-picks-grid {
+        /* Top Picks Grid */
+        .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
         }
 
         .card {
             background: var(--bg-card);
             border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
+            overflow: hidden;
             box-shadow: var(--dark-shadow);
             transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
             border: 1px solid rgba(255, 0, 128, 0.2);
         }
 
@@ -451,11 +448,12 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(60deg, transparent 40%, rgba(0, 255, 255, 0.1) 50%, transparent 60%);
+            background: linear-gradient(60deg, transparent 40%, rgba(255, 0, 128, 0.1) 50%, transparent 60%);
             transform: rotate(45deg);
             animation: cardShine 5s linear infinite;
             opacity: 0;
             transition: opacity 0.3s ease;
+            z-index: 1;
         }
 
         .card:hover::before {
@@ -470,50 +468,63 @@
         .card:hover {
             transform: translateY(-10px) scale(1.02);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
-            border-color: var(--secondary-neon);
+            border-color: var(--primary-neon);
         }
 
-        .card-icon {
+        .icon-wrapper {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(135deg, var(--primary-neon) 0%, var(--secondary-neon) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 3rem;
-            margin-bottom: 1rem;
-            background: var(--gradient-neon-pink);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .icon-wrapper i {
             text-shadow: var(--neon-glow-pink);
+        }
+
+        .card-content {
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
         }
 
         .card-title {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
             font-weight: 600;
-            margin-bottom: 0.8rem;
             color: var(--text-primary);
+            margin-bottom: 0.5rem;
         }
 
         .card-description {
-            font-size: 1rem;
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
+            line-height: 1.6;
         }
 
-        .card-cta {
+        .cta-button {
             display: inline-block;
-            background: var(--gradient-neon-cyan);
+            background: var(--gradient-neon-pink);
             color: white;
-            padding: 10px 25px;
+            padding: 12px 25px;
             text-decoration: none;
             border-radius: 25px;
             font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: var(--neon-glow-cyan);
+            box-shadow: var(--neon-glow-pink);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        .card-cta:hover {
+        .cta-button:hover {
             transform: translateY(-2px) scale(1.03);
-            box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
+            box-shadow: 0 0 25px rgba(255, 0, 128, 0.8);
             color: white;
         }
 
@@ -522,140 +533,230 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
         }
 
-        .blog-post {
+        .blog-post-card {
             background: var(--bg-card);
             border-radius: 15px;
-            padding: 1.5rem;
+            overflow: hidden;
             box-shadow: var(--dark-shadow);
             transition: all 0.3s ease;
             border: 1px solid rgba(0, 255, 255, 0.2);
         }
 
-        .blog-post:hover {
+        .blog-post-card:hover {
             transform: translateY(-10px) scale(1.02);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
-            border-color: var(--primary-neon);
+            border-color: var(--secondary-neon);
         }
 
-        .blog-meta {
-            font-size: 0.9rem;
+        .blog-post-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--secondary-neon) 0%, var(--accent-yellow) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+            transition: filter 0.3s ease;
+        }
+
+        .blog-post-card:hover .blog-post-image img {
+            filter: brightness(1);
+        }
+
+        .blog-post-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 50% 50%, rgba(0, 255, 255, 0.3) 0%, transparent 70%);
+            animation: blogGlow 5s ease-in-out infinite alternate;
+        }
+
+        @keyframes blogGlow {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.8; }
+        }
+
+        .blog-post-content {
+            padding: 2rem;
+        }
+
+        .blog-post-meta {
             color: var(--text-muted);
-            margin-bottom: 0.5rem;
-        }
-
-        .blog-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--text-primary);
+            font-size: 0.9rem;
             margin-bottom: 1rem;
         }
 
-        .blog-description {
-            font-size: 1rem;
+        .blog-post-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .blog-post-content p {
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
+            line-height: 1.6;
         }
 
-        .blog-link {
-            color: var(--primary-neon);
+        .read-more {
+            color: var(--secondary-neon);
             text-decoration: none;
             font-weight: 600;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .blog-link:hover {
-            color: var(--secondary-neon);
+        .read-more:hover {
+            color: var(--accent-yellow);
+            text-shadow: var(--neon-glow-yellow);
+            transform: translateX(5px);
         }
 
         /* About Section */
+        .about {
+            background: var(--bg-card);
+            margin: 4rem 0;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 0, 128, 0.3);
+        }
+
         .about-content {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
             align-items: center;
-            text-align: center;
+            padding: 4rem;
         }
 
-        .about-image {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 15px;
+        .about-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
             margin-bottom: 2rem;
-            box-shadow: var(--dark-shadow);
-            border: 1px solid rgba(255, 255, 0, 0.2);
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
-            max-width: 800px;
+            background: var(--gradient-neon-pink);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .about-text p {
-            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            height: 300px;
+            background: var(--gradient-dark);
+            border-radius: 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(0, 255, 255, 0.1) 50%, transparent 70%);
+            animation: imageShine 5s linear infinite;
+        }
+
+        @keyframes imageShine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.8);
+            transition: filter 0.3s ease;
+        }
+
+        .about-image:hover img {
+            filter: brightness(1);
         }
 
         /* Contact Section */
+        .contact {
+            background: var(--bg-darker);
+            padding: 4rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 0, 128, 0.3);
+        }
+
         .contact-form {
             max-width: 600px;
             margin: 0 auto;
+            padding: 2rem;
             background: var(--bg-card);
-            padding: 3rem;
             border-radius: 15px;
             box-shadow: var(--dark-shadow);
-            border: 1px solid rgba(0, 255, 65, 0.2);
+            border: 1px solid rgba(0, 255, 255, 0.2);
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
-            text-align: left;
-        }
-
-        .form-group label {
+        .contact-form label {
             display: block;
+            text-align: left;
             margin-bottom: 0.5rem;
             color: var(--text-primary);
-            font-weight: 600;
+            font-weight: 500;
         }
 
-        .form-group input,
-        .form-group textarea {
+        .contact-form input,
+        .contact-form textarea {
             width: 100%;
             padding: 12px;
-            border: 1px solid rgba(255, 0, 128, 0.3);
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--text-muted);
             border-radius: 8px;
-            background: var(--bg-darker);
+            background: var(--bg-dark);
             color: var(--text-primary);
             font-size: 1rem;
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
+        .contact-form input:focus,
+        .contact-form textarea:focus {
             border-color: var(--primary-neon);
             box-shadow: 0 0 10px rgba(255, 0, 128, 0.5);
             outline: none;
         }
 
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .submit-btn {
-            display: block;
-            width: 100%;
+        .contact-form button {
             background: var(--gradient-neon-pink);
             color: white;
-            padding: 15px;
+            padding: 15px 30px;
             border: none;
             border-radius: 30px;
-            font-size: 1.1rem;
             font-weight: 600;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: var(--neon-glow-pink);
@@ -663,8 +764,8 @@
             letter-spacing: 1px;
         }
 
-        .submit-btn:hover {
-            transform: translateY(-3px) scale(1.02);
+        .contact-form button:hover {
+            transform: translateY(-2px) scale(1.03);
             box-shadow: 0 0 30px rgba(255, 0, 128, 0.8);
         }
 
@@ -725,7 +826,7 @@
             }
 
             .hero-title {
-                font-size: 3rem;
+                font-size: 2.5rem;
             }
 
             .hero-subtitle {
@@ -736,23 +837,31 @@
                 font-size: 2rem;
             }
 
-            .top-picks-grid,
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
             .blog-grid {
                 grid-template-columns: 1fr;
             }
 
+            .about-content {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+            }
+
             .about-image {
-                max-width: 300px;
+                height: 250px;
             }
 
             .contact-form {
-                padding: 2rem;
+                padding: 1.5rem;
             }
         }
 
         @media (max-width: 480px) {
             .hero-title {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
 
             .hero-subtitle {
@@ -763,63 +872,34 @@
                 font-size: 1.8rem;
             }
 
-            .card-title {
-                font-size: 1.5rem;
+            .card-content {
+                padding: 1.5rem;
             }
 
-            .blog-title {
-                font-size: 1.3rem;
-            }
-
-            .form-group input,
-            .form-group textarea,
-            .submit-btn {
-                font-size: 0.9rem;
+            .blog-post-content {
+                padding: 1.5rem;
             }
         }
-
-        /* Performance Optimizations */
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Lazy loading */
-        img[loading="lazy"] {
-            filter: blur(5px);
-            transition: filter 0.3s ease-in-out;
-        }
-
-        img[loading="lazy"].loaded {
-            filter: blur(0);
-        }
-
-        /* Fast performance tips */
-        /* Use CSS animations for performance */
-        /* Avoid large images where possible */
-        /* Minimize DOM manipulation */
-        /* Use web fonts efficiently */
     </style>
 </head>
 <body>
     <header class="header">
         <div class="container nav">
-            <a href="#" class="logo">NYNightlife</a>
+            <a href="index.html" class="logo">NYNightlife</a>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#picks">Top Picks</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#picks">Top Picks</a></li>
+                    <li><a href="index.html#blog">Blog</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section id="home" class="hero">
-        <div class="container">
+    <section class="hero">
+        <div class="container hero-content">
             <h1 class="hero-title">Your Ultimate NYC Nightlife Guide</h1>
             <p class="hero-subtitle">Discover the best entertainment, dating spots, restaurants, events, and fashion in the city that never sleeps</p>
             <a href="#picks" class="hero-cta">Explore NYC Now</a>
@@ -827,137 +907,163 @@
     </section>
 
     <section id="picks" class="section">
-        <div class="container">
-            <h2 class="section-title">Top Picks</h2>
-            <p class="text-center text-secondary">Curated experiences for the ultimate NYC lifestyle</p>
-            <div class="top-picks-grid">
-                <!-- Dating Apps -->
-                <div class="card">
-                    <i class="fas fa-heart card-icon"></i>
+        <h2 class="section-title">Top Picks for Your NYC Adventure</h2>
+        <div class="container card-grid">
+            <div class="card">
+                <div class="icon-wrapper">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="card-content">
                     <h3 class="card-title">Top 5 Date Night Apps</h3>
                     <p class="card-description">Find your perfect match with NYC's most exclusive dating platforms. From luxury connections to casual meetups.</p>
-                    <a href="#" class="card-cta">Try Free</a>
+                    <a href="dating-apps.html" class="cta-button">Try Free</a>
                 </div>
+            </div>
 
-                <!-- Rooftop Bars -->
-                <div class="card">
-                    <i class="fas fa-cocktail card-icon"></i>
+            <div class="card">
+                <div class="icon-wrapper">
+                    <i class="fas fa-cocktail"></i>
+                </div>
+                <div class="card-content">
                     <h3 class="card-title">Best Rooftop Bars with Reservations</h3>
                     <p class="card-description">Experience NYC's skyline from the most exclusive rooftop venues. Book your table with stunning city views.</p>
-                    <a href="#" class="card-cta">Book Now</a>
+                    <a href="rooftop-bars.html" class="cta-button">Book Now</a>
                 </div>
+            </div>
 
-                <!-- VIP Club Passes -->
-                <div class="card">
-                    <i class="fas fa-star card-icon"></i>
+            <div class="card">
+                <div class="icon-wrapper">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="card-content">
                     <h3 class="card-title">NYC VIP Club Passes</h3>
                     <p class="card-description">Skip the lines and experience NYC's hottest clubs like a VIP. Exclusive access to the city's premier nightlife.</p>
-                    <a href="#" class="card-cta">Get VIP Access</a>
+                    <a href="vip-club-passes.html" class="cta-button">Get VIP Access</a>
                 </div>
+            </div>
 
-                <!-- Nightlife Fashion -->
-                <div class="card">
-                    <i class="fas fa-tshirt card-icon"></i>
+            <div class="card">
+                <div class="icon-wrapper">
+                    <i class="fas fa-tshirt"></i>
+                </div>
+                <div class="card-content">
                     <h3 class="card-title">NYC Nightlife Fashion</h3>
                     <p class="card-description">Look your best with curated fashion picks for NYC's nightlife scene. From designer to affordable chic.</p>
-                    <a href="#" class="card-cta">Shop Now</a>
+                    <a href="nightlife-fashion.html" class="cta-button">Shop Now</a>
                 </div>
+            </div>
 
-                <!-- Late Night Food Delivery -->
-                <div class="card">
-                    <i class="fas fa-utensils card-icon"></i>
+            <div class="card">
+                <div class="icon-wrapper">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <div class="card-content">
                     <h3 class="card-title">Late Night Food Delivery</h3>
                     <p class="card-description">Satisfy your post-party cravings with NYC's best late-night food delivery options. Available 24/7.</p>
-                    <a href="#" class="card-cta">Order Now</a>
+                    <a href="late-night-food.html" class="cta-button">Order Now</a>
                 </div>
+            </div>
 
-                <!-- NYC Attraction Passes -->
-                <div class="card">
-                    <i class="fas fa-building card-icon"></i>
+            <div class="card">
+                <div class="icon-wrapper">
+                    <i class="fas fa-building"></i>
+                </div>
+                <div class="card-content">
                     <h3 class="card-title">NYC Attraction Passes</h3>
                     <p class="card-description">Explore NYC's iconic attractions with discounted passes. Perfect for date ideas and tourist adventures.</p>
-                    <a href="#" class="card-cta">View Deals</a>
+                    <a href="attraction-passes.html" class="cta-button">View Deals</a>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="blog" class="section">
-        <div class="container">
-            <h2 class="section-title">Weekly Blog</h2>
-            <p class="text-center text-secondary">Stay updated with the latest NYC nightlife trends, events, and insider tips</p>
-            <div class="blog-grid">
-                <!-- Blog Post 1 -->
-                <div class="blog-post">
-                    <img src="images/blog-nyenightlife.jpg" alt="New Year's Eve in NYC" loading="lazy">
-                    <p class="blog-meta">December 30, 2024 • Events</p>
-                    <h3 class="blog-title">New Year's Eve 2025: The Ultimate NYC Party Guide</h3>
-                    <p class="blog-description">Discover the hottest NYE parties, exclusive events, and last-minute reservations for an unforgettable New Year's celebration in NYC.</p>
-                    <a href="blog_post_1.html" class="blog-link">Read More →</a>
+        <h2 class="section-title">Latest from the NYNightlife Blog</h2>
+        <div class="container blog-grid">
+            <!-- Blog Post 1 -->
+            <div class="blog-post-card">
+                <div class="blog-post-image">
+                    <img src="images/nye-2025.jpg" alt="New Year's Eve 2025 in Times Square">
                 </div>
-
-                <!-- Blog Post 2 -->
-                <div class="blog-post">
-                    <img src="images/blog-speakeasy.jpg" alt="Hidden Speakeasies in NYC" loading="lazy">
-                    <p class="blog-meta">December 28, 2024 • Nightlife</p>
-                    <h3 class="blog-title">Hidden Speakeasies: NYC's Best Kept Secrets</h3>
-                    <p class="blog-description">Uncover the city's most exclusive hidden bars and speakeasies that only locals know about. Your guide to NYC's underground scene.</p>
-                    <a href="blog_post_2.html" class="blog-link">Read More →</a>
+                <div class="blog-post-content">
+                    <div class="blog-post-meta">December 26, 2024 | Nightlife</div>
+                    <h3>NYC New Year's Eve 2025: The Ultimate Party Guide</h3>
+                    <p>Ring in the New Year with a bang! Discover the hottest parties, exclusive events, and best spots to watch the ball drop in Times Square or enjoy a spectacular fireworks display.</p>
+                    <a href="blog_post_1.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
                 </div>
+            </div>
 
-                <!-- Blog Post 3 (Placeholder) -->
-                <div class="blog-post">
-                    <img src="images/blog-winterdating.jpg" alt="Winter Dating in NYC" loading="lazy">
-                    <p class="blog-meta">December 26, 2024 • Dating</p>
-                    <h3 class="blog-title">Winter Dating in NYC: Cozy Spots for Cold Nights</h3>
-                    <p class="blog-description">From intimate wine bars to cozy restaurants with fireplaces, discover the most romantic winter date spots in New York City.</p>
-                    <a href="#" class="blog-link">Read More →</a>
+            <!-- Blog Post 2 -->
+            <div class="blog-post-card">
+                <div class="blog-post-image">
+                    <img src="images/speakeasy.jpg" alt="Hidden speakeasy bar in NYC">
+                </div>
+                <div class="blog-post-content">
+                    <div class="blog-post-meta">January 5, 2025 | Bars & Drinks</div>
+                    <h3>Unveiling NYC's Hidden Gems: A Guide to Secret Speakeasies</h3>
+                    <p>Step back in time and discover the allure of New York City's clandestine speakeasies. From hidden entrances to craft cocktails, we reveal the best-kept secrets.</p>
+                    <a href="blog_post_2.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Blog Post 3 (Placeholder) -->
+            <div class="blog-post-card">
+                <div class="blog-post-image">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="blog-post-content">
+                    <div class="blog-post-meta">Coming Soon | Events</div>
+                    <h3>Upcoming NYC Events: Don't Miss Out!</h3>
+                    <p>Stay tuned for our curated list of the hottest upcoming events in New York City, from concerts and festivals to fashion shows and art exhibitions.</p>
+                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="section">
+    <section id="about" class="section about">
         <div class="container about-content">
-            <h2 class="section-title">About NYNightlife</h2>
-            <img src="images/about-nyc.jpg" alt="New York City skyline at night" class="about-image" loading="lazy">
             <div class="about-text">
-                <p>Welcome to NYNightlife.com, your ultimate insider's guide to New York City's vibrant entertainment scene. We're passionate about helping you discover the best that NYC has to offer – from exclusive dating spots and trendy restaurants to the hottest nightlife venues and fashion-forward experiences.</p>
-                <p>Our team of NYC natives and nightlife enthusiasts curates the most up-to-date recommendations, insider tips, and exclusive deals to ensure you never miss out on the city's best experiences. Whether you're a local looking for something new or a visitor wanting to experience NYC like an insider, we've got you covered.</p>
-                <p>From rooftop bars with stunning skyline views to hidden speakeasies, from luxury dating apps to affordable fashion finds – we bring you the complete NYC lifestyle experience. Join our community and discover why New York truly is the city that never sleeps.</p>
+                <h2>About NYNightlife.com</h2>
+                <p>Welcome to NYNightlife.com, your ultimate guide to experiencing the vibrant and dynamic pulse of New York City after dark. We are passionate about helping you discover the best of NYC's entertainment, dating scene, culinary delights, fashion trends, and local events.</p>
+                <p>Our mission is to provide insider tips, exclusive recommendations, and valuable resources to ensure you make the most of every moment in the city that never sleeps.</p>
+                <p>Whether you're a local looking for new adventures or a visitor eager to explore, NYNightlife.com is your trusted companion.</p>
+                <p>We believe in creating unforgettable experiences, connecting people with the city's hidden gems, and helping you navigate the exciting world of NYC nightlife with ease and style. Join our community and let's explore New York together!</p>
+            </div>
+            <div class="about-image">
+                <img src="images/nyc-skyline-night.jpg" alt="New York City skyline at night">
             </div>
         </div>
     </section>
 
-    <section id="contact" class="section">
+    <section id="contact" class="section contact">
+        <h2 class="section-title">Get in Touch</h2>
         <div class="container">
-            <h2 class="section-title">Contact Us</h2>
-            <form class="contact-form">
-                <div class="form-group">
+            <div class="contact-form">
+                <form action="#" method="POST">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
+
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
+
                     <label for="message">Message</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Send Message</button>
-            </form>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
         </div>
     </section>
 
     <footer class="footer">
         <div class="container">
             <ul class="footer-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#picks">Top Picks</a></li>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#picks">Top Picks</a></li>
+                <li><a href="index.html#blog">Blog</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
             </ul>
             <div class="social-icons">
                 <a href="#"><i class="fab fa-instagram"></i></a>
@@ -974,7 +1080,6 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
