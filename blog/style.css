@@ -194,9 +194,10 @@ body {
     background: var(--bg-card);
     border-radius: 20px;
     padding: 3rem;
-    margin: 2rem auto;
+    margin: 0 auto;
     border: 1px solid rgba(255, 0, 128, 0.2);
     max-width: 800px;
+    width: 100%;
 }
 
 .blog-post-content h1 {
@@ -417,6 +418,10 @@ html {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+.blog-post-content {
+    animation: fadeInUp 0.6s ease-out;
 }
 
 .blog-post-content {
