@@ -194,8 +194,9 @@ body {
     background: var(--bg-card);
     border-radius: 20px;
     padding: 3rem;
-    margin: 2rem 0;
+    margin: 2rem auto;
     border: 1px solid rgba(255, 0, 128, 0.2);
+    max-width: 800px;
 }
 
 .blog-post-content h1 {
@@ -369,6 +370,8 @@ html {
 
     .blog-post-content {
         padding: 2rem;
+        margin: 2rem auto;
+        max-width: 100%;
     }
 
     .blog-post-content h1 {
@@ -399,6 +402,8 @@ html {
 
     .blog-post-content {
         padding: 1.5rem;
+        margin: 2rem auto;
+        max-width: 100%;
     }
 }
 
