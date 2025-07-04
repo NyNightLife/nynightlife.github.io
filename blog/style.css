@@ -1,12 +1,24 @@
 
-/* Base Styling for Blog Pages */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #fff;
-    color: #222;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(to bottom, #0f0f0f, #1a1a1a);
+    color: #eee;
     margin: 0;
     padding: 0;
     line-height: 1.6;
+}
+
+a {
+    color: #00ffff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a:hover {
+    color: #ff00ff;
+    text-decoration: underline;
 }
 
 .container {
@@ -16,14 +28,19 @@ body {
 }
 
 .hero {
-    background: linear-gradient(90deg, #111, #333);
+    background: linear-gradient(to right, #1a1a1a, #2c2c2c);
     color: #fff;
     padding: 3rem 1rem;
     text-align: center;
+    border-bottom: 1px solid #333;
 }
 
 .hero-title {
-    font-size: 2.5rem;
+    font-size: 3rem;
+    background: linear-gradient(to right, #ff00cc, #3333ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
     margin-bottom: 0.5rem;
 }
 
@@ -32,43 +49,60 @@ body {
     color: #ccc;
 }
 
-.blog-post-content h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #111;
+h1, h2, h3 {
+    font-weight: 700;
+    color: #00ffff;
 }
 
-.blog-post-content h2 {
-    font-size: 1.5rem;
-    margin-top: 2rem;
-    margin-bottom: 0.5rem;
-    color: #222;
+.blog-post-content h1 {
+    font-size: 2.2rem;
+    color: #fff;
+}
+
+.blog-post-meta {
+    font-style: italic;
+    color: #aaa;
+    margin-bottom: 1.2rem;
 }
 
 .blog-post-content p {
     margin-bottom: 1rem;
 }
 
-.blog-post-meta {
-    font-style: italic;
-    color: #666;
-    margin-bottom: 1rem;
-}
-
 .blog-post-content ul {
-    margin: 1rem 0;
-    padding-left: 1.2rem;
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .blog-post-content li {
     margin-bottom: 0.5rem;
 }
 
-a {
-    color: #0088cc;
-    text-decoration: none;
+.navbar {
+    background-color: #000;
+    border-bottom: 1px solid #222;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
 }
 
-a:hover {
-    text-decoration: underline;
+.navbar a {
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    color: #00ffff;
+}
+
+.footer-nav {
+    text-align: center;
+    margin-top: 4rem;
+    border-top: 1px solid #333;
+    padding-top: 2rem;
+    color: #666;
+    font-size: 0.9rem;
 }
