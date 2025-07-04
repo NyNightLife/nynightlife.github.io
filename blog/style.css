@@ -43,14 +43,22 @@ a:hover {
   font-weight: bold;
   display: flex;
   align-items: center;
+  text-decoration: none;
 }
 
-.logo .highlight {
+.logo-part1 {
+  background: linear-gradient(90deg, #00f0ff, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logo-part2 {
   background: linear-gradient(90deg, #ff00cc, #ffcc00);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-left: 4px;
 }
+
 
 .main-nav {
   display: flex;
