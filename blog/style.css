@@ -1,0 +1,74 @@
+
+/* Base Styling for Blog Pages */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff;
+    color: #222;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 960px;
+    margin: auto;
+    padding: 2rem;
+}
+
+.hero {
+    background: linear-gradient(90deg, #111, #333);
+    color: #fff;
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: #ccc;
+}
+
+.blog-post-content h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #111;
+}
+
+.blog-post-content h2 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    color: #222;
+}
+
+.blog-post-content p {
+    margin-bottom: 1rem;
+}
+
+.blog-post-meta {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.blog-post-content ul {
+    margin: 1rem 0;
+    padding-left: 1.2rem;
+}
+
+.blog-post-content li {
+    margin-bottom: 0.5rem;
+}
+
+a {
+    color: #0088cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
