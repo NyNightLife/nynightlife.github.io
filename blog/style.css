@@ -35,6 +35,28 @@ a:hover {
     border-bottom: 1px solid #333;
 }
 
+.logo {
+  font-weight: bold;
+  font-size: 1.4rem;
+  margin-right: auto;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.logo-part1 {
+  background: linear-gradient(90deg, #00f0ff, #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logo-part2 {
+  background: linear-gradient(90deg, #ff00cc, #ffcc00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
 .hero-title {
     font-size: 3rem;
     background: linear-gradient(to right, #ff00cc, #3333ff);
