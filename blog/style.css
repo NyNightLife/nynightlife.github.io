@@ -75,9 +75,9 @@ body {
 .nav-container,
 .nav {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
-    gap: 3rem;
+    width: 100%;
 }
 
 .nav-container {
@@ -124,7 +124,8 @@ body {
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 3rem;
+    margin-left: auto;
 }
 
 .main-nav a,
@@ -418,10 +419,6 @@ html {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-.blog-post-content {
-    animation: fadeInUp 0.6s ease-out;
 }
 
 .blog-post-content {
