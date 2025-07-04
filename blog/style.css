@@ -75,9 +75,9 @@ body {
 .nav-container,
 .nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    width: 100%;
+    gap: 3rem;
 }
 
 .nav-container {
@@ -124,8 +124,7 @@ body {
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 3rem;
-    margin-left: auto;
+    gap: 2rem;
 }
 
 .main-nav a,
