@@ -417,3 +417,14 @@ html {
 .blog-post-content {
     animation: fadeInUp 0.6s ease-out;
 }
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 70px;
+}
+
