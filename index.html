@@ -167,7 +167,7 @@
     <meta name="bingbot" content="index, follow">
     <meta name="author" content="NYNightlife Team">
     <meta name="publisher" content="NYNightlife.com">
-    <meta name="copyright" content="© 2024 NYNightlife.com">
+    <meta name="copyright" content="© 2025 NYNightlife.com">
     <meta name="language" content="en-US">
     <meta name="geo.region" content="US-NY">
     <meta name="geo.placename" content="New York City">
@@ -230,48 +230,49 @@
         }
 
         body {
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
-    color: var(--text-primary);
-    background: var(--bg-dark);
-    overflow-x: hidden;
-    position: relative;
-}
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-dark);
+            overflow-x: hidden;
+            position: relative;
+        }
 
-     /* NYC Nightlife Background Image */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 120vh;
-    background-image: url('images/nyc-nightlife-collage.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    opacity: 0.15;
-    filter: blur(1px);
-    z-index: -2;
-    will-change: transform;
-}
+        /* NYC Nightlife Background Image */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120vh;
+            background-image: url('images/nyc-nightlife-collage.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            opacity: 0.15;
+            filter: blur(1px);
+            z-index: -2;
+            will-change: transform;
+        }
 
-/* Animated Neon Overlay */
-body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        radial-gradient(circle at 20% 80%, rgba(255, 0, 128, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(255, 255, 0, 0.05) 0%, transparent 50%);
-    z-index: -1;
-    animation: backgroundPulse 10s ease-in-out infinite alternate;
-}
+        /* Animated Neon Overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 0, 128, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 255, 0, 0.05) 0%, transparent 50%);
+            z-index: -1;
+            animation: backgroundPulse 10s ease-in-out infinite alternate;
+        }
+
         @keyframes backgroundPulse {
             0% { opacity: 0.3; }
             100% { opacity: 0.7; }
@@ -571,6 +572,7 @@ body::after {
             overflow: hidden;
             transition: all 0.3s ease;
             border: 1px solid rgba(0, 255, 255, 0.2);
+            position: relative;
         }
 
         .blog-post:hover {
@@ -642,6 +644,48 @@ body::after {
             color: var(--accent-yellow);
             text-shadow: var(--neon-glow-yellow);
             transform: translateX(5px);
+        }
+
+        /* Current Week Post Special Styling */
+        .current-week-post {
+            position: relative;
+        }
+
+        .current-week-post::before {
+            content: 'THIS WEEK';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--gradient-neon-pink);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 10;
+            box-shadow: var(--neon-glow-pink);
+        }
+
+        .static-fallback {
+            opacity: 0.8;
+        }
+
+        /* Enhanced animation for dynamic posts */
+        .blog-post:not(.static-fallback) {
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* About Section */
@@ -1215,14 +1259,15 @@ body::after {
         </div>
     </section>
 
-    <!-- Blog Section -->
+    <!-- Blog Section with Dynamic Weekly Rotation -->
     <section id="blog" class="section">
         <div class="container">
             <h2 class="section-title">Weekly Blog</h2>
             <p class="section-subtitle">Stay updated with the latest NYC nightlife trends, events, and insider tips</p>
             
-            <div class="blog-posts">
-                <article class="blog-post">
+            <div class="blog-posts" id="dynamic-blog-posts">
+                <!-- Static fallback for SEO - these will be hidden when JavaScript loads -->
+                <article class="blog-post static-fallback">
                     <div class="blog-post-image">
                         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 2rem; color: #00ffff; z-index: 2;" aria-label="Calendar events icon">
                             <i class="fas fa-calendar-alt" aria-hidden="true"></i>
@@ -1232,11 +1277,11 @@ body::after {
                         <div class="blog-post-meta">December 30, 2024 • Events</div>
                         <h3>New Year's Eve 2025: The Ultimate NYC Party Guide</h3>
                         <p>Discover the hottest NYE parties, exclusive events, and last-minute reservations for an unforgettable New Year's celebration in NYC.</p>
-                        <a href="#" class="read-more" aria-label="Read more about New Year's Eve 2025 NYC party guide">Read More →</a>
+                        <a href="/blog/" class="read-more" aria-label="Read more about New Year's Eve 2025 NYC party guide">Read More →</a>
                     </div>
                 </article>
 
-                <article class="blog-post">
+                <article class="blog-post static-fallback">
                     <div class="blog-post-image">
                         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 2rem; color: #ff0080; z-index: 2;" aria-label="Wine glass icon">
                             <i class="fas fa-wine-glass-alt" aria-hidden="true"></i>
@@ -1246,11 +1291,11 @@ body::after {
                         <div class="blog-post-meta">December 28, 2024 • Nightlife</div>
                         <h3>Hidden Speakeasies: NYC's Best Kept Secrets</h3>
                         <p>Uncover the city's most exclusive hidden bars and speakeasies that only locals know about. Your guide to NYC's underground scene.</p>
-                        <a href="#" class="read-more" aria-label="Read more about NYC hidden speakeasies">Read More →</a>
+                        <a href="/blog/" class="read-more" aria-label="Read more about NYC hidden speakeasies">Read More →</a>
                     </div>
                 </article>
 
-                <article class="blog-post">
+                <article class="blog-post static-fallback">
                     <div class="blog-post-image">
                         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 2rem; color: #ffff00; z-index: 2;" aria-label="Heart dating icon">
                             <i class="fas fa-heart" aria-hidden="true"></i>
@@ -1260,7 +1305,7 @@ body::after {
                         <div class="blog-post-meta">December 26, 2024 • Dating</div>
                         <h3>Winter Dating in NYC: Cozy Spots for Cold Nights</h3>
                         <p>From intimate wine bars to cozy restaurants with fireplaces, discover the most romantic winter date spots in New York City.</p>
-                        <a href="#" class="read-more" aria-label="Read more about winter dating spots in NYC">Read More →</a>
+                        <a href="/blog/" class="read-more" aria-label="Read more about winter dating spots in NYC">Read More →</a>
                     </div>
                 </article>
             </div>
@@ -1374,7 +1419,7 @@ body::after {
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2024 NYNightlife.com. All rights reserved.</p>
+                <p>&copy; 2025 NYNightlife.com. All rights reserved.</p>
                 <div class="footer-bottom-links">
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>
@@ -1384,6 +1429,171 @@ body::after {
     </footer>
 
     <script>
+        // Blog rotation system - runs every Monday at 2:00 AM (Eastern Time)
+        (function() {
+            'use strict';
+
+            // Blog post data with actual dates and content
+            const blogPosts = [
+                // 2025 Posts
+                { 
+                    filename: 'week-27-2025.html', 
+                    title: 'July Peak Summer Romance & Ultimate Nightlife Energy',
+                    date: 'July 6, 2025',
+                    dateObj: new Date('2025-07-06'),
+                    week: 27,
+                    year: 2025,
+                    category: 'Summer Peak',
+                    snippet: 'July\'s peak summer energy brings NYC\'s ultimate nightlife and romance experiences. From rooftop season perfection to outdoor party magic, discover the city\'s hottest summer celebrations.',
+                    icon: 'fas fa-sun'
+                },
+                { 
+                    filename: 'week-26-2025.html', 
+                    title: 'June End Romance & Summer Solstice Energy Peak',
+                    date: 'June 29, 2025',
+                    dateObj: new Date('2025-06-29'),
+                    week: 26,
+                    year: 2025,
+                    category: 'Summer Solstice',
+                    snippet: 'June\'s end celebrates summer solstice energy and longest day romance. From extended daylight to seasonal celebration, embrace summer\'s powerful beginning with peak romantic energy.',
+                    icon: 'fas fa-sun'
+                },
+                { 
+                    filename: 'week-25-2025.html', 
+                    title: 'Mid-June Romance & Perfect Weather Celebration',
+                    date: 'June 22, 2025',
+                    dateObj: new Date('2025-06-22'),
+                    week: 25,
+                    year: 2025,
+                    category: 'Perfect Weather',
+                    snippet: 'Mid-June brings perfect weather romance and ideal dating conditions. From outdoor adventures to rooftop dinners, enjoy NYC\'s most beautiful season.',
+                    icon: 'fas fa-cloud-sun'
+                },
+                { 
+                    filename: 'week-1.html', 
+                    title: 'Kick Off 2024 – Best Things to Do in NYC (Jan 1–7, 2024)',
+                    date: 'January 1, 2024',
+                    dateObj: new Date('2024-01-01'),
+                    week: 1,
+                    year: 2024,
+                    category: 'New Year',
+                    snippet: 'Start 2024 strong with NYC nightlife: skyline parties, winter village, Gospel Sundays, and more.',
+                    icon: 'fas fa-champagne-glasses'
+                }
+            ];
+
+            // Function to get current NYC week number
+            function getCurrentWeek() {
+                const now = new Date();
+                
+                // Convert to Eastern Time
+                const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+                const easternOffset = -5; // EST is UTC-5 (adjust for EDT if needed)
+                const easternTime = new Date(utc + (easternOffset * 3600000));
+                
+                const year = easternTime.getFullYear();
+                const start = new Date(year, 0, 1);
+                const week = Math.ceil((easternTime - start) / (7 * 24 * 60 * 60 * 1000));
+                
+                return { week, year };
+            }
+
+            // Function to get the blog post for current week
+            function getCurrentWeekPost() {
+                const { week, year } = getCurrentWeek();
+                
+                // Find exact match for current week and year
+                let currentPost = blogPosts.find(post => post.week === week && post.year === year);
+                
+                // If no exact match, find the most recent published post
+                if (!currentPost) {
+                    const now = new Date();
+                    const publishedPosts = blogPosts.filter(post => post.dateObj <= now);
+                    currentPost = publishedPosts.sort((a, b) => b.dateObj - a.dateObj)[0];
+                }
+                
+                return currentPost;
+            }
+
+            // Function to create blog post HTML
+            function createBlogPostHTML(post, isMain = false) {
+                if (!post) return '';
+                
+                const categoryColors = {
+                    'Summer Peak': '#ffff00',
+                    'Perfect Weather': '#00ff41',
+                    'New Year': '#ff0080'
+                };
+                
+                const iconColor = categoryColors[post.category] || '#00ffff';
+                
+                return `
+                    <article class="blog-post ${isMain ? 'current-week-post' : ''}">
+                        <div class="blog-post-image">
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 2rem; color: ${iconColor}; z-index: 2;" aria-label="${post.category} icon">
+                                <i class="${post.icon}" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="blog-post-content">
+                            <div class="blog-post-meta">${post.date} • ${post.category}</div>
+                            <h3>${post.title}</h3>
+                            <p>${post.snippet}</p>
+                            <a href="/blog/${post.filename}" class="read-more" aria-label="Read more about ${post.title}">Read More →</a>
+                        </div>
+                    </article>
+                `;
+            }
+
+            // Function to get additional recent posts for the other two slots
+            function getRecentPosts(currentPost, count = 2) {
+                const now = new Date();
+                const publishedPosts = blogPosts
+                    .filter(post => post.dateObj <= now && post.filename !== currentPost.filename)
+                    .sort((a, b) => b.dateObj - a.dateObj);
+                
+                return publishedPosts.slice(0, count);
+            }
+
+            // Main function to update blog posts
+            function updateBlogPosts() {
+                const container = document.getElementById('dynamic-blog-posts');
+                if (!container) return;
+
+                // Hide static fallback posts
+                const staticPosts = container.querySelectorAll('.static-fallback');
+                staticPosts.forEach(post => post.style.display = 'none');
+
+                // Get current week post and recent posts
+                const currentPost = getCurrentWeekPost();
+                if (!currentPost) return;
+
+                const recentPosts = getRecentPosts(currentPost, 2);
+                
+                // Create HTML for all three posts
+                let postsHTML = createBlogPostHTML(currentPost, true);
+                recentPosts.forEach(post => {
+                    postsHTML += createBlogPostHTML(post);
+                });
+
+                // Update container
+                container.innerHTML = postsHTML;
+            }
+
+            // Initialize the blog rotation system
+            function initBlogRotation() {
+                // Update posts immediately on page load
+                updateBlogPosts();
+            }
+
+            // Start the system when DOM is loaded
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initBlogRotation);
+            } else {
+                initBlogRotation();
+            }
+
+        })();
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
