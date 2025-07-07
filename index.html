@@ -688,6 +688,113 @@
             }
         }
 
+        /* Blog Archive CTA Styles */
+        .blog-archive-cta {
+            position: relative;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .archive-link {
+            display: inline-block;
+            background: var(--bg-card);
+            border: 2px solid transparent;
+            border-radius: 25px;
+            padding: 1.5rem 2rem;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            min-width: 400px;
+            background-image: linear-gradient(var(--bg-card), var(--bg-card)), 
+                              var(--gradient-neon-multi);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+        }
+
+        .archive-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-neon-multi);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .archive-link:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.6);
+            border-color: var(--secondary-neon);
+        }
+
+        .archive-link:hover::before {
+            opacity: 0.1;
+        }
+
+        .archive-link-content {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .archive-icon {
+            font-size: 2rem;
+            color: var(--secondary-neon);
+            transition: all 0.3s ease;
+        }
+
+        .archive-link:hover .archive-icon {
+            color: var(--accent-yellow);
+            transform: scale(1.1);
+            text-shadow: var(--neon-glow-yellow);
+        }
+
+        .archive-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .archive-text h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .archive-text p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin: 0;
+            transition: color 0.3s ease;
+        }
+
+        .archive-link:hover .archive-text h4 {
+            color: var(--secondary-neon);
+        }
+
+        .archive-link:hover .archive-text p {
+            color: var(--text-secondary);
+        }
+
+        .archive-arrow {
+            font-size: 1.2rem;
+            color: var(--primary-neon);
+            transition: all 0.3s ease;
+        }
+
+        .archive-link:hover .archive-arrow {
+            color: var(--accent-yellow);
+            transform: translateX(5px);
+            text-shadow: var(--neon-glow-yellow);
+        }
+
         /* About Section */
         .about {
             background: var(--bg-card);
@@ -1066,6 +1173,28 @@
             .container {
                 padding: 0 15px;
             }
+
+            .archive-link {
+                min-width: auto;
+                width: 100%;
+                padding: 1.2rem 1.5rem;
+            }
+
+            .archive-link-content {
+                gap: 1rem;
+            }
+
+            .archive-icon {
+                font-size: 1.5rem;
+            }
+
+            .archive-text h4 {
+                font-size: 1.1rem;
+            }
+
+            .archive-text p {
+                font-size: 0.8rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1084,6 +1213,16 @@
             .pick-card-content,
             .blog-post-content {
                 padding: 1.5rem;
+            }
+
+            .archive-link-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.8rem;
+            }
+
+            .archive-text {
+                text-align: center;
             }
         }
 
@@ -1308,6 +1447,24 @@
                         <a href="/blog/" class="read-more" aria-label="Read more about winter dating spots in NYC">Read More →</a>
                     </div>
                 </article>
+            </div>
+
+            <!-- Creative Blog Archive Link -->
+            <div class="blog-archive-cta">
+                <a href="/blog/" class="archive-link" aria-label="View complete blog archive with all weekly posts">
+                    <div class="archive-link-content">
+                        <div class="archive-icon">
+                            <i class="fas fa-archive" aria-hidden="true"></i>
+                        </div>
+                        <div class="archive-text">
+                            <h4>Explore Complete Archive</h4>
+                            <p>Browse all weekly posts • 2024-2025 • 100+ NYC guides</p>
+                        </div>
+                        <div class="archive-arrow">
+                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
