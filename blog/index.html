@@ -68,11 +68,284 @@
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- External CSS file -->
-    <link rel="stylesheet" href="../style.css">
-    
     <style>
-        /* Additional blog-specific styles */
+        :root {
+            /* Times Square Dark Theme Colors */
+            --primary-neon: #ff0080;
+            --secondary-neon: #00ffff;
+            --accent-yellow: #ffff00;
+            --accent-orange: #ff6600;
+            --accent-purple: #8a2be2;
+            --accent-green: #00ff41;
+            
+            /* Dark Background Colors */
+            --bg-dark: #0a0a0a;
+            --bg-darker: #000000;
+            --bg-card: #1a1a1a;
+            --bg-card-hover: #2a2a2a;
+            
+            /* Text Colors */
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --text-muted: #888888;
+            
+            /* Neon Gradients */
+            --gradient-neon-pink: linear-gradient(135deg, #ff0080 0%, #ff4da6 100%);
+            --gradient-neon-cyan: linear-gradient(135deg, #00ffff 0%, #4dffff 100%);
+            --gradient-neon-multi: linear-gradient(135deg, #ff0080 0%, #00ffff 25%, #ffff00 50%, #ff6600 75%, #8a2be2 100%);
+            --gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            
+            /* Shadows and Effects */
+            --neon-glow-pink: 0 0 20px rgba(255, 0, 128, 0.5);
+            --neon-glow-cyan: 0 0 20px rgba(0, 255, 255, 0.5);
+            --neon-glow-yellow: 0 0 20px rgba(255, 255, 0, 0.5);
+            --dark-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-dark);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* NYC Nightlife Background Image */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120vh;
+            background-image: url('../images/nyc-nightlife-collage.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            opacity: 0.15;
+            filter: blur(1px);
+            z-index: -2;
+            will-change: transform;
+        }
+
+        /* Animated Neon Overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 0, 128, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 255, 0, 0.05) 0%, transparent 50%);
+            z-index: -1;
+            animation: backgroundPulse 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes backgroundPulse {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            background: var(--bg-darker);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 0, 128, 0.3);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient-neon-multi);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: var(--neon-glow-pink);
+            animation: logoGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes logoGlow {
+            0% { filter: brightness(1); }
+            100% { filter: brightness(1.3); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-neon);
+            background: rgba(255, 0, 128, 0.1);
+            box-shadow: var(--neon-glow-pink);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-dark);
+            padding: 8rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(45deg, transparent 30%, rgba(255, 0, 128, 0.1) 50%, transparent 70%),
+                linear-gradient(-45deg, transparent 30%, rgba(0, 255, 255, 0.1) 50%, transparent 70%);
+            animation: heroLights 8s linear infinite;
+        }
+
+        @keyframes heroLights {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 4rem 0;
+            position: relative;
+        }
+
+        /* Blog Archive Header */
+        .blog-archive-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .archive-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-neon-cyan);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: var(--neon-glow-cyan);
+            animation: titlePulse 4s ease-in-out infinite;
+        }
+
+        @keyframes titlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .archive-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Blog Stats */
+        .blog-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-neon);
+            display: block;
+            text-shadow: var(--neon-glow-pink);
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Year Divider */
+        .year-divider {
+            text-align: center;
+            margin: 4rem 0 3rem;
+            position: relative;
+        }
+
+        .year-divider h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            background: var(--gradient-neon-pink);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            text-shadow: var(--neon-glow-pink);
+        }
+
+        .year-divider::after {
+            content: '';
+            width: 100px;
+            height: 2px;
+            background: var(--gradient-neon-pink);
+            display: block;
+            margin: 0 auto;
+            border-radius: 2px;
+            box-shadow: var(--neon-glow-pink);
+        }
+
+        /* Blog Archive Grid */
         .blog-archive-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
@@ -131,6 +404,11 @@
             animation: blogGlow 5s ease-in-out infinite alternate;
         }
 
+        @keyframes blogGlow {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.8; }
+        }
+
         .blog-archive-content {
             padding: 2rem;
         }
@@ -153,6 +431,7 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            box-shadow: var(--neon-glow-cyan);
         }
 
         .blog-archive-content h3 {
@@ -189,85 +468,157 @@
             transform: translateX(5px);
         }
 
-        .blog-archive-header {
-            text-align: center;
-            margin-bottom: 3rem;
+        /* Footer */
+        .footer {
+            background: var(--bg-darker);
+            padding: 3rem 0 1rem;
+            border-top: 1px solid rgba(255, 0, 128, 0.3);
         }
 
-        .archive-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            background: var(--gradient-neon-cyan);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: var(--neon-glow-cyan);
-        }
-
-        .archive-subtitle {
-            color: var(--text-secondary);
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        .blog-stats {
-            display: flex;
-            justify-content: center;
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 3rem;
             margin-bottom: 2rem;
         }
 
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
+        .footer-section h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
             color: var(--primary-neon);
-            display: block;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
         }
 
-        .stat-label {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .year-divider {
-            text-align: center;
-            margin: 4rem 0 3rem;
-            position: relative;
-        }
-
-        .year-divider h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            background: var(--gradient-neon-pink);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .footer-section p {
+            color: var(--text-secondary);
+            line-height: 1.6;
             margin-bottom: 1rem;
         }
 
-        .year-divider::after {
-            content: '';
-            width: 100px;
-            height: 2px;
-            background: var(--gradient-neon-pink);
-            display: block;
-            margin: 0 auto;
-            border-radius: 2px;
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-neon);
+            text-shadow: var(--neon-glow-cyan);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--bg-card);
+            border-radius: 50%;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 0, 128, 0.3);
+        }
+
+        .social-links a:hover {
+            background: var(--primary-neon);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--neon-glow-pink);
+        }
+
+        .newsletter {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .newsletter h4 {
+            color: var(--secondary-neon);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            background: var(--bg-dark);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 25px;
+            padding: 10px 15px;
+            color: var(--text-primary);
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: var(--secondary-neon);
+            box-shadow: var(--neon-glow-cyan);
+        }
+
+        .newsletter-form button {
+            background: var(--gradient-neon-cyan);
+            color: var(--bg-dark);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--neon-glow-cyan);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 0, 128, 0.2);
+            color: var(--text-muted);
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .footer-bottom-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--primary-neon);
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .blog-archive-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+            .nav-links {
+                display: none;
             }
 
             .archive-title {
@@ -282,15 +633,42 @@
             .year-divider h2 {
                 font-size: 2rem;
             }
+
+            .blog-archive-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .footer-bottom-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
 
         @media (max-width: 480px) {
-            .blog-archive-content {
-                padding: 1.5rem;
+            .hero {
+                padding: 6rem 0 3rem;
             }
 
             .archive-title {
                 font-size: 2rem;
+            }
+
+            .blog-archive-content {
+                padding: 1.5rem;
+            }
+
+            .container {
+                padding: 0 15px;
             }
         }
 
@@ -305,9 +683,27 @@
             }
         }
 
-        @keyframes blogGlow {
-            0% { opacity: 0.3; }
-            100% { opacity: 0.8; }
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-neon-pink);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-neon);
         }
     </style>
 </head>
@@ -439,435 +835,151 @@
     <script>
         // Blog post data with actual dates and content
         const blogPosts = [
-            // 2025 Posts (week-1-2025.html through week-20-2025.html)
+            // 2025 Posts
             { 
-                filename: 'week-20-2025.html', 
-                title: 'May Perfect Weather Romance & Spring Energy Peak',
-                date: 'May 12, 2025',
-                dateObj: new Date('2025-05-12'),
-                week: 20,
-                year: 2025,
-                category: 'Autumn Romance',
-                snippet: 'Mid-November showcases autumn\'s peak beauty and fall romance opportunities. From Central Park foliage to cozy indoor dates, celebrate the season\'s romantic potential.',
-                icon: 'fas fa-maple-leaf'
-            },
-            { 
-                filename: 'week-45.html', 
-                title: 'Election Week & Political Romance Discussion',
-                date: 'November 4, 2024',
-                dateObj: new Date('2024-11-04'),
-                week: 45,
-                year: 2024,
-                category: 'Current Events',
-                snippet: 'Election week brings political discussion and civic engagement romance. From election night watching to political conversation dates, navigate politics in relationships.',
-                icon: 'fas fa-vote-yea'
-            },
-            { 
-                filename: 'week-44.html', 
-                title: 'Halloween Week & Costume Party Romance',
-                date: 'October 28, 2024',
-                dateObj: new Date('2024-10-28'),
-                week: 44,
-                year: 2024,
-                category: 'Halloween',
-                snippet: 'Halloween week brings costume party romance and spooky date ideas. From couples costumes to haunted attractions, embrace October\'s playful romantic spirit.',
-                icon: 'fas fa-ghost'
-            },
-            { 
-                filename: 'week-43.html', 
-                title: 'Pre-Halloween Romance & October Spooky Fun',
-                date: 'October 21, 2024',
-                dateObj: new Date('2024-10-21'),
-                week: 43,
-                year: 2024,
-                category: 'Spooky Romance',
-                snippet: 'Pre-Halloween brings spooky romance and October fun throughout NYC. From haunted experiences to fall festivals, discover thrilling date adventures.',
-                icon: 'fas fa-pumpkin'
-            },
-            { 
-                filename: 'week-42.html', 
-                title: 'Mid-October Fall Romance & Autumn Date Ideas',
-                date: 'October 14, 2024',
-                dateObj: new Date('2024-10-14'),
-                week: 42,
-                year: 2024,
-                category: 'Fall Dating',
-                snippet: 'Mid-October brings perfect fall romance and autumn date opportunities. From apple picking to cozy cafes, embrace the season\'s romantic possibilities.',
-                icon: 'fas fa-apple-alt'
-            },
-            { 
-                filename: 'week-41.html', 
-                title: 'Columbus Day Weekend & Long Weekend Romance',
-                date: 'October 7, 2024',
-                dateObj: new Date('2024-10-07'),
-                week: 41,
-                year: 2024,
-                category: 'Long Weekend',
-                snippet: 'Columbus Day weekend offers extended romance opportunities and three-day date adventures. From weekend getaways to extended NYC exploration.',
-                icon: 'fas fa-long-arrow-alt-right'
-            },
-            { 
-                filename: 'week-40.html', 
-                title: 'Early October Romance & Fall Season Beginning',
-                date: 'September 30, 2024',
-                dateObj: new Date('2024-09-30'),
-                week: 40,
-                year: 2024,
-                category: 'Fall Beginning',
-                snippet: 'Early October marks fall season\'s romantic beginning with perfect weather and autumn atmosphere. From seasonal activities to harvest celebrations.',
-                icon: 'fas fa-acorn'
-            },
-            { 
-                filename: 'week-39.html', 
-                title: 'September End Romance & October Preparation',
-                date: 'September 23, 2024',
-                dateObj: new Date('2024-09-23'),
-                week: 39,
-                year: 2024,
-                category: 'Seasonal Transition',
-                snippet: 'September\'s end brings October preparation and seasonal transition romance. From summer memories to fall anticipation, embrace changing seasons together.',
-                icon: 'fas fa-calendar-check'
-            },
-            { 
-                filename: 'week-38.html', 
-                title: 'Mid-September Romance & Perfect Weather Dating',
-                date: 'September 16, 2024',
-                dateObj: new Date('2024-09-16'),
-                week: 38,
-                year: 2024,
-                category: 'Perfect Weather',
-                snippet: 'Mid-September offers perfect weather romance and ideal dating conditions. From outdoor activities to comfortable evening strolls, enjoy optimal NYC weather.',
-                icon: 'fas fa-thermometer-half'
-            },
-            { 
-                filename: 'week-37.html', 
-                title: 'Back to School Romance & September Energy',
-                date: 'September 9, 2024',
-                dateObj: new Date('2024-09-09'),
-                week: 37,
-                year: 2024,
-                category: 'Back to School',
-                snippet: 'Back to school season brings new energy and learning-focused romance. From educational dates to personal growth activities, embrace intellectual connection.',
-                icon: 'fas fa-graduation-cap'
-            },
-            { 
-                filename: 'week-36.html', 
-                title: 'Labor Day Weekend & Summer\'s End Romance',
-                date: 'September 2, 2024',
-                dateObj: new Date('2024-09-02'),
-                week: 36,
-                year: 2024,
-                category: 'Summer\'s End',
-                snippet: 'Labor Day weekend marks summer\'s romantic finale with last beach trips and outdoor adventures. From final summer dates to fall preparation.',
-                icon: 'fas fa-umbrella-beach'
-            },
-            { 
-                filename: 'week-35.html', 
-                title: 'Late August Romance & Summer Season Finale',
-                date: 'August 26, 2024',
-                dateObj: new Date('2024-08-26'),
-                week: 35,
-                year: 2024,
-                category: 'Summer Finale',
-                snippet: 'Late August brings summer season finale romance and last outdoor adventures. From rooftop parties to beach visits, maximize remaining summer magic.',
-                icon: 'fas fa-sun'
-            },
-            { 
-                filename: 'week-34.html', 
-                title: 'Mid-August Heat Romance & Summer Peak Energy',
-                date: 'August 19, 2024',
-                dateObj: new Date('2024-08-19'),
-                week: 34,
-                year: 2024,
-                category: 'Summer Heat',
-                snippet: 'Mid-August heat brings summer peak energy and hot weather romance. From cooling activities to heat wave dates, stay cool while keeping romance hot.',
-                icon: 'fas fa-fire'
-            },
-            { 
-                filename: 'week-33.html', 
-                title: 'Early August Romance & Summer Continuation',
-                date: 'August 12, 2024',
-                dateObj: new Date('2024-08-12'),
-                week: 33,
-                year: 2024,
-                category: 'Summer Romance',
-                snippet: 'Early August continues summer romance with perfect outdoor dating weather. From park picnics to rooftop dinners, embrace peak summer romantic opportunities.',
-                icon: 'fas fa-cocktail'
-            },
-            { 
-                filename: 'week-32.html', 
-                title: 'August Beginning & Summer Romance Peak',
-                date: 'August 5, 2024',
-                dateObj: new Date('2024-08-05'),
-                week: 32,
-                year: 2024,
-                category: 'Peak Summer',
-                snippet: 'August brings summer romance peak with perfect weather and endless outdoor opportunities. From beach trips to outdoor concerts, maximize summer love.',
-                icon: 'fas fa-beach-ball'
-            },
-            { 
-                filename: 'week-31.html', 
-                title: 'July End Romance & Summer Climax Celebration',
-                date: 'July 29, 2024',
-                dateObj: new Date('2024-07-29'),
-                week: 31,
-                year: 2024,
-                category: 'Summer Climax',
-                snippet: 'July\'s end celebrates summer climax with peak warm weather romance. From vacation planning to summer traditions, embrace the season\'s romantic height.',
-                icon: 'fas fa-plane'
-            },
-            { 
-                filename: 'week-30.html', 
-                title: 'Mid-July Heat Wave Romance & Cooling Strategies',
-                date: 'July 22, 2024',
-                dateObj: new Date('2024-07-22'),
-                week: 30,
-                year: 2024,
-                category: 'Heat Wave',
-                snippet: 'Mid-July heat wave brings cooling romance strategies and indoor date alternatives. From air-conditioned venues to poolside escapes, beat the heat together.',
-                icon: 'fas fa-swimming-pool'
-            },
-            { 
-                filename: 'week-29.html', 
-                title: 'Early July Romance & Independence Celebration',
-                date: 'July 15, 2024',
-                dateObj: new Date('2024-07-15'),
-                week: 29,
-                year: 2024,
-                category: 'Independence',
-                snippet: 'Early July celebrates independence and patriotic romance following July 4th festivities. From fireworks aftermath to summer festival season beginning.',
-                icon: 'fas fa-flag'
-            },
-            { 
-                filename: 'week-28.html', 
-                title: 'July 4th Week & Patriotic Romance Celebration',
-                date: 'July 8, 2024',
-                dateObj: new Date('2024-07-08'),
-                week: 28,
-                year: 2024,
-                category: 'July 4th',
-                snippet: 'July 4th week brings patriotic romance and Independence Day celebrations. From fireworks viewing to BBQ dates, celebrate freedom and love together.',
-                icon: 'fas fa-fireworks'
-            },
-            { 
-                filename: 'week-27.html', 
-                title: 'July Beginning & Summer Romance Acceleration',
-                date: 'July 1, 2024',
-                dateObj: new Date('2024-07-01'),
+                filename: 'week-27-2025.html', 
+                title: 'July Peak Summer Romance & Ultimate Nightlife Energy',
+                date: 'July 6, 2025',
+                dateObj: new Date('2025-07-06'),
                 week: 27,
-                year: 2024,
-                category: 'Summer Acceleration',
-                snippet: 'July\'s beginning accelerates summer romance with perfect weather and endless possibilities. From beach season to outdoor dining, embrace summer\'s romantic potential.',
-                icon: 'fas fa-rocket'
-            },
-            { 
-                filename: 'week-26.html', 
-                title: 'June End Romance & Summer Solstice Energy',
-                date: 'June 24, 2024',
-                dateObj: new Date('2024-06-24'),
-                week: 26,
-                year: 2024,
-                category: 'Summer Solstice',
-                snippet: 'June\'s end celebrates summer solstice energy and longest day romance. From extended daylight to seasonal celebration, embrace summer\'s powerful beginning.',
+                year: 2025,
+                category: 'Summer Peak',
+                snippet: 'July\'s peak summer energy brings NYC\'s ultimate nightlife and romance experiences. From rooftop season perfection to outdoor party magic, discover the city\'s hottest summer celebrations.',
                 icon: 'fas fa-sun'
             },
             { 
-                filename: 'week-25.html', 
+                filename: 'week-26-2025.html', 
+                title: 'June End Romance & Summer Solstice Energy Peak',
+                date: 'June 29, 2025',
+                dateObj: new Date('2025-06-29'),
+                week: 26,
+                year: 2025,
+                category: 'Summer Solstice',
+                snippet: 'June\'s end celebrates summer solstice energy and longest day romance. From extended daylight to seasonal celebration, embrace summer\'s powerful beginning with peak romantic energy.',
+                icon: 'fas fa-sun'
+            },
+            { 
+                filename: 'week-25-2025.html', 
                 title: 'Mid-June Romance & Perfect Weather Celebration',
-                date: 'June 17, 2024',
-                dateObj: new Date('2024-06-17'),
+                date: 'June 22, 2025',
+                dateObj: new Date('2025-06-22'),
                 week: 25,
-                year: 2024,
+                year: 2025,
                 category: 'Perfect Weather',
                 snippet: 'Mid-June brings perfect weather romance and ideal dating conditions. From outdoor adventures to rooftop dinners, enjoy NYC\'s most beautiful season.',
                 icon: 'fas fa-cloud-sun'
             },
             { 
-                filename: 'week-24.html', 
-                title: 'Father\'s Day Weekend & Family Romance Balance',
-                date: 'June 10, 2024',
-                dateObj: new Date('2024-06-10'),
+                filename: 'week-24-2025.html', 
+                title: 'Father\'s Day Weekend & Family Celebration Romance',
+                date: 'June 15, 2025',
+                dateObj: new Date('2025-06-15'),
                 week: 24,
-                year: 2024,
-                category: 'Father\'s Day',
-                snippet: 'Father\'s Day weekend balances family time with romantic celebration. From multi-generational activities to appreciation for father figures in relationships.',
+                year: 2025,
+                category: 'Family Events',
+                snippet: 'Father\'s Day weekend creates special family celebration opportunities throughout NYC. From brunch perfection to multi-generational activities, celebrate love in all its forms.',
                 icon: 'fas fa-user-tie'
             },
             { 
-                filename: 'week-23.html', 
-                title: 'Early June Romance & Spring Summer Transition',
-                date: 'June 3, 2024',
-                dateObj: new Date('2024-06-03'),
+                filename: 'week-23-2025.html', 
+                title: 'Early June Spring Summer Transition Romance',
+                date: 'June 8, 2025',
+                dateObj: new Date('2025-06-08'),
                 week: 23,
-                year: 2024,
+                year: 2025,
                 category: 'Season Transition',
                 snippet: 'Early June marks spring-summer transition with warming weather and extended daylight. From graduation season to wedding planning, embrace romantic milestones.',
                 icon: 'fas fa-seedling'
             },
             { 
-                filename: 'week-22.html', 
+                filename: 'week-22-2025.html', 
                 title: 'Memorial Day Weekend & Summer Romance Beginning',
-                date: 'May 27, 2024',
-                dateObj: new Date('2024-05-27'),
+                date: 'June 1, 2025',
+                dateObj: new Date('2025-06-01'),
                 week: 22,
-                year: 2024,
+                year: 2025,
                 category: 'Summer Beginning',
                 snippet: 'Memorial Day weekend launches summer romance season with long weekend adventures and outdoor activities. From beach trips to BBQ dates.',
                 icon: 'fas fa-flag-usa'
             },
             { 
-                filename: 'week-21.html', 
+                filename: 'week-21-2025.html', 
                 title: 'Late May Romance & Spring Peak Beauty',
-                date: 'May 20, 2024',
-                dateObj: new Date('2024-05-20'),
+                date: 'May 25, 2025',
+                dateObj: new Date('2025-05-25'),
                 week: 21,
-                year: 2024,
+                year: 2025,
                 category: 'Spring Peak',
                 snippet: 'Late May showcases spring\'s peak beauty with perfect weather and blooming flowers. From park exploration to outdoor dining, embrace nature\'s romantic gift.',
                 icon: 'fas fa-flower'
             },
             { 
-                filename: 'week-20.html', 
-                title: 'Mid-May Romance & Mother\'s Day Celebration',
-                date: 'May 13, 2024',
-                dateObj: new Date('2024-05-13'),
+                filename: 'week-20-2025.html', 
+                title: 'May Perfect Weather Romance & Spring Energy Peak',
+                date: 'May 18, 2025',
+                dateObj: new Date('2025-05-18'),
                 week: 20,
-                year: 2024,
-                category: 'Mother\'s Day',
-                snippet: 'Mid-May celebrates Mother\'s Day and maternal appreciation in relationships. From family brunch to honoring mothers, blend family time with romantic celebration.',
-                icon: 'fas fa-heart'
-            },
-            { 
-                filename: 'week-19.html', 
-                title: 'Early May Romance & Spring Energy Peak',
-                date: 'May 6, 2024',
-                dateObj: new Date('2024-05-06'),
-                week: 19,
-                year: 2024,
-                category: 'Spring Energy',
-                snippet: 'Early May brings spring energy peak with renewed vitality and outdoor possibilities. From Cinco de Mayo celebrations to spring cleaning romance.',
-                icon: 'fas fa-bolt'
-            },
-            { 
-                filename: 'week-18.html', 
-                title: 'May Day Romance & Spring Celebration',
-                date: 'April 29, 2024',
-                dateObj: new Date('2024-04-29'),
-                week: 18,
-                year: 2024,
-                category: 'May Day',
-                snippet: 'May Day brings spring celebration and renewal energy to NYC romance. From flower festivals to outdoor markets, welcome warmer weather together.',
+                year: 2025,
+                category: 'Spring Romance',
+                snippet: 'Perfect May weather brings NYC\'s ultimate spring romance experiences. From rooftop season openings to outdoor date perfection, discover the city\'s most beautiful spring celebrations.',
                 icon: 'fas fa-leaf'
             },
             { 
-                filename: 'week-17.html', 
-                title: 'Late April Romance & Earth Day Sustainability',
-                date: 'April 22, 2024',
-                dateObj: new Date('2024-04-22'),
-                week: 17,
-                year: 2024,
-                category: 'Earth Day',
-                snippet: 'Late April celebrates Earth Day with sustainable romance and eco-conscious dating. From green venues to environmental activism dates.',
-                icon: 'fas fa-globe'
+                filename: 'week-19-2025.html', 
+                title: 'Mother\'s Day Weekend & Family Celebration Romance',
+                date: 'May 11, 2025',
+                dateObj: new Date('2025-05-11'),
+                week: 19,
+                year: 2025,
+                category: 'Family Events',
+                snippet: 'Mother\'s Day weekend creates special family celebration opportunities throughout NYC. From brunch perfection to multi-generational activities, celebrate love in all its forms.',
+                icon: 'fas fa-heart'
             },
             { 
-                filename: 'week-16.html', 
-                title: 'Mid-April Romance & Spring Weather Perfection',
-                date: 'April 15, 2024',
-                dateObj: new Date('2024-04-15'),
-                week: 16,
+                filename: 'week-18-2025.html', 
+                title: 'Early May Spring Celebration & Outdoor Romance',
+                date: 'May 4, 2025',
+                dateObj: new Date('2025-05-04'),
+                week: 18,
+                year: 2025,
+                category: 'Outdoor Romance',
+                snippet: 'Early May brings perfect spring weather and outdoor romance opportunities. From park picnics to rooftop season beginnings, embrace NYC\'s most beautiful weather.',
+                icon: 'fas fa-sun'
+            },
+
+            // 2024 Posts (sample entries)
+            { 
+                filename: 'week-52.html', 
+                title: 'New Year\'s Eve 2025: The Ultimate NYC Celebration Guide',
+                date: 'December 23, 2024',
+                dateObj: new Date('2024-12-23'),
+                week: 52,
                 year: 2024,
-                category: 'Spring Weather',
-                snippet: 'Mid-April offers perfect spring weather and ideal dating conditions. From cherry blossoms to outdoor dining, enjoy NYC\'s most beautiful season.',
-                icon: 'fas fa-tree'
+                category: 'New Year\'s Eve',
+                snippet: 'Ring in 2025 with the ultimate NYC New Year\'s Eve celebration guide. From Times Square alternatives to exclusive parties, discover the perfect way to welcome the new year.',
+                icon: 'fas fa-fireworks'
             },
             { 
-                filename: 'week-15.html', 
-                title: 'Easter Week Romance & Spring Renewal',
-                date: 'April 8, 2024',
-                dateObj: new Date('2024-04-08'),
-                week: 15,
+                filename: 'week-51.html', 
+                title: 'Holiday Week Magic & Winter Romance Celebration',
+                date: 'December 16, 2024',
+                dateObj: new Date('2024-12-16'),
+                week: 51,
                 year: 2024,
-                category: 'Easter',
-                snippet: 'Easter week celebrates renewal and rebirth themes perfect for relationship growth. From spiritual reflection to spring celebration.',
-                icon: 'fas fa-egg'
+                category: 'Holiday Romance',
+                snippet: 'Holiday week brings magical winter romance throughout NYC. From Christmas markets to holiday shows, discover the most enchanting seasonal experiences for couples.',
+                icon: 'fas fa-snowflake'
             },
             { 
-                filename: 'week-14.html', 
-                title: 'Early April Romance & Opening Day Baseball',
-                date: 'April 1, 2024',
-                dateObj: new Date('2024-04-01'),
-                week: 14,
+                filename: 'week-50.html', 
+                title: 'Pre-Holiday Rush & Last-Minute Romance Planning',
+                date: 'December 9, 2024',
+                dateObj: new Date('2024-12-09'),
+                week: 50,
                 year: 2024,
-                category: 'Baseball Season',
-                snippet: 'Early April brings Opening Day baseball and sports romance opportunities. From Yankees games to baseball bar watching, embrace America\'s pastime together.',
-                icon: 'fas fa-baseball-ball'
-            },
-            { 
-                filename: 'week-13.html', 
-                title: 'March Madness Romance & Basketball Excitement',
-                date: 'March 25, 2024',
-                dateObj: new Date('2024-03-25'),
-                week: 13,
-                year: 2024,
-                category: 'March Madness',
-                snippet: 'March Madness brings basketball excitement and competitive romance. From tournament brackets to sports bar dates, embrace athletic competition together.',
-                icon: 'fas fa-basketball-ball'
-            },
-            { 
-                filename: 'week-12.html', 
-                title: 'Mid-March Romance & Spring Equinox Energy',
-                date: 'March 18, 2024',
-                dateObj: new Date('2024-03-18'),
-                week: 12,
-                year: 2024,
-                category: 'Spring Equinox',
-                snippet: 'Mid-March celebrates spring equinox and balanced energy. From St. Patrick\'s Day festivities to seasonal renewal, embrace equal day and night.',
-                icon: 'fas fa-balance-scale'
-            },
-            { 
-                filename: 'week-11.html', 
-                title: 'St. Patrick\'s Day Romance & Irish Celebration',
-                date: 'March 11, 2024',
-                dateObj: new Date('2024-03-11'),
-                week: 11,
-                year: 2024,
-                category: 'St. Patrick\'s Day',
-                snippet: 'St. Patrick\'s Day brings Irish celebration and pub romance throughout NYC. From parade watching to Irish bar exploration, embrace Celtic culture together.',
-                icon: 'fas fa-beer'
-            },
-            { 
-                filename: 'week-10.html', 
-                title: 'Early March Romance & Daylight Saving Energy',
-                date: 'March 4, 2024',
-                dateObj: new Date('2024-03-04'),
-                week: 10,
-                year: 2024,
-                category: 'Daylight Saving',
-                snippet: 'Early March brings Daylight Saving Time and extended evening romance opportunities. From longer dates to improved energy, embrace spring forward.',
-                icon: 'fas fa-clock'
-            },
-            { 
-                filename: 'week-9.html', 
-                title: 'Leap Year Romance & February 29th Special',
-                date: 'February 26, 2024',
-                dateObj: new Date('2024-02-26'),
-                week: 9,
-                year: 2024,
-                category: 'Leap Year',
-                snippet: 'Leap Year brings extra February day and rare romantic opportunities. From Leap Day proposals to once-every-four-years celebrations.',
-                icon: 'fas fa-calendar-plus'
-            },
-            { 
-                filename: 'week-8.html', 
-                title: 'Presidents Day Romance & Historical NYC Dates',
-                date: 'February 19, 2024',
-                dateObj: new Date('2024-02-19'),
-                week: 8,
-                year: 2024,
-                category: 'Presidents Day',
-                snippet: 'Presidents Day weekend explores historical NYC romance and patriotic date ideas. From museums to historical sites, discover educational romantic experiences.',
-                icon: 'fas fa-monument'
+                category: 'Holiday Planning',
+                snippet: 'Pre-holiday rush brings last-minute romance planning opportunities. From holiday gift shopping to seasonal date ideas, make the most of December\'s festive energy.',
+                icon: 'fas fa-gift'
             },
             { 
                 filename: 'week-7.html', 
@@ -881,39 +993,6 @@
                 icon: 'fas fa-heart'
             },
             { 
-                filename: 'week-6.html', 
-                title: 'Super Bowl Romance & Championship Celebration',
-                date: 'February 5, 2024',
-                dateObj: new Date('2024-02-05'),
-                week: 6,
-                year: 2024,
-                category: 'Super Bowl',
-                snippet: 'Super Bowl week combined football excitement with romantic celebrations. From game watching parties to sports bar dates, scoring romantic touchdowns.',
-                icon: 'fas fa-football-ball'
-            },
-            { 
-                filename: 'week-5.html', 
-                title: 'Late January Romance & February Preparation',
-                date: 'January 29, 2024',
-                dateObj: new Date('2024-01-29'),
-                week: 5,
-                year: 2024,
-                category: 'Valentine\'s Prep',
-                snippet: 'Late January focused on February preparation and Valentine\'s planning romance. From reservation strategies to gift shopping, preparing for love\'s biggest week.',
-                icon: 'fas fa-calendar-heart'
-            },
-            { 
-                filename: 'week-4.html', 
-                title: 'Chinese New Year Romance & Cultural Celebration',
-                date: 'January 22, 2024',
-                dateObj: new Date('2024-01-22'),
-                week: 4,
-                year: 2024,
-                category: 'Chinese New Year',
-                snippet: 'Chinese New Year brought cultural celebration and multicultural romance throughout NYC\'s diverse communities. From Chinatown festivities to cultural exchange dating.',
-                icon: 'fas fa-dragon'
-            },
-            { 
                 filename: 'week-3.html', 
                 title: 'Snowy Romance: Cozy NYC Experiences for Jan 15–21, 2024',
                 date: 'January 15, 2024',
@@ -923,17 +1002,6 @@
                 category: 'Winter Romance',
                 snippet: 'Embrace winter romance in NYC with cozy date spots, Broadway shows, MLK Day events, and intimate dining experiences during the January snowfall.',
                 icon: 'fas fa-snowflake'
-            },
-            { 
-                filename: 'week-2.html', 
-                title: 'New Year Energy & Resolution Romance',
-                date: 'January 8, 2024',
-                dateObj: new Date('2024-01-08'),
-                week: 2,
-                year: 2024,
-                category: 'New Year Resolutions',
-                snippet: 'New Year energy brought resolution romance and goal-setting dates. From fitness classes to planning sessions, growing together through shared aspirations.',
-                icon: 'fas fa-dumbbell'
             },
             { 
                 filename: 'week-1.html', 
@@ -1053,16 +1121,6 @@
             }, 1000);
         });
 
-        // Search functionality (future enhancement)
-        function searchBlogs(query) {
-            const searchResults = blogPosts.filter(post => 
-                post.title.toLowerCase().includes(query.toLowerCase()) ||
-                post.snippet.toLowerCase().includes(query.toLowerCase()) ||
-                post.category.toLowerCase().includes(query.toLowerCase())
-            );
-            return searchResults;
-        }
-
         // Lazy loading for images (future enhancement)
         const observerOptions = {
             threshold: 0.1,
@@ -1084,292 +1142,4 @@
         });
     </script>
 </body>
-</html> 'Spring Romance',
-                snippet: 'Perfect May weather brings NYC\'s ultimate spring romance experiences. From rooftop season openings to outdoor date perfection, discover the city\'s most beautiful spring celebrations.',
-                icon: 'fas fa-leaf'
-            },
-            { 
-                filename: 'week-19-2025.html', 
-                title: 'Mother\'s Day Weekend & Family Celebration Romance',
-                date: 'May 5, 2025',
-                dateObj: new Date('2025-05-05'),
-                week: 19,
-                year: 2025,
-                category: 'Family Events',
-                snippet: 'Mother\'s Day weekend creates special family celebration opportunities throughout NYC. From brunch perfection to multi-generational activities, celebrate love in all its forms.',
-                icon: 'fas fa-heart'
-            },
-            { 
-                filename: 'week-18-2025.html', 
-                title: 'Early May Spring Celebration & Outdoor Romance',
-                date: 'April 28, 2025',
-                dateObj: new Date('2025-04-28'),
-                week: 18,
-                year: 2025,
-                category: 'Outdoor Romance',
-                snippet: 'Early May brings perfect spring weather and outdoor romance opportunities. From park picnics to rooftop season beginnings, embrace NYC\'s most beautiful weather.',
-                icon: 'fas fa-sun'
-            },
-            { 
-                filename: 'week-17-2025.html', 
-                title: 'Earth Day Week & Sustainable Romance Celebration',
-                date: 'April 21, 2025',
-                dateObj: new Date('2025-04-21'),
-                week: 17,
-                year: 2025,
-                category: 'Sustainability',
-                snippet: 'Earth Day week focuses on sustainable romance and eco-conscious dating. Discover green venues, sustainable fashion, and environmentally-friendly romantic experiences.',
-                icon: 'fas fa-globe'
-            },
-            { 
-                filename: 'week-16-2025.html', 
-                title: 'Mid-April Cherry Blossom Romance & Spring Beauty',
-                date: 'April 14, 2025',
-                dateObj: new Date('2025-04-14'),
-                week: 16,
-                year: 2025,
-                category: 'Spring Beauty',
-                snippet: 'Cherry blossom season reaches peak beauty throughout NYC parks and gardens. From Central Park blooms to Brooklyn Botanic Garden magic, embrace spring\'s romantic potential.',
-                icon: 'fas fa-tree'
-            },
-            { 
-                filename: 'week-15-2025.html', 
-                title: 'Easter Week Spring Renewal & Relationship Growth',
-                date: 'April 7, 2025',
-                dateObj: new Date('2025-04-07'),
-                week: 15,
-                year: 2025,
-                category: 'Spring Renewal',
-                snippet: 'Easter week celebrates renewal and growth themes perfect for relationship development. From spiritual reflection to spring celebration, discover meaningful connection opportunities.',
-                icon: 'fas fa-seedling'
-            },
-            { 
-                filename: 'week-14-2025.html', 
-                title: 'Early April Spring Romance & Park Season Opening',
-                date: 'March 31, 2025',
-                dateObj: new Date('2025-03-31'),
-                week: 14,
-                year: 2025,
-                category: 'Park Romance',
-                snippet: 'April\'s arrival brings park season and outdoor romance possibilities. From picnic planning to outdoor activities, embrace spring\'s romantic awakening throughout NYC.',
-                icon: 'fas fa-flower'
-            },
-            { 
-                filename: 'week-13-2025.html', 
-                title: 'March Madness & Basketball Romance Energy',
-                date: 'March 24, 2025',
-                dateObj: new Date('2025-03-24'),
-                week: 13,
-                year: 2025,
-                category: 'Sports Romance',
-                snippet: 'March Madness brings exciting basketball energy and sports bar romance. From tournament watching to competitive dating, discover athletic romantic connections.',
-                icon: 'fas fa-basketball-ball'
-            },
-            { 
-                filename: 'week-12-2025.html', 
-                title: 'St. Patrick\'s Day Week & Irish Romance Celebration',
-                date: 'March 17, 2025',
-                dateObj: new Date('2025-03-17'),
-                week: 12,
-                year: 2025,
-                category: 'Cultural Celebration',
-                snippet: 'St. Patrick\'s Day week celebrates Irish culture and pub romance throughout NYC. From parade festivities to Irish bar exploration, embrace cultural romantic celebration.',
-                icon: 'fas fa-beer'
-            },
-            { 
-                filename: 'week-11-2025.html', 
-                title: 'Daylight Saving Romance & Extended Evening Energy',
-                date: 'March 10, 2025',
-                dateObj: new Date('2025-03-10'),
-                week: 11,
-                year: 2025,
-                category: 'Evening Romance',
-                snippet: 'Daylight Saving Time brings extended evenings and enhanced nightlife opportunities. From longer dates to improved evening energy, embrace spring\'s romantic timing.',
-                icon: 'fas fa-clock'
-            },
-            { 
-                filename: 'week-10-2025.html', 
-                title: 'International Women\'s Day & Female Empowerment Romance',
-                date: 'March 3, 2025',
-                dateObj: new Date('2025-03-03'),
-                week: 10,
-                year: 2025,
-                category: 'Empowerment',
-                snippet: 'International Women\'s Day celebrates female empowerment and equality in dating. From women-owned venues to empowering date activities, support inclusive romance.',
-                icon: 'fas fa-female'
-            },
-            { 
-                filename: 'week-9-2025.html', 
-                title: 'Late February Transition & March Preparation Romance',
-                date: 'February 24, 2025',
-                dateObj: new Date('2025-02-24'),
-                week: 9,
-                year: 2025,
-                category: 'Seasonal Transition',
-                snippet: 'Late February brings spring anticipation and March preparation energy. From seasonal transition planning to warmer weather hopes, embrace changing season romance.',
-                icon: 'fas fa-calendar-alt'
-            },
-            { 
-                filename: 'week-8-2025.html', 
-                title: 'Presidents Day Weekend & Presidential Romance History',
-                date: 'February 17, 2025',
-                dateObj: new Date('2025-02-17'),
-                week: 8,
-                year: 2025,
-                category: 'Historical Romance',
-                snippet: 'Presidents Day weekend explores presidential romance history and patriotic date ideas. From historical sites to civic-minded dating, discover educational romantic experiences.',
-                icon: 'fas fa-flag-usa'
-            },
-            { 
-                filename: 'week-7-2025.html', 
-                title: 'Valentine\'s Week Romance & Peak Love Celebration',
-                date: 'February 10, 2025',
-                dateObj: new Date('2025-02-10'),
-                week: 7,
-                year: 2025,
-                category: 'Valentine\'s Day',
-                snippet: 'Valentine\'s Week brings NYC\'s ultimate romance celebration. From February 14th perfection to extended love festivities, discover the city\'s most passionate experiences.',
-                icon: 'fas fa-heart'
-            },
-            { 
-                filename: 'week-6-2025.html', 
-                title: 'Super Bowl Week & Sports Romance Celebration',
-                date: 'February 3, 2025',
-                dateObj: new Date('2025-02-03'),
-                week: 6,
-                year: 2025,
-                category: 'Sports Events',
-                snippet: 'Super Bowl week combines football excitement with romantic celebrations. From game watching parties to sports bar dates, score romantic touchdowns during championship week.',
-                icon: 'fas fa-football-ball'
-            },
-            { 
-                filename: 'week-5-2025.html', 
-                title: 'February Prep & Valentine\'s Planning Romance',
-                date: 'January 27, 2025',
-                dateObj: new Date('2025-01-27'),
-                week: 5,
-                year: 2025,
-                category: 'Valentine\'s Prep',
-                snippet: 'February prep week brings NYC\'s ultimate Valentine\'s planning romance. From reservation strategies to intimate gift shopping, discover the city\'s most loving preparation experiences.',
-                icon: 'fas fa-calendar-heart'
-            },
-            { 
-                filename: 'week-4-2025.html', 
-                title: 'Lunar New Year & Cultural Romance Celebration',
-                date: 'January 20, 2025',
-                dateObj: new Date('2025-01-20'),
-                week: 4,
-                year: 2025,
-                category: 'Cultural Events',
-                snippet: 'Lunar New Year brings cultural celebration and multicultural romance throughout NYC\'s diverse communities. From Chinatown festivities to cultural exchange dating.',
-                icon: 'fas fa-dragon'
-            },
-            { 
-                filename: 'week-3-2025.html', 
-                title: 'MLK Day Weekend & Community Romance Connection',
-                date: 'January 13, 2025',
-                dateObj: new Date('2025-01-13'),
-                week: 3,
-                year: 2025,
-                category: 'Community Events',
-                snippet: 'MLK Day weekend celebrates community service and social justice through romantic activism. From volunteer dates to community events, connect through shared values.',
-                icon: 'fas fa-hands-helping'
-            },
-            { 
-                filename: 'week-2-2025.html', 
-                title: 'New Year Resolution Romance & Goal-Setting Dates',
-                date: 'January 6, 2025',
-                dateObj: new Date('2025-01-06'),
-                week: 2,
-                year: 2025,
-                category: 'New Year Goals',
-                snippet: 'New Year resolution season brings goal-setting romance and self-improvement dates. From fitness classes to planning sessions, grow together through shared aspirations.',
-                icon: 'fas fa-target'
-            },
-            { 
-                filename: 'week-1-2025.html', 
-                title: 'New Year\'s Week Recovery & Fresh Start Romance',
-                date: 'December 30, 2024',
-                dateObj: new Date('2024-12-30'),
-                week: 1,
-                year: 2025,
-                category: 'New Year',
-                snippet: 'New Year\'s week brings recovery vibes and fresh start romance energy. From brunch dates to goal planning, embrace the clean slate of a brand new year.',
-                icon: 'fas fa-champagne-glasses'
-            },
-
-            // 2024 Posts (week-1.html through week-52.html)
-            { 
-                filename: 'week-52.html', 
-                title: 'New Year\'s Eve 2025: The Ultimate NYC Celebration Guide',
-                date: 'December 23, 2024',
-                dateObj: new Date('2024-12-23'),
-                week: 52,
-                year: 2024,
-                category: 'New Year\'s Eve',
-                snippet: 'Ring in 2025 with the ultimate NYC New Year\'s Eve celebration guide. From Times Square alternatives to exclusive parties, discover the perfect way to welcome the new year.',
-                icon: 'fas fa-fireworks'
-            },
-            { 
-                filename: 'week-51.html', 
-                title: 'Holiday Week Magic & Winter Romance Celebration',
-                date: 'December 16, 2024',
-                dateObj: new Date('2024-12-16'),
-                week: 51,
-                year: 2024,
-                category: 'Holiday Romance',
-                snippet: 'Holiday week brings magical winter romance throughout NYC. From Christmas markets to holiday shows, discover the most enchanting seasonal experiences for couples.',
-                icon: 'fas fa-snowflake'
-            },
-            { 
-                filename: 'week-50.html', 
-                title: 'Pre-Holiday Rush & Last-Minute Romance Planning',
-                date: 'December 9, 2024',
-                dateObj: new Date('2024-12-09'),
-                week: 50,
-                year: 2024,
-                category: 'Holiday Planning',
-                snippet: 'Pre-holiday rush brings last-minute romance planning opportunities. From holiday gift shopping to seasonal date ideas, make the most of December\'s festive energy.',
-                icon: 'fas fa-gift'
-            },
-            { 
-                filename: 'week-49.html', 
-                title: 'December Holiday Season & Romantic Winter Magic',
-                date: 'December 2, 2024',
-                dateObj: new Date('2024-12-02'),
-                week: 49,
-                year: 2024,
-                category: 'Winter Magic',
-                snippet: 'December holiday season creates romantic winter magic throughout NYC. From ice skating to holiday markets, embrace the most wonderful time of year for couples.',
-                icon: 'fas fa-holly-berry'
-            },
-            { 
-                filename: 'week-48.html', 
-                title: 'Thanksgiving Week & Gratitude Romance Celebration',
-                date: 'November 25, 2024',
-                dateObj: new Date('2024-11-25'),
-                week: 48,
-                year: 2024,
-                category: 'Thanksgiving',
-                snippet: 'Thanksgiving week celebrates gratitude and family romance. From couples cooking to gratitude practices, discover meaningful ways to appreciate your relationship.',
-                icon: 'fas fa-turkey'
-            },
-            { 
-                filename: 'week-47.html', 
-                title: 'Pre-Thanksgiving Romance & November Cozy Vibes',
-                date: 'November 18, 2024',
-                dateObj: new Date('2024-11-18'),
-                week: 47,
-                year: 2024,
-                category: 'Cozy Romance',
-                snippet: 'Pre-Thanksgiving brings cozy November vibes and intimate romance opportunities. From fall comfort to holiday preparation, embrace seasonal relationship warmth.',
-                icon: 'fas fa-leaf'
-            },
-            { 
-                filename: 'week-46.html', 
-                title: 'Mid-November Fall Romance & Autumn Peak Beauty',
-                date: 'November 11, 2024',
-                dateObj: new Date('2024-11-11'),
-                week: 46,
-                year: 2024,
-                category:
+</html>
