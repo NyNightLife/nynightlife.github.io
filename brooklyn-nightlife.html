@@ -11,11 +11,11 @@
     <meta property="og:title" content="Brooklyn Nightlife Guide 2025 | Best Bars, Clubs & Events">
     <meta property="og:description" content="Complete guide to Brooklyn's trendy nightlife scene - from Williamsburg hotspots to underground venues. Insider tips and exclusive deals.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://nynightlife.com/brooklyn-nightlife">
-    <meta property="og:image" content="https://nynightlife.com/images/brooklyn-nightlife-og.jpg">
+    <meta property="og:url" content="https://nynightlife.github.io/brooklyn-nightlife">
+    <meta property="og:image" content="https://nynightlife.github.io/images/brooklyn-nightlife-og.jpg">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://nynightlife.com/brooklyn-nightlife">
+    <link rel="canonical" href="https://nynightlife.github.io/brooklyn-nightlife">
     
     <!-- Local SEO & Geographic Meta Tags -->
     <meta name="geo.region" content="US-NY">
@@ -28,6 +28,22 @@
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "NYNightlife Brooklyn Guide",
+        "description": "Complete guide to Brooklyn nightlife including bars, clubs, and events",
+        "url": "https://nynightlife.github.io/brooklyn-nightlife",
+        "areaServed": {
+            "@type": "Place",
+            "name": "Brooklyn, NY"
+        },
+        "category": "Nightlife Guide"
+    }
+    </script>
     
     <style>
         :root {
@@ -150,7 +166,7 @@
         }
 
         .back-home {
-            background: var(--gradient-sunset);
+            background: var(--gradient-sunset) !important;
             color: var(--bg-dark) !important;
             font-weight: 600;
             text-transform: uppercase;
@@ -210,20 +226,23 @@
         }
 
         .brooklyn-badges {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
-            flex-wrap: wrap;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .badge {
             background: rgba(255, 107, 53, 0.1);
             border: 1px solid rgba(255, 107, 53, 0.3);
-            padding: 1rem 2rem;
+            padding: 1.5rem;
             border-radius: 25px;
             text-align: center;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .badge:hover {
@@ -233,9 +252,10 @@
         }
 
         .badge-icon {
-            font-size: 1.5rem;
+            font-size: 2rem;
             color: var(--brooklyn-orange);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            display: block;
         }
 
         .badge-text {
@@ -407,6 +427,7 @@
             gap: 0.3rem;
             color: var(--brooklyn-yellow);
             font-size: 0.8rem;
+            margin-top: 0.2rem;
         }
 
         .neighborhood-cta {
@@ -445,6 +466,101 @@
 
         .neighborhood-btn.secondary:hover {
             background: var(--brooklyn-teal);
+            color: var(--bg-dark);
+        }
+
+        /* Specialties Section */
+        .specialties-section {
+            padding: 4rem 0;
+            background: rgba(45, 212, 191, 0.02);
+            border-top: 1px solid rgba(45, 212, 191, 0.1);
+            border-bottom: 1px solid rgba(45, 212, 191, 0.1);
+        }
+
+        .specialties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .specialty-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .specialty-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--purple-glow);
+            border-color: var(--brooklyn-purple);
+        }
+
+        .specialty-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-brooklyn);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--bg-dark);
+        }
+
+        .specialty-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .specialty-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .specialty-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .specialty-list li {
+            color: var(--text-secondary);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .specialty-list li i {
+            color: var(--brooklyn-purple);
+            width: 16px;
+        }
+
+        .specialty-btn {
+            background: var(--gradient-ocean);
+            color: var(--bg-dark);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+
+        .specialty-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--teal-glow);
             color: var(--bg-dark);
         }
 
@@ -515,6 +631,7 @@
             }
 
             .brooklyn-badges {
+                grid-template-columns: repeat(2, 1fr);
                 gap: 1rem;
             }
 
@@ -533,6 +650,10 @@
 
             .nav-links {
                 display: none;
+            }
+
+            .specialties-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -619,19 +740,19 @@
             
             <div class="brooklyn-badges">
                 <div class="badge">
-                    <div class="badge-icon"><i class="fas fa-palette"></i></div>
+                    <i class="fas fa-palette badge-icon"></i>
                     <div class="badge-text">Artsy Vibe</div>
                 </div>
                 <div class="badge">
-                    <div class="badge-icon"><i class="fas fa-beer"></i></div>
+                    <i class="fas fa-beer badge-icon"></i>
                     <div class="badge-text">Craft Beer</div>
                 </div>
                 <div class="badge">
-                    <div class="badge-icon"><i class="fas fa-music"></i></div>
+                    <i class="fas fa-music badge-icon"></i>
                     <div class="badge-text">Live Music</div>
                 </div>
                 <div class="badge">
-                    <div class="badge-icon"><i class="fas fa-building"></i></div>
+                    <i class="fas fa-building badge-icon"></i>
                     <div class="badge-text">Rooftop Views</div>
                 </div>
             </div>
@@ -669,267 +790,6 @@
                                             <i class="fas fa-star"></i>
                                             <span>4.8/5</span>
                                         </div>
-                        
-                        <div class="neighborhood-cta">
-                            <a href="https://www.stubhub.com/dumbo-brooklyn-events/grouping/81/?aid=nynightlife2025" class="neighborhood-btn" target="_blank" rel="noopener">Waterfront Events</a>
-                            <a href="https://www.opentable.com/dumbo-brooklyn?aid=nynightlife2025" class="neighborhood-btn secondary" target="_blank" rel="noopener">Reservations</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bushwick -->
-                <div class="neighborhood-card">
-                    <div class="neighborhood-header">
-                        <div class="neighborhood-vibe">UNDERGROUND</div>
-                        <h3 class="neighborhood-name">Bushwick</h3>
-                        <p class="neighborhood-type">Art Spaces & Late Night Clubs</p>
-                    </div>
-                    <div class="neighborhood-content">
-                        <p class="neighborhood-description">Brooklyn's edgy arts district featuring warehouse clubs, underground venues, street art galleries, and the city's most experimental nightlife scene that goes until sunrise.</p>
-                        
-                        <div class="venue-highlights">
-                            <h4><i class="fas fa-palette"></i> Underground Scene:</h4>
-                            <ul class="venue-list">
-                                <li>
-                                    <div class="venue-icon"><i class="fas fa-music"></i></div>
-                                    <div class="venue-info">
-                                        <div class="venue-name">Elsewhere</div>
-                                        <div class="venue-type">Multi-Room Venue • Electronic Music</div>
-                                        <div class="venue-rating">
-                                            <i class="fas fa-star"></i>
-                                            <span>4.6/5</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="venue-icon"><i class="fas fa-paint-brush"></i></div>
-                                    <div class="venue-info">
-                                        <div class="venue-name">Mood Ring</div>
-                                        <div class="venue-type">Queer Bar • Drag Shows</div>
-                                        <div class="venue-rating">
-                                            <i class="fas fa-star"></i>
-                                            <span>4.8/5</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="venue-icon"><i class="fas fa-warehouse"></i></div>
-                                    <div class="venue-info">
-                                        <div class="venue-name">Nowadays</div>
-                                        <div class="venue-type">Outdoor Venue • Day Parties</div>
-                                        <div class="venue-rating">
-                                            <i class="fas fa-star"></i>
-                                            <span>4.7/5</span>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                        <div class="neighborhood-cta">
-                            <a href="https://www.stubhub.com/bushwick-events/grouping/81/?aid=nynightlife2025" class="neighborhood-btn" target="_blank" rel="noopener">Underground Events</a>
-                            <a href="#" class="neighborhood-btn secondary">Art Galleries</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Brooklyn Specialties -->
-    <section class="specialties-section" style="padding: 4rem 0; background: rgba(45, 212, 191, 0.02); border-top: 1px solid rgba(45, 212, 191, 0.1); border-bottom: 1px solid rgba(45, 212, 191, 0.1);">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">What Makes Brooklyn Special</h2>
-                <p class="section-subtitle">Unique nightlife experiences you can only find in Brooklyn</p>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                <!-- Craft Beer Scene -->
-                <div style="background: var(--bg-card); border-radius: 20px; padding: 2rem; border: 1px solid rgba(168, 85, 247, 0.2); transition: all 0.3s ease; position: relative;">
-                    <div style="width: 60px; height: 60px; background: var(--gradient-brooklyn); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 1.5rem; color: var(--bg-dark);">
-                        <i class="fas fa-beer"></i>
-                    </div>
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--text-primary); margin-bottom: 1rem;">Craft Beer Capital</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">Brooklyn is home to some of NYC's best breweries and craft beer bars, from famous Brooklyn Brewery to hidden taprooms.</p>
-                    <ul style="list-style: none; margin-bottom: 2rem;">
-                        <li style="color: var(--text-secondary); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem;"><i class="fas fa-star" style="color: var(--brooklyn-purple); width: 16px;"></i> Brooklyn Brewery - The OG Brooklyn beer</li>
-                        <li style="color: var(--text-secondary); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem;"><i class="fas fa-star" style="color: var(--brooklyn-purple); width: 16px;"></i> Other Half Brewing - Hazy IPAs</li>
-                        <li style="color: var(--text-secondary); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem;"><i class="fas fa-star" style="color: var(--brooklyn-purple); width: 16px;"></i> Threes Brewing - Gowanus taproom</li>
-                        <li style="color: var(--text-secondary); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem;"><i class="fas fa-star" style="color: var(--brooklyn-purple); width: 16px;"></i> Evil Twin Brewing - Experimental brews</li>
-                    </ul>
-                    <a href="https://www.stubhub.com/brooklyn-brewery-tours/grouping/81/?aid=nynightlife2025" style="background: var(--gradient-ocean); color: var(--bg-dark); border: none; padding: 12px 24px; border-radius: 25px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block;" target="_blank" rel="noopener">Brewery Tours</a>
-                </div>
-
-                <!-- Live Music Scene -->
-                <div style="background: var(--bg-card); border-radius: 20px; padding: 2rem; border: 1px solid rgba(168, 85, 247, 0.2); transition: all 0.3s ease;">
-                    <div style="width: 60px; height: 60px; background: var(--gradient-brooklyn); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 1.5rem; color: var(--bg-dark);">
-                        <i class="fas fa-music"></i>
-                    </div>
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--text-primary); margin-bottom: 1rem;">Live Music Venues</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">From intimate indie rock clubs to electronic music warehouses, Brooklyn's music scene is unmatched in diversity and quality.</p>
-                    <ul style="list-style: none; margin-bottom: 2rem;">
-                        <li style="color: var(--text-secondary); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem;"><i class="fas fa-star" style="color: var(--brooklyn-purple); width: 16px;"></i> Music Hall of Williamsburg - Indie & alternative</li>
-                        <li style="color: var(--text-secondary); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem;"><i class="fas fa-star" style="color: var(--brooklyn-purple); width: 16px;"></i> Baby's All Right - Emerging artists</li>
-                        <li style="color: var(--text-secondary); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem;"><i class="fas fa-star" style="color: var(--brooklyn-purple); width: 16px;"></i> Elsewhere - Electronic & experimental</li>
-                        <li style="color: var(--text-secondary); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem;"><i class="fas fa-star" style="color: var(--brooklyn-purple); width: 16px;"></i> Kings Theatre - Historic concert hall</li>
-                    </ul>
-                    <a href="https://www.stubhub.com/brooklyn-concerts/grouping/81/?aid=nynightlife2025" style="background: var(--gradient-ocean); color: var(--bg-dark); border: none; padding: 12px 24px; border-radius: 25px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block;" target="_blank" rel="noopener">Concert Tickets</a>
-                </div>
-
-                <!-- Rooftop Culture -->
-                <div style="background: var(--bg-card); border-radius: 20px; padding: 2rem; border: 1px solid rgba(168, 85, 247, 0.2); transition: all 0.3s ease;">
-                    <div style="width: 60px; height: 60px; background: var(--gradient-brooklyn); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 1.5rem; color: var(--bg-dark);">
-                        <i class="fas fa-building"></i>
-                    </div>
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--text-primary); margin-bottom: 1rem;">Skyline Rooftops</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">Brooklyn's rooftops offer the best views of Manhattan's skyline, creating magical backdrops for drinks and dining experiences.</p>
-                    <ul style="list-style: none; margin-bottom: 2rem;">
-                        <li style="color: var(--text-secondary); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem;"><i class="fas fa-star" style="color: var(--brooklyn-purple); width: 16px;"></i> Westlight - 22nd floor panoramic views</li>
-                        <li style="color: var(--text-secondary); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem;"><i class="fas fa-star" style="color: var(--brooklyn-purple); width: 16px;"></i> 1 Hotel Rooftop - Brooklyn Bridge views</li>
-                        <li style="color: var(--text-secondary); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem;"><i class="fas fa-star" style="color: var(--brooklyn-purple); width: 16px;"></i> Berry Park - Massive rooftop space</li>
-                        <li style="color: var(--text-secondary); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem;"><i class="fas fa-star" style="color: var(--brooklyn-purple); width: 16px;"></i> Harriet's Rooftop - 1 Hotels skyline bar</li>
-                    </ul>
-                    <a href="https://www.opentable.com/brooklyn-rooftop-bars?aid=nynightlife2025" style="background: var(--gradient-ocean); color: var(--bg-dark); border: none; padding: 12px 24px; border-radius: 25px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block;" target="_blank" rel="noopener">Book Rooftop</a>
-                </div>
-
-                <!-- Food Scene -->
-                <div style="background: var(--bg-card); border-radius: 20px; padding: 2rem; border: 1px solid rgba(168, 85, 247, 0.2); transition: all 0.3s ease;">
-                    <div style="width: 60px; height: 60px; background: var(--gradient-brooklyn); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 1.5rem; color: var(--bg-dark);">
-                        <i class="fas fa-utensils"></i>
-                    </div>
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--text-primary); margin-bottom: 1rem;">Food & Late Night Eats</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">Brooklyn's diverse food scene extends into the night with amazing late-night eats, food trucks, and 24-hour diners.</p>
-                    <ul style="list-style: none; margin-bottom: 2rem;">
-                        <li style="color: var(--text-secondary); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem;"><i class="fas fa-star" style="color: var(--brooklyn-purple); width: 16px;"></i> L'industrie Pizzeria - Famous square pies</li>
-                        <li style="color: var(--text-secondary); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem;"><i class="fas fa-star" style="color: var(--brooklyn-purple); width: 16px;"></i> Peter Luger - Historic steakhouse</li>
-                        <li style="color: var(--text-secondary); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem;"><i class="fas fa-star" style="color: var(--brooklyn-purple); width: 16px;"></i> Smorgasburg - Weekend food market</li>
-                        <li style="color: var(--text-secondary); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem;"><i class="fas fa-star" style="color: var(--brooklyn-purple); width: 16px;"></i> Junior's - Iconic cheesecake & diner</li>
-                    </ul>
-                    <a href="https://www.grubhub.com/delivery/ny/brooklyn?aid=nynightlife2025" style="background: var(--gradient-ocean); color: var(--bg-dark); border: none; padding: 12px 24px; border-radius: 25px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block;" target="_blank" rel="noopener">Order Delivery</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer CTA -->
-    <section class="footer-cta">
-        <div class="container">
-            <h2 class="footer-cta-title">Ready to Explore Brooklyn?</h2>
-            <p class="footer-cta-text">Get insider access to Brooklyn's coolest venues, underground events, and exclusive neighborhood experiences</p>
-            
-            <div class="cta-buttons">
-                <a href="/tonight" class="cta-btn">See Tonight's Events</a>
-                <a href="https://www.stubhub.com/brooklyn-nightlife/grouping/81/?aid=nynightlife2025" class="cta-btn secondary" target="_blank" rel="noopener">Book Brooklyn Experience</a>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        // Configuration
-        const CONFIG = {
-            affiliateId: 'nynightlife2025'
-        };
-
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', function() {
-            addScrollAnimations();
-            trackAffiliateClicks();
-            initializeBadgeHovers();
-        });
-
-        // Badge hover effects
-        function initializeBadgeHovers() {
-            const badges = document.querySelectorAll('.badge');
-            badges.forEach(badge => {
-                badge.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-8px) scale(1.05)';
-                });
-                
-                badge.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) scale(1)';
-                });
-            });
-        }
-
-        // Scroll animations
-        function addScrollAnimations() {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, observerOptions);
-
-            // Observe all cards for animation
-            document.querySelectorAll('.neighborhood-card').forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(30px)';
-                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(card);
-            });
-        }
-
-        // Track affiliate link clicks
-        function trackAffiliateClicks() {
-            document.querySelectorAll('a[href*="stubhub"], a[href*="opentable"], a[href*="grubhub"]').forEach(link => {
-                link.addEventListener('click', function() {
-                    console.log('Brooklyn affiliate click:', this.href);
-                    
-                    // Optional: Google Analytics tracking
-                    if (typeof gtag !== 'undefined') {
-                        gtag('event', 'brooklyn_affiliate_click', {
-                            'event_category': 'engagement',
-                            'event_label': this.href,
-                            'neighborhood': this.closest('.neighborhood-card')?.querySelector('.neighborhood-name')?.textContent || 'general',
-                            'value': 1
-                        });
-                    }
-                });
-            });
-        }
-
-        // Add scroll effect to header
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(0, 0, 0, 0.95)';
-                header.style.backdropFilter = 'blur(20px)';
-            } else {
-                header.style.background = 'rgba(0, 0, 0, 0.9)';
-                header.style.backdropFilter = 'blur(10px)';
-            }
-        });
-
-        // Venue card interactive effects
-        document.querySelectorAll('.venue-list li').forEach(venue => {
-            venue.addEventListener('click', function() {
-                const venueName = this.querySelector('.venue-name').textContent;
-                const searchUrl = `https://www.stubhub.com/search?q=${encodeURIComponent(venueName + ' Brooklyn')}&aid=${CONFIG.affiliateId}`;
-                window.open(searchUrl, '_blank');
-            });
-        });
-
-        // Neighborhood card hover effects
-        document.querySelectorAll('.neighborhood-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-12px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-    </script>
-</body>
-</html>>
                                     </div>
                                 </li>
                                 <li>
@@ -1067,4 +927,268 @@
                                     </div>
                                 </li>
                             </ul>
-                        </div
+                        </div>
+                        
+                        <div class="neighborhood-cta">
+                            <a href="https://www.stubhub.com/dumbo-brooklyn-events/grouping/81/?aid=nynightlife2025" class="neighborhood-btn" target="_blank" rel="noopener">Waterfront Events</a>
+                            <a href="https://www.opentable.com/dumbo-brooklyn?aid=nynightlife2025" class="neighborhood-btn secondary" target="_blank" rel="noopener">Reservations</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bushwick -->
+                <div class="neighborhood-card">
+                    <div class="neighborhood-header">
+                        <div class="neighborhood-vibe">UNDERGROUND</div>
+                        <h3 class="neighborhood-name">Bushwick</h3>
+                        <p class="neighborhood-type">Art Spaces & Late Night Clubs</p>
+                    </div>
+                    <div class="neighborhood-content">
+                        <p class="neighborhood-description">Brooklyn's edgy arts district featuring warehouse clubs, underground venues, street art galleries, and the city's most experimental nightlife scene that goes until sunrise.</p>
+                        
+                        <div class="venue-highlights">
+                            <h4><i class="fas fa-palette"></i> Underground Scene:</h4>
+                            <ul class="venue-list">
+                                <li>
+                                    <div class="venue-icon"><i class="fas fa-music"></i></div>
+                                    <div class="venue-info">
+                                        <div class="venue-name">Elsewhere</div>
+                                        <div class="venue-type">Multi-Room Venue • Electronic Music</div>
+                                        <div class="venue-rating">
+                                            <i class="fas fa-star"></i>
+                                            <span>4.6/5</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="venue-icon"><i class="fas fa-paint-brush"></i></div>
+                                    <div class="venue-info">
+                                        <div class="venue-name">Mood Ring</div>
+                                        <div class="venue-type">Queer Bar • Drag Shows</div>
+                                        <div class="venue-rating">
+                                            <i class="fas fa-star"></i>
+                                            <span>4.8/5</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="venue-icon"><i class="fas fa-warehouse"></i></div>
+                                    <div class="venue-info">
+                                        <div class="venue-name">Nowadays</div>
+                                        <div class="venue-type">Outdoor Venue • Day Parties</div>
+                                        <div class="venue-rating">
+                                            <i class="fas fa-star"></i>
+                                            <span>4.7/5</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="neighborhood-cta">
+                            <a href="https://www.stubhub.com/bushwick-events/grouping/81/?aid=nynightlife2025" class="neighborhood-btn" target="_blank" rel="noopener">Underground Events</a>
+                            <a href="#" class="neighborhood-btn secondary">Art Galleries</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brooklyn Specialties -->
+    <section class="specialties-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What Makes Brooklyn Special</h2>
+                <p class="section-subtitle">Unique nightlife experiences you can only find in Brooklyn</p>
+            </div>
+
+            <div class="specialties-grid">
+                <!-- Craft Beer Scene -->
+                <div class="specialty-card">
+                    <div class="specialty-icon">
+                        <i class="fas fa-beer"></i>
+                    </div>
+                    <h3 class="specialty-title">Craft Beer Capital</h3>
+                    <p class="specialty-description">Brooklyn is home to some of NYC's best breweries and craft beer bars, from famous Brooklyn Brewery to hidden taprooms.</p>
+                    <ul class="specialty-list">
+                        <li><i class="fas fa-star"></i> Brooklyn Brewery - The OG Brooklyn beer</li>
+                        <li><i class="fas fa-star"></i> Other Half Brewing - Hazy IPAs</li>
+                        <li><i class="fas fa-star"></i> Threes Brewing - Gowanus taproom</li>
+                        <li><i class="fas fa-star"></i> Evil Twin Brewing - Experimental brews</li>
+                    </ul>
+                    <a href="https://www.stubhub.com/brooklyn-brewery-tours/grouping/81/?aid=nynightlife2025" class="specialty-btn" target="_blank" rel="noopener">Brewery Tours</a>
+                </div>
+
+                <!-- Live Music Scene -->
+                <div class="specialty-card">
+                    <div class="specialty-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3 class="specialty-title">Live Music Venues</h3>
+                    <p class="specialty-description">From intimate indie rock clubs to electronic music warehouses, Brooklyn's music scene is unmatched in diversity and quality.</p>
+                    <ul class="specialty-list">
+                        <li><i class="fas fa-star"></i> Music Hall of Williamsburg - Indie & alternative</li>
+                        <li><i class="fas fa-star"></i> Baby's All Right - Emerging artists</li>
+                        <li><i class="fas fa-star"></i> Elsewhere - Electronic & experimental</li>
+                        <li><i class="fas fa-star"></i> Kings Theatre - Historic concert hall</li>
+                    </ul>
+                    <a href="https://www.stubhub.com/brooklyn-concerts/grouping/81/?aid=nynightlife2025" class="specialty-btn" target="_blank" rel="noopener">Concert Tickets</a>
+                </div>
+
+                <!-- Rooftop Culture -->
+                <div class="specialty-card">
+                    <div class="specialty-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="specialty-title">Skyline Rooftops</h3>
+                    <p class="specialty-description">Brooklyn's rooftops offer the best views of Manhattan's skyline, creating magical backdrops for drinks and dining experiences.</p>
+                    <ul class="specialty-list">
+                        <li><i class="fas fa-star"></i> Westlight - 22nd floor panoramic views</li>
+                        <li><i class="fas fa-star"></i> 1 Hotel Rooftop - Brooklyn Bridge views</li>
+                        <li><i class="fas fa-star"></i> Berry Park - Massive rooftop space</li>
+                        <li><i class="fas fa-star"></i> Harriet's Rooftop - 1 Hotels skyline bar</li>
+                    </ul>
+                    <a href="https://www.opentable.com/brooklyn-rooftop-bars?aid=nynightlife2025" class="specialty-btn" target="_blank" rel="noopener">Book Rooftop</a>
+                </div>
+
+                <!-- Food Scene -->
+                <div class="specialty-card">
+                    <div class="specialty-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3 class="specialty-title">Food & Late Night Eats</h3>
+                    <p class="specialty-description">Brooklyn's diverse food scene extends into the night with amazing late-night eats, food trucks, and 24-hour diners.</p>
+                    <ul class="specialty-list">
+                        <li><i class="fas fa-star"></i> L'industrie Pizzeria - Famous square pies</li>
+                        <li><i class="fas fa-star"></i> Peter Luger - Historic steakhouse</li>
+                        <li><i class="fas fa-star"></i> Smorgasburg - Weekend food market</li>
+                        <li><i class="fas fa-star"></i> Junior's - Iconic cheesecake & diner</li>
+                    </ul>
+                    <a href="https://www.grubhub.com/delivery/ny/brooklyn?aid=nynightlife2025" class="specialty-btn" target="_blank" rel="noopener">Order Delivery</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="footer-cta">
+        <div class="container">
+            <h2 class="footer-cta-title">Ready to Explore Brooklyn?</h2>
+            <p class="footer-cta-text">Get insider access to Brooklyn's coolest venues, underground events, and exclusive neighborhood experiences</p>
+            
+            <div class="cta-buttons">
+                <a href="/tonight" class="cta-btn">See Tonight's Events</a>
+                <a href="https://www.stubhub.com/brooklyn-nightlife/grouping/81/?aid=nynightlife2025" class="cta-btn secondary" target="_blank" rel="noopener">Book Brooklyn Experience</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Configuration
+        const CONFIG = {
+            affiliateId: 'nynightlife2025'
+        };
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            addScrollAnimations();
+            trackAffiliateClicks();
+            initializeBadgeHovers();
+            initializeVenueClicks();
+        });
+
+        // Badge hover effects
+        function initializeBadgeHovers() {
+            const badges = document.querySelectorAll('.badge');
+            badges.forEach(badge => {
+                badge.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px) scale(1.05)';
+                });
+                
+                badge.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        }
+
+        // Venue click functionality
+        function initializeVenueClicks() {
+            document.querySelectorAll('.venue-list li').forEach(venue => {
+                venue.addEventListener('click', function() {
+                    const venueName = this.querySelector('.venue-name').textContent;
+                    const searchUrl = `https://www.stubhub.com/search?q=${encodeURIComponent(venueName + ' Brooklyn')}&aid=${CONFIG.affiliateId}`;
+                    window.open(searchUrl, '_blank');
+                });
+            });
+        }
+
+        // Scroll animations
+        function addScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all cards for animation
+            document.querySelectorAll('.neighborhood-card, .specialty-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        }
+
+        // Track affiliate link clicks
+        function trackAffiliateClicks() {
+            document.querySelectorAll('a[href*="stubhub"], a[href*="opentable"], a[href*="grubhub"]').forEach(link => {
+                link.addEventListener('click', function() {
+                    console.log('Brooklyn affiliate click:', this.href);
+                    
+                    // Optional: Google Analytics tracking
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'brooklyn_affiliate_click', {
+                            'event_category': 'engagement',
+                            'event_label': this.href,
+                            'neighborhood': this.closest('.neighborhood-card')?.querySelector('.neighborhood-name')?.textContent || 'general',
+                            'value': 1
+                        });
+                    }
+                });
+            });
+        }
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 0, 0, 0.95)';
+                header.style.backdropFilter = 'blur(20px)';
+            } else {
+                header.style.background = 'rgba(0, 0, 0, 0.9)';
+                header.style.backdropFilter = 'blur(10px)';
+            }
+        });
+
+        // Neighborhood card hover effects
+        document.querySelectorAll('.neighborhood-card, .specialty-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-12px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
