@@ -11,17 +11,17 @@
     <meta property="og:title" content="Manhattan Nightlife Guide 2025 | Best Bars, Clubs & Events">
     <meta property="og:description" content="Complete guide to Manhattan's best nightlife - from rooftop bars to speakeasies. Insider tips and exclusive deals.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://nynightlife.com/manhattan-nightlife">
-    <meta property="og:image" content="https://nynightlife.com/images/manhattan-nightlife-og.jpg">
+    <meta property="og:url" content="https://nynightlife.github.io/manhattan-nightlife">
+    <meta property="og:image" content="https://nynightlife.github.io/images/manhattan-nightlife-og.jpg">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Manhattan Nightlife Guide 2025">
     <meta name="twitter:description" content="Complete guide to Manhattan's best bars, clubs and nightlife scenes.">
-    <meta name="twitter:image" content="https://nynightlife.com/images/manhattan-nightlife-twitter.jpg">
+    <meta name="twitter:image" content="https://nynightlife.github.io/images/manhattan-nightlife-twitter.jpg">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://nynightlife.com/manhattan-nightlife">
+    <link rel="canonical" href="https://nynightlife.github.io/manhattan-nightlife">
     
     <!-- Local SEO & Geographic Meta Tags -->
     <meta name="geo.region" content="US-NY">
@@ -36,23 +36,23 @@
         "@graph": [
             {
                 "@type": "WebPage",
-                "@id": "https://nynightlife.com/manhattan-nightlife/#webpage",
-                "url": "https://nynightlife.com/manhattan-nightlife",
+                "@id": "https://nynightlife.github.io/manhattan-nightlife/#webpage",
+                "url": "https://nynightlife.github.io/manhattan-nightlife",
                 "name": "Manhattan Nightlife Guide 2025 | Best Bars, Clubs & Events",
                 "description": "Complete guide to Manhattan's best nightlife featuring top bars, exclusive clubs, rooftop venues, and entertainment with neighborhood-specific recommendations.",
                 "datePublished": "2025-01-01",
                 "dateModified": "2025-07-06",
                 "inLanguage": "en-US",
                 "isPartOf": {
-                    "@id": "https://nynightlife.com/#website"
+                    "@id": "https://nynightlife.github.io/#website"
                 },
                 "breadcrumb": {
-                    "@id": "https://nynightlife.com/manhattan-nightlife/#breadcrumb"
+                    "@id": "https://nynightlife.github.io/manhattan-nightlife/#breadcrumb"
                 }
             },
             {
                 "@type": "TouristDestination",
-                "@id": "https://nynightlife.com/manhattan-nightlife/#destination",
+                "@id": "https://nynightlife.github.io/manhattan-nightlife/#destination",
                 "name": "Manhattan Nightlife District",
                 "description": "Manhattan's diverse nightlife scene spanning from upscale Midtown rooftops to underground East Village speakeasies.",
                 "geo": {
@@ -68,19 +68,19 @@
             },
             {
                 "@type": "BreadcrumbList",
-                "@id": "https://nynightlife.com/manhattan-nightlife/#breadcrumb",
+                "@id": "https://nynightlife.github.io/manhattan-nightlife/#breadcrumb",
                 "itemListElement": [
                     {
                         "@type": "ListItem",
                         "position": 1,
                         "name": "Home",
-                        "item": "https://nynightlife.com"
+                        "item": "https://nynightlife.github.io"
                     },
                     {
                         "@type": "ListItem",
                         "position": 2,
                         "name": "Manhattan Nightlife",
-                        "item": "https://nynightlife.com/manhattan-nightlife"
+                        "item": "https://nynightlife.github.io/manhattan-nightlife"
                     }
                 ]
             },
@@ -209,6 +209,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 3rem;
         }
 
         .logo {
@@ -220,6 +221,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-decoration: none;
+            margin-right: 2rem;
         }
 
         .nav-links {
@@ -245,7 +247,7 @@
         }
 
         .back-home {
-            background: var(--gradient-gold);
+            background: var(--gradient-gold) !important;
             color: var(--bg-dark) !important;
             font-weight: 600;
             text-transform: uppercase;
@@ -433,6 +435,7 @@
             background: rgba(255, 215, 0, 0.05);
             border-radius: 10px;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .venue-list li:hover {
@@ -799,6 +802,14 @@
 
             .nav-links {
                 display: none;
+            }
+
+            .nav {
+                gap: 1rem;
+            }
+
+            .logo {
+                margin-right: 1rem;
             }
         }
 
@@ -1312,7 +1323,19 @@
             initializeMapInteractions();
             addScrollAnimations();
             trackAffiliateClicks();
+            initializeVenueClicks();
         });
+
+        // Venue click functionality
+        function initializeVenueClicks() {
+            document.querySelectorAll('.venue-list li').forEach(venue => {
+                venue.addEventListener('click', function() {
+                    const venueName = this.querySelector('.venue-name').textContent;
+                    const searchUrl = `https://www.stubhub.com/search?q=${encodeURIComponent(venueName + ' Manhattan')}&aid=${CONFIG.affiliateId}`;
+                    window.open(searchUrl, '_blank');
+                });
+            });
+        }
 
         // Map area interactions
         function initializeMapInteractions() {
