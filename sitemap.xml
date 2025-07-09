@@ -1,86 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Core pages -->
-  <url>
-    <loc>https://www.nynightlife.com/</loc>
-  </url>
-  <url>
-    <loc>https://www.nynightlife.com/brooklyn-nightlife.html</loc>
-  </url>
-  <url>
-    <loc>https://www.nynightlife.com/manhattan-nightlife.html</loc>
-  </url>
-  <url>
-    <loc>https://www.nynightlife.com/tonight.html</loc>
-  </url>
-  <url>
-    <loc>https://www.nynightlife.com/dating-apps.html</loc>
-  </url>
-  <url>
-    <loc>https://www.nynightlife.com/rooftop-bars.html</loc>
-  </url>
-  <url>
-    <loc>https://www.nynightlife.com/vip-club-passes.html</loc>
-  </url>
-  <url>
-    <loc>https://www.nynightlife.com/nightlife-fashion.html</loc>
-  </url>
-  <url>
-    <loc>https://www.nynightlife.com/nyc-events-calendar.html</loc>
-  </url>
-  <url>
-    <loc>https://www.nynightlife.com/attraction-passes.html</loc>
-  </url>
-  <url>
-    <loc>https://www.nynightlife.com/late-night-food.html</loc>
-  </url>
+  <!-- Key Static Pages -->
+  <url><loc>https://www.nynightlife.com/</loc><lastmod>2025-07-08</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.nynightlife.com/brooklyn-nightlife.html</loc><lastmod>2025-07-08</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.nynightlife.com/manhattan-nightlife.html</loc><lastmod>2025-07-08</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.nynightlife.com/tonight.html</loc><lastmod>2025-07-08</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.nynightlife.com/dating-apps.html</loc><lastmod>2025-07-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.nynightlife.com/rooftop-bars.html</loc><lastmod>2025-07-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.nynightlife.com/vip-club-passes.html</loc><lastmod>2025-07-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.nynightlife.com/nightlife-fashion.html</loc><lastmod>2025-07-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.nynightlife.com/nyc-events-calendar.html</loc><lastmod>2025-07-08</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.nynightlife.com/attraction-passes.html</loc><lastmod>2025-07-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.nynightlife.com/late-night-food.html</loc><lastmod>2025-07-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
-  <!-- Blog posts (selected for SEO priority) -->
-  <url>
-    <loc>https://www.nynightlife.com/blog/week-1.html</loc>
-  </url>
-  <url>
-    <loc>https://www.nynightlife.com/blog/week-12.html</loc>
-  </url>
-  <url>
-    <loc>https://www.nynightlife.com/blog/week-24.html</loc>
-  </url>
-  <url>
-    <loc>https://www.nynightlife.com/blog/week-32.html</loc>
-  </url>
-  <url>
-    <loc>https://www.nynightlife.com/blog/week-38.html</loc>
-  </url>
-  <url>
-    <loc>https://www.nynightlife.com/blog/week-44.html</loc>
-  </url>
-  <url>
-    <loc>https://www.nynightlife.com/blog/week-52.html</loc>
-  </url>
-  <url>
-    <loc>https://www.nynightlife.com/blog/week-1-2025.html</loc>
-  </url>
-  <url>
-    <loc>https://www.nynightlife.com/blog/week-2-2025.html</loc>
-  </url>
-  <url>
-    <loc>https://www.nynightlife.com/blog/week-3-2025.html</loc>
-  </url>
-  <url>
-    <loc>https://www.nynightlife.com/blog/week-4-2025.html</loc>
-  </url>
-  <url>
-    <loc>https://www.nynightlife.com/blog/week-5-2025.html</loc>
-  </url>
-  <url>
-    <loc>https://www.nynightlife.com/blog/week-6-2025.html</loc>
-  </url>
-  <url>
-    <loc>https://www.nynightlife.com/blog/week-25-2025.html</loc>
-  </url>
-  <url>
-    <loc>https://www.nynightlife.com/blog/week-27-2025.html</loc>
-  </url>
+  <!-- Blog Posts 2024 -->
+  <!-- Weeks 1 to 52 -->
+  ${[...Array(52).keys()].map(i => {
+    const week = i + 1;
+    return `<url><loc>https://www.nynightlife.com/blog/week-${week}.html</loc><lastmod>2024-${(Math.floor((week - 1) / 4) + 1).toString().padStart(2, '0')}-01</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>`;
+  }).join('\n')}
+
+  <!-- Blog Posts 2025 -->
+  <!-- Weeks 1 to 27 -->
+  ${[...Array(27).keys()].map(i => {
+    const week = i + 1;
+    return `<url><loc>https://www.nynightlife.com/blog/week-${week}-2025.html</loc><lastmod>2025-${(Math.floor((week - 1) / 4) + 1).toString().padStart(2, '0')}-01</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>`;
+  }).join('\n')}
 
 </urlset>
