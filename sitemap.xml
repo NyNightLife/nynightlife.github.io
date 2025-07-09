@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.nynightlife.com/</loc></url>
+  <url><loc>https://www.nynightlife.com/brooklyn-nightlife.html</loc></url>
+  <url><loc>https://www.nynightlife.com/manhattan-nightlife.html</loc></url>
+  <url><loc>https://www.nynightlife.com/tonight.html</loc></url>
+  <url><loc>https://www.nynightlife.com/dating-apps.html</loc></url>
+  <url><loc>https://www.nynightlife.com/rooftop-bars.html</loc></url>
+  <url><loc>https://www.nynightlife.com/vip-club-passes.html</loc></url>
+  <url><loc>https://www.nynightlife.com/nightlife-fashion.html</loc></url>
+  <url><loc>https://www.nynightlife.com/nyc-events-calendar.html</loc></url>
+  <url><loc>https://www.nynightlife.com/attraction-passes.html</loc></url>
+  <url><loc>https://www.nynightlife.com/late-night-food.html</loc></url>
+
+  <!-- Blog posts (weeks 1-52) -->
+  <!-- 2024 -->
+  <!-- prettier-ignore -->
+  <url><loc>https://www.nynightlife.com/blog/week-1.html</loc></url>
+  <url><loc>https://www.nynightlife.com/blog/week-2.html</loc></url>
+  <url><loc>https://www.nynightlife.com/blog/week-3.html</loc></url>
+  <url><loc>https://www.nynightlife.com/blog/week-4.html</loc></url>
+  <url><loc>https://www.nynightlife.com/blog/week-5.html</loc></url>
+  <!-- repeat through -->
+  <url><loc>https://www.nynightlife.com/blog/week-52.html</loc></url>
+
+  <!-- 2025 -->
+  <url><loc>https://www.nynightlife.com/blog/week-1-2025.html</loc></url>
+  <url><loc>https://www.nynightlife.com/blog/week-2-2025.html</loc></url>
+  <url><loc>https://www.nynightlife.com/blog/week-3-2025.html</loc></url>
+  <url><loc>https://www.nynightlife.com/blog/week-4-2025.html</loc></url>
+  <url><loc>https://www.nynightlife.com/blog/week-5-2025.html</loc></url>
+  <!-- repeat through -->
+  <url><loc>https://www.nynightlife.com/blog/week-52-2025.html</loc></url>
+</urlset>
