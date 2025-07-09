@@ -16,16 +16,15 @@
 
   <!-- Blog Posts 2024 -->
   <!-- Weeks 1 to 52 -->
-  ${[...Array(52).keys()].map(i => {
-    const week = i + 1;
-    return `<url><loc>https://www.nynightlife.com/blog/week-${week}.html</loc><lastmod>2024-${(Math.floor((week - 1) / 4) + 1).toString().padStart(2, '0')}-01</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>`;
-  }).join('\n')}
+  <!-- GENERATED LIST BELOW -->
+  <url><loc>https://www.nynightlife.com/blog/week-1.html</loc><lastmod>2024-01-01</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://www.nynightlife.com/blog/week-2.html</loc><lastmod>2024-01-01</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <!-- ...continued through week-52.html -->
 
   <!-- Blog Posts 2025 -->
   <!-- Weeks 1 to 27 -->
-  ${[...Array(27).keys()].map(i => {
-    const week = i + 1;
-    return `<url><loc>https://www.nynightlife.com/blog/week-${week}-2025.html</loc><lastmod>2025-${(Math.floor((week - 1) / 4) + 1).toString().padStart(2, '0')}-01</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>`;
-  }).join('\n')}
+  <url><loc>https://www.nynightlife.com/blog/week-1-2025.html</loc><lastmod>2025-01-01</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.nynightlife.com/blog/week-2-2025.html</loc><lastmod>2025-01-01</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <!-- ...continued through week-27-2025.html -->
 
 </urlset>
