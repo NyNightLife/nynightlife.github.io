@@ -15,7 +15,7 @@ async function fetchNYCEvents() {
         const year = today.getFullYear();
         const month = String(today.getMonth() + 1).padStart(2, '0');
         const day = String(today.getDate()).padStart(2, '0');
-        const formattedDate = `${year}-${month}-${day}`;
+        const formattedDate = `${String(today.getMonth() + 1).padStart(2, '0')}/${String(today.getDate()).padStart(2, '0')}/${today.getFullYear()} 12:00 AM`;
 
         const response = await fetch(`${EVENTS_API_URL}?startDate=${formattedDate}&endDate=${formattedDate}`, {
             headers: {
