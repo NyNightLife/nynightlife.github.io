@@ -1,10 +1,6 @@
 const API_KEY = '5372ae1145b54eca9fb1e77cb333cdb0'; // Replace with your actual API key
 const EVENTS_API_URL = 'https://api.nyc.gov/calendar/search'; // Using the /search endpoint
 
-let currentEventIndex = 0;
-let allEvents = [];
-const eventsPerPage = 3; // Display 3 events at a time
-
 async function fetchNYCEvents() {
     const container = document.getElementById('nyc-events-container');
     if (!container) {
@@ -27,13 +23,35 @@ async function fetchNYCEvents() {
 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
+        }n
         const data = await response.json();
-        allEvents = data.items; // Store all fetched events
+        const events = data.items; // Assuming the events are in a 'items' array
 
-        if (allEvents && allEvents.length > 0) {
-            renderEvents();
+        if (events && events.length > 0) {
+            container.innerHTML = ''; // Clear loading message
+            const eventsToDisplay = events.slice(0, 3); // Display only the first 3 events
+
+            eventsToDisplay.forEach(event => {
+                const eventCard = `
+                    <div class="event-card">
+                        <div class="event-time">${event.time || 'N/A'}</div>
+                        <h3 class="event-title">${event.name || 'No Title'}</h3>
+                        <div class="event-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            ${event.location || 'N/A'}
+                        </div>
+                        <p>${event.description || 'No description available.'}</p>
+                        <a href="${event.event_url || '#'}" class="event-cta" target="_blank" rel="noopener">Get Tickets</a>
+                    </div>
+                `;
+                container.innerHTML += eventCard;
+            });
+
+            if (events.length > 3) {
+                // Add a link to view all events
+                container.innerHTML += '<div class="view-all-events"><a href="/all-events.html">View All Events</a></div>';
+            }
+
         } else {
             container.innerHTML = '<p>No events found for today. Check back soon!</p>';
         }
@@ -44,54 +62,9 @@ async function fetchNYCEvents() {
     }
 }
 
-function renderEvents() {
-    const container = document.getElementById('nyc-events-container');
-    container.innerHTML = ''; // Clear loading message
-
-    const start = currentEventIndex;
-    const end = Math.min(currentEventIndex + eventsPerPage, allEvents.length);
-
-    for (let i = start; i < end; i++) {
-        const event = allEvents[i];
-        const eventCard = `
-            <div class="event-card">
-                <div class="event-time">${event.time || 'N/A'}</div>
-                <h3 class="event-title">${event.name || 'No Title'}</h3>
-                <div class="event-location">
-                    <i class="fas fa-map-marker-alt"></i>
-                    ${event.location || 'N/A'}
-                </div>
-                <p>${event.description || 'No description available.'}</p>
-                <a href="${event.event_url || '#'}" class="event-cta" target="_blank" rel="noopener">Get Tickets</a>
-            </div>
-        `;
-        container.innerHTML += eventCard;
-    }
-
-    // Update arrow visibility
-    document.getElementById('prev-event').style.display = currentEventIndex > 0 ? 'block' : 'none';
-    document.getElementById('next-event').style.display = currentEventIndex + eventsPerPage < allEvents.length ? 'block' : 'none';
-}
-
-function nextEvents() {
-    if (currentEventIndex + eventsPerPage < allEvents.length) {
-        currentEventIndex += eventsPerPage;
-        renderEvents();
-    }
-}
-
-function prevEvents() {
-    if (currentEventIndex > 0) {
-        currentEventIndex -= eventsPerPage;
-        renderEvents();
-    }
-}
-
 // Call the function to fetch events when the DOM is loaded
 document.addEventListener('DOMContentLoaded', fetchNYCEvents);
 
-// Attach event listeners to arrows
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('prev-event').addEventListener('click', prevEvents);
-    document.getElementById('next-event').addEventListener('click', nextEvents);
-});
+
+
+live
