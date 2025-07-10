@@ -62,3 +62,4 @@ async function fetchNYCEvents() {
 document.addEventListener('DOMContentLoaded', fetchNYCEvents);
 
 
+
