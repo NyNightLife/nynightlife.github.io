@@ -19,7 +19,7 @@ async function fetchNYCEvents() {
 
         const response = await fetch(`${EVENTS_API_URL}?startDate=${formattedDate}&endDate=${formattedDate}`, {
             headers: {
-                'x-api-key': API_KEY
+                'Ocp-Apim-Subscription-Key': API_KEY
             }
         });
 
@@ -60,3 +60,7 @@ async function fetchNYCEvents() {
 // Call the function to fetch events when the DOM is loaded
 document.addEventListener('DOMContentLoaded', fetchNYCEvents);
 
+
+
+
+live
