@@ -1264,40 +1264,9 @@
                 </div>
             </div>
             
-            <div class="live-events-grid" id="live-events">
+            <div class="live-events-grid" id="nyc-events-container">
                 <!-- Events will be populated by JavaScript -->
-                <div class="event-card">
-                    <div class="event-time">7:00 PM - 2:00 AM</div>
-                    <h3 class="event-title">Rooftop Party at 230 Fifth</h3>
-                    <div class="event-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        230 Fifth Avenue, Manhattan
-                    </div>
-                    <p>Experience NYC's best rooftop views with live DJ sets and craft cocktails. Open bar specials until 9 PM.</p>
-                    <a href="tonight.html" class="event-cta">Get Tickets</a>
-                </div>
-
-                <div class="event-card">
-                    <div class="event-time">8:00 PM - Late</div>
-                    <h3 class="event-title">Jazz Night at Blue Note</h3>
-                    <div class="event-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        131 W 3rd St, Greenwich Village
-                    </div>
-                    <p>Intimate jazz performances in NYC's legendary venue. Featured artists and late-night jam sessions.</p>
-                    <a href="tonight.html" class="event-cta">Reserve Table</a>
-                </div>
-
-                <div class="event-card">
-                    <div class="event-time">6:00 PM - 11:00 PM</div>
-                    <h3 class="event-title">Happy Hour at The Press Lounge</h3>
-                    <div class="event-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        653 11th Ave, Hell's Kitchen
-                    </div>
-                    <p>Stunning Hudson River views with discounted drinks and appetizers. Perfect for after-work networking.</p>
-                    <a href="tonight.html" class="event-cta">Make Reservation</a>
-                </div>
+                <p>Loading NYC events...</p>
             </div>
         </div>
     </section>
@@ -1663,7 +1632,7 @@
 
             // Weather-based recommendations
             async function loadWeatherRecommendations() {
-                if (!CONFIG.weatherApiKey || CONFIG.weatherApiKey === 'YOUR_OPENWEATHER_API_KEY_HERE') {
+                if (!CONFIG.weatherApiKey || CONFIG.weatherApiKey === 'YOUR_OPENWEATHER_API_KEY_KEY_HERE') {
                     // Fallback weather display
                     document.getElementById('weather-temp').textContent = '72°F - Perfect NYC Evening';
                     document.getElementById('weather-recommendation').textContent = 'Great weather for rooftop bars & outdoor events';
@@ -1779,5 +1748,6 @@
             }, 1000);
         });
     </script>
+    <script src="events.js"></script>
 </body>
 </html>
