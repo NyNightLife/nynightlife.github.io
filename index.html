@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Things to Do in NYC Tonight | Best Nightlife, Events & Entertainment 2025</title>
-    <meta name="description" content="Discover the best things to do in NYC tonight! Live events, top nightlife spots, and real-time recommendations for New York City's evening entertainment.">
+    <meta name="description" content="Discover the best things to do in NYC tonight! Live events, top nightlife spots, exclusive deals, and real-time recommendations for New York City's evening entertainment.">
     <meta name="keywords" content="things to do NYC tonight, NYC events today, nightlife NYC, NYC entertainment tonight, what to do in NYC this weekend, NYC nightlife guide, NYC events calendar">
 
     <meta name=\'impact-site-verification\' value=\'846e4a7a-3aee-46d6-bab0-2b44b726c9b5\'>
@@ -101,31 +101,6 @@
         ]
     }
     </script>
-
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "NYC Nightlife Empire",
-  "description": "A curated NYC nightlife guide featuring top events, venues, restaurants, and date spots — updated weekly.",
-  "url": "https://www.nynightlife.com",
-  "logo": "https://www.nynightlife.com/images/logo.png",
-  "image": "https://www.nynightlife.com/images/hero.jpg",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "New York",
-    "addressRegion": "NY",
-    "postalCode": "10001",
-    "addressCountry": "US"
-  },
-  "areaServed": "New York City",
-  "sameAs": [
-    "https://www.instagram.com/nynightlife",
-    "https://www.facebook.com/nynightlife"
-  ]
-}
-</script>
-
     
     <!-- Additional SEO Meta Tags -->
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
@@ -429,31 +404,13 @@
             font-size: 0.9rem;
         }
 
-        /* Carousel Styles */
-        .events-carousel-container {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            padding: 0 50px; /* Space for arrows */
-        }
-
-        .events-carousel-wrapper {
-            display: flex;
-            overflow-x: scroll;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+        .live-events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
-            padding-bottom: 1rem; /* Space for scrollbar */
-            scrollbar-width: none; /* Hide scrollbar for Firefox */
-            -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
-        }
-
-        .events-carousel-wrapper::-webkit-scrollbar {
-            display: none; /* Hide scrollbar for Chrome, Safari, Opera */
         }
 
         .event-card {
-            flex: 0 0 350px; /* Fixed width for each card */
             background: var(--bg-card);
             border-radius: 20px;
             padding: 2rem;
@@ -506,34 +463,6 @@
         .event-cta:hover {
             transform: translateY(-2px);
             box-shadow: var(--neon-glow-cyan);
-        }
-
-        .carousel-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            border: none;
-            padding: 15px;
-            cursor: pointer;
-            z-index: 10;
-            font-size: 1.5rem;
-            border-radius: 50%;
-            transition: background 0.3s ease, transform 0.3s ease;
-        }
-
-        .carousel-arrow:hover {
-            background: rgba(0, 0, 0, 0.9);
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .carousel-arrow.left {
-            left: 0;
-        }
-
-        .carousel-arrow.right {
-            right: 0;
         }
 
         /* Section Styles */
@@ -1103,7 +1032,8 @@
 
             .site-nav-hub,
             .featured-grid,
-            .blog-posts {
+            .blog-posts,
+            .live-events-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -1135,15 +1065,6 @@
                 right: 10px;
                 padding: 0.8rem 1.2rem;
                 font-size: 0.9rem;
-            }
-
-            .events-carousel-container {
-                padding: 0 20px;
-            }
-
-            .carousel-arrow {
-                padding: 10px;
-                font-size: 1.2rem;
             }
         }
 
@@ -1229,6 +1150,79 @@
 
         .event-card:nth-child(2) { animation-delay: 0.1s; }
         .event-card:nth-child(3) { animation-delay: 0.2s; }
+
+        /* Carousel Specific Styles */
+        .events-carousel-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 0 50px; /* Space for arrows */
+        }
+
+        .events-carousel {
+            display: flex;
+            overflow-x: scroll;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+            scroll-behavior: smooth;
+            scrollbar-width: none; /* Hide scrollbar for Firefox */
+            -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
+        }
+
+        .events-carousel::-webkit-scrollbar {
+            display: none; /* Hide scrollbar for Chrome, Safari, Opera */
+        }
+
+        .events-carousel .event-card {
+            flex: 0 0 auto; /* Prevent cards from shrinking */
+            width: calc(100% / 3 - 2rem); /* Display 3 cards with gap */
+            margin-right: 2rem; /* Gap between cards */
+            scroll-snap-align: start;
+        }
+
+        @media (max-width: 1024px) {
+            .events-carousel .event-card {
+                width: calc(100% / 2 - 2rem); /* Display 2 cards on medium screens */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .events-carousel-container {
+                padding: 0 20px; /* Adjust padding for smaller screens */
+            }
+            .events-carousel .event-card {
+                width: 100%; /* Display 1 card on small screens */
+                margin-right: 0; /* No margin for single card display */
+            }
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .carousel-arrow:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .carousel-arrow.left {
+            left: 0;
+        }
+
+        .carousel-arrow.right {
+            right: 0;
+        }
+
     </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-YWT237CDDX"></script>
@@ -1247,31 +1241,6 @@
   gtag(\'js\', new Date());
   gtag(\'config\', \'G-YWT237CDDX\');
 </script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "NY Nightlife Guide",
-  "url": "https://www.nynightlife.com",
-  "logo": "https://www.nynightlife.com/images/logo.png",
-  "description": "Your ultimate guide to things to do in NYC tonight, featuring real-time events, nightlife recommendations, and exclusive entertainment deals.",
-  "sameAs": [
-    "https://www.facebook.com/nynightlife",
-    "https://www.instagram.com/nynightlifeguide",
-    "https://x.com/nynightlife"
-  ]
-}
-</script>
-    
- <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "sc1zwtzhf4");
-</script>
-   
 </head>
 <body>
     <!-- Header -->
@@ -1320,7 +1289,7 @@
             
             <div class="events-carousel-container">
                 <button class="carousel-arrow left" id="prevEvent"><i class="fas fa-chevron-left"></i></button>
-                <div class="events-carousel-wrapper" id="nyc-events-container">
+                <div class="events-carousel" id="nyc-events-container">
                     <!-- Events will be populated by JavaScript -->
                     <p>Loading NYC events...</p>
                 </div>
@@ -1577,12 +1546,12 @@
                 <div class="footer-section">
                     <h3>NYNightlife</h3>
                     <p>Your ultimate guide to things to do in NYC tonight, featuring real-time events, nightlife recommendations, and exclusive entertainment deals.</p>
-<div class="social-links">
-    <a href="https://facebook.com/nynightlife" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-    <a href="https://instagram.com/nynightlifeguide" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://x.com/nynightlife" target="_blank" aria-label="X (Twitter)"><i class="fab fa-twitter"></i></a>
-</div>
-
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
                 </div>
                 
                 <div class="footer-section">
@@ -1690,7 +1659,7 @@
 
             // Weather-based recommendations
             async function loadWeatherRecommendations() {
-                if (!CONFIG.weatherApiKey || CONFIG.weatherApiKey === \'YOUR_OPENWEATHER_API_KEY_KEY_HERE\') {
+                if (!CONFIG.weatherApiKey || CONFIG.weatherApiKey === \'YOUR_OPENWEATHER_API_KEY_HERE\') {
                     // Fallback weather display
                     document.getElementById(\'weather-temp\').textContent = \'72°F - Perfect NYC Evening\';
                     document.getElementById(\'weather-recommendation\').textContent = \'Great weather for rooftop bars & outdoor events\';
@@ -1805,7 +1774,27 @@
                 }, 2000);
             }, 1000);
         });
+
+        // Carousel functionality
+        const eventsCarousel = document.getElementById(\'nyc-events-container\');
+        const prevButton = document.getElementById(\'prevEvent\');
+        const nextButton = document.getElementById(\'nextEvent\');
+
+        if (eventsCarousel && prevButton && nextButton) {
+            const scrollAmount = 350 + 32; // Card width + gap (350px + 2rem converted to px)
+
+            nextButton.addEventListener(\'click\', () => {
+                eventsCarousel.scrollBy({ left: scrollAmount, behavior: \'smooth\' });
+            });
+
+            prevButton.addEventListener(\'click\', () => {
+                eventsCarousel.scrollBy({ left: -scrollAmount, behavior: \'smooth\' });
+            });
+        }
+
     </script>
     <script src="events.js"></script>
 </body>
 </html>
+
+
