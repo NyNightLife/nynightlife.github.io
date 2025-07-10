@@ -15,9 +15,10 @@ async function fetchNYCEvents() {
         const year = today.getFullYear();
         const month = String(today.getMonth() + 1).padStart(2, '0');
         const day = String(today.getDate()).padStart(2, '0');
-        const formattedDate = `${String(today.getMonth() + 1).padStart(2, '0')}/${String(today.getDate()).padStart(2, '0')}/${today.getFullYear()} 12:00 AM`;
+        const formattedStartDate = `${String(today.getMonth() + 1).padStart(2, '0')}/${String(today.getDate()).padStart(2, '0')}/${today.getFullYear()} 05:00 PM`; // 5 PM
+        const formattedEndDate = `${String(today.getMonth() + 1).padStart(2, '0')}/${String(today.getDate()).padStart(2, '0')}/${today.getFullYear()} 11:59 PM`; // 11:59 PM
 
-        const response = await fetch(`${EVENTS_API_URL}?startDate=${formattedDate}&endDate=${formattedDate}`, {
+        const response = await fetch(`${EVENTS_API_URL}?startDate=${formattedStartDate}&endDate=${formattedEndDate}`, {
             headers: {
                 'Ocp-Apim-Subscription-Key': API_KEY
             }
@@ -61,6 +62,3 @@ async function fetchNYCEvents() {
 document.addEventListener('DOMContentLoaded', fetchNYCEvents);
 
 
-
-
-live
