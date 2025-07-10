@@ -1150,79 +1150,6 @@
 
         .event-card:nth-child(2) { animation-delay: 0.1s; }
         .event-card:nth-child(3) { animation-delay: 0.2s; }
-
-        /* Carousel Specific Styles */
-        .events-carousel-container {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            padding: 0 50px; /* Space for arrows */
-        }
-
-        .events-carousel {
-            display: flex;
-            overflow-x: scroll;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
-            scroll-behavior: smooth;
-            scrollbar-width: none; /* Hide scrollbar for Firefox */
-            -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
-        }
-
-        .events-carousel::-webkit-scrollbar {
-            display: none; /* Hide scrollbar for Chrome, Safari, Opera */
-        }
-
-        .events-carousel .event-card {
-            flex: 0 0 auto; /* Prevent cards from shrinking */
-            width: calc(100% / 3 - 2rem); /* Display 3 cards with gap */
-            margin-right: 2rem; /* Gap between cards */
-            scroll-snap-align: start;
-        }
-
-        @media (max-width: 1024px) {
-            .events-carousel .event-card {
-                width: calc(100% / 2 - 2rem); /* Display 2 cards on medium screens */
-            }
-        }
-
-        @media (max-width: 768px) {
-            .events-carousel-container {
-                padding: 0 20px; /* Adjust padding for smaller screens */
-            }
-            .events-carousel .event-card {
-                width: 100%; /* Display 1 card on small screens */
-                margin-right: 0; /* No margin for single card display */
-            }
-        }
-
-        .carousel-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 15px;
-            cursor: pointer;
-            z-index: 10;
-            font-size: 1.5rem;
-            border-radius: 50%;
-            transition: background 0.3s ease;
-        }
-
-        .carousel-arrow:hover {
-            background: rgba(0, 0, 0, 0.8);
-        }
-
-        .carousel-arrow.left {
-            left: 0;
-        }
-
-        .carousel-arrow.right {
-            right: 0;
-        }
-
     </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-YWT237CDDX"></script>
@@ -1287,13 +1214,12 @@
                 </div>
             </div>
             
-            <div class="events-carousel-container">
-                <button class="carousel-arrow left" id="prevEvent"><i class="fas fa-chevron-left"></i></button>
-                <div class="events-carousel" id="nyc-events-container">
-                    <!-- Events will be populated by JavaScript -->
-                    <p>Loading NYC events...</p>
-                </div>
-                <button class="carousel-arrow right" id="nextEvent"><i class="fas fa-chevron-right"></i></button>
+            <div class="live-events-grid" id="nyc-events-container">
+                <!-- Events will be populated by JavaScript -->
+                <p>Loading events...</p>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="tonight.html" class="hero-cta">View All Events</a>
             </div>
         </div>
     </section>
@@ -1578,7 +1504,7 @@
                 <div class="footer-section">
                     <div class="newsletter">
                         <h4>Tonight\'s Insider Updates</h4>
-                        <p>Subscribe for daily "things to do tonight" updates and exclusive NYC deals.</p>
+                        <p>Subscribe for daily \"things to do tonight\" updates and exclusive NYC deals.</p>
                         <div class="newsletter-form">
                             <input type="email" placeholder="Your email" aria-label="Email address">
                             <button type="submit">Subscribe</button>
@@ -1774,27 +1700,6 @@
                 }, 2000);
             }, 1000);
         });
-
-        // Carousel functionality
-        const eventsCarousel = document.getElementById(\'nyc-events-container\');
-        const prevButton = document.getElementById(\'prevEvent\');
-        const nextButton = document.getElementById(\'nextEvent\');
-
-        if (eventsCarousel && prevButton && nextButton) {
-            const scrollAmount = 350 + 32; // Card width + gap (350px + 2rem converted to px)
-
-            nextButton.addEventListener(\'click\', () => {
-                eventsCarousel.scrollBy({ left: scrollAmount, behavior: \'smooth\' });
-            });
-
-            prevButton.addEventListener(\'click\', () => {
-                eventsCarousel.scrollBy({ left: -scrollAmount, behavior: \'smooth\' });
-            });
-        }
-
     </script>
-    <script src="events.js"></script>
 </body>
 </html>
-
-
