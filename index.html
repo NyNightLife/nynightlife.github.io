@@ -408,6 +408,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
+            transition: opacity 0.3s ease;
         }
 
         .event-card {
@@ -463,6 +464,45 @@
         .event-cta:hover {
             transform: translateY(-2px);
             box-shadow: var(--neon-glow-cyan);
+        }
+
+        /* Dynamic Card Highlights */
+        .card-highlight {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #ff0080 0%, #ff4da6 100%);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 10;
+            box-shadow: 0 0 15px rgba(255, 0, 128, 0.5);
+            animation: pulseHighlight 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseHighlight {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .event-card[data-category="filming"] {
+            border-color: #ff6600;
+        }
+
+        .event-card[data-category="dining"] {
+            border-color: #00ff41;
+        }
+
+        .event-card[data-category="event"] {
+            border-color: #ffff00;
+        }
+
+        .event-card[data-category="nightlife"] {
+            border-color: #8a2be2;
         }
 
         /* Section Styles */
@@ -1215,38 +1255,16 @@
             </div>
             
             <div class="live-events-grid" id="live-events">
-                <!-- Events will be populated by JavaScript -->
+                <!-- Dynamic events will be populated here by JavaScript -->
                 <div class="event-card">
-                    <div class="event-time">7:00 PM - 2:00 AM</div>
-                    <h3 class="event-title">Rooftop Party at 230 Fifth</h3>
+                    <div class="event-time">Loading...</div>
+                    <h3 class="event-title">🌃 Loading Live NYC Events...</h3>
                     <div class="event-location">
                         <i class="fas fa-map-marker-alt"></i>
-                        230 Fifth Avenue, Manhattan
+                        Getting real data...
                     </div>
-                    <p>Experience NYC's best rooftop views with live DJ sets and craft cocktails. Open bar specials until 9 PM.</p>
-                    <a href="tonight.html" class="event-cta">Get Tickets</a>
-                </div>
-
-                <div class="event-card">
-                    <div class="event-time">8:00 PM - Late</div>
-                    <h3 class="event-title">Jazz Night at Blue Note</h3>
-                    <div class="event-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        131 W 3rd St, Greenwich Village
-                    </div>
-                    <p>Intimate jazz performances in NYC's legendary venue. Featured artists and late-night jam sessions.</p>
-                    <a href="tonight.html" class="event-cta">Reserve Table</a>
-                </div>
-
-                <div class="event-card">
-                    <div class="event-time">6:00 PM - 11:00 PM</div>
-                    <h3 class="event-title">Happy Hour at The Press Lounge</h3>
-                    <div class="event-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        653 11th Ave, Hell's Kitchen
-                    </div>
-                    <p>Stunning Hudson River views with discounted drinks and appetizers. Perfect for after-work networking.</p>
-                    <a href="tonight.html" class="event-cta">Make Reservation</a>
+                    <p>Fetching the latest events, filming locations, and restaurant data from NYC APIs...</p>
+                    <a href="tonight.html" class="event-cta">Loading...</a>
                 </div>
             </div>
         </div>
@@ -1726,6 +1744,345 @@
                     button.style.background = 'var(--gradient-neon-cyan)';
                     input.value = '';
                 }, 2000);
+            }, 1000);
+        });
+    </script>
+
+    <!-- NYC NIGHTLIFE DYNAMIC EVENT CARDS WITH AFFILIATE REVENUE -->
+    <script>
+        // NYC Nightlife Dynamic Event Cards with Affiliate Revenue
+        class NYCEventCardsManager {
+            constructor() {
+                this.affiliateLinks = {
+                    // Update these with your actual affiliate IDs
+                    stubhub: 'https://www.stubhub.com/new-york-events-tickets/grouping/81/?aid=nynightlife2025',
+                    ticketmaster: 'https://www.ticketmaster.com/new-york-tickets/segment_999?aid=nynightlife2025',
+                    opentable: 'https://www.opentable.com/new-york-metro-area?aid=nynightlife2025',
+                    resy: 'https://resy.com/cities/ny/new-york?aid=nynightlife2025',
+                    headout: 'https://www.headout.com/new-york?aid=nynightlife2025',
+                    viator: 'https://www.viator.com/New-York-City/d687?aid=nynightlife2025'
+                };
+                
+                this.cardRotationInterval = 30000; // 30 seconds rotation
+                this.currentCardSet = 0;
+                this.apiData = {
+                    filming: [],
+                    events: [],
+                    restaurants: []
+                };
+            }
+
+            // Fetch NYC Open Data
+            async fetchNYCData() {
+                console.log('🎬 Fetching live NYC data...');
+                
+                try {
+                    // 1. Film Permits - Shows what's filming tonight
+                    const filmingResponse = await fetch(
+                        'https://data.cityofnewyork.us/resource/tg4x-b46p.json?$limit=20'
+                    );
+                    this.apiData.filming = await filmingResponse.json();
+
+                    // 2. Street Events - Festivals, parades, etc.
+                    const eventsResponse = await fetch(
+                        'https://data.cityofnewyork.us/resource/tvpp-9vvx.json?$limit=20'
+                    );
+                    this.apiData.events = await eventsResponse.json();
+
+                    // 3. Top Restaurants - A-rated places
+                    const restaurantsResponse = await fetch(
+                        'https://data.cityofnewyork.us/resource/43nn-pn8j.json?boro=MANHATTAN&grade=A&$limit=50'
+                    );
+                    this.apiData.restaurants = await restaurantsResponse.json();
+
+                    console.log('✅ Live NYC data loaded!', {
+                        filming: this.apiData.filming.length,
+                        events: this.apiData.events.length,
+                        restaurants: this.apiData.restaurants.length
+                    });
+                    
+                    this.startCardRotation();
+                    
+                } catch (error) {
+                    console.error('API Error:', error);
+                    this.showFallbackCards();
+                }
+            }
+
+            // Card Set 1: Live Filming Locations (Great for excitement!)
+            createFilmingCards() {
+                const filming = this.apiData.filming.slice(0, 3);
+                return filming.map(permit => ({
+                    time: this.formatFilmTime(permit.startdatetime),
+                    title: `🎬 ${permit.eventtype || 'Movie Filming'} Tonight`,
+                    location: `${permit.borough || 'NYC'} - ${this.getNeighborhood(permit.parkingheld)}`,
+                    description: `Live ${permit.eventagency || 'Hollywood production'} filming! See real movie magic happening in NYC.`,
+                    cta: 'Get Tickets to Tonight\'s Events',
+                    ctaLink: this.affiliateLinks.stubhub,
+                    highlight: 'HOT',
+                    category: 'filming'
+                }));
+            }
+
+            // Card Set 2: Top Restaurants + Street Events
+            createDiningCards() {
+                const restaurants = this.getRandomRestaurants(2);
+                const events = this.apiData.events.slice(0, 1);
+                
+                const cards = restaurants.map(restaurant => ({
+                    time: 'Open Now - Late',
+                    title: `🍽️ ${restaurant.dba || 'Top Restaurant'}`,
+                    location: `${restaurant.building || ''} ${restaurant.street || ''}, ${restaurant.boro || 'NYC'}`,
+                    description: `${restaurant.cuisine_description || 'Amazing'} cuisine with Grade ${restaurant.grade || 'A'} rating. Perfect for tonight's dinner!`,
+                    cta: 'Reserve Table Now',
+                    ctaLink: this.affiliateLinks.opentable,
+                    highlight: 'GRADE A',
+                    category: 'dining'
+                }));
+
+                // Add street event as 3rd card
+                if (events.length > 0) {
+                    cards.push({
+                        time: this.formatEventTime(events[0].startdatetime),
+                        title: `🎪 ${events[0].eventname || 'Street Festival'}`,
+                        location: events[0].eventlocation || 'NYC',
+                        description: `${events[0].eventtype || 'Community event'} happening now! Join the local celebration.`,
+                        cta: 'Find Events Tonight',
+                        ctaLink: this.affiliateLinks.headout,
+                        highlight: 'LIVE',
+                        category: 'event'
+                    });
+                }
+
+                return cards;
+            }
+
+            // Card Set 3: Mixed Entertainment (Maximize revenue variety)
+            createEntertainmentCards() {
+                const mixed = [
+                    {
+                        time: '7:00 PM - Late',
+                        title: '🌃 NYC Rooftop Experience',
+                        location: 'Multiple Manhattan Locations',
+                        description: 'Premium rooftop bars with skyline views. Weather is perfect tonight for outdoor venues!',
+                        cta: 'Book VIP Access',
+                        ctaLink: this.affiliateLinks.viator,
+                        highlight: 'VIP',
+                        category: 'nightlife'
+                    },
+                    {
+                        time: '8:00 PM - 2:00 AM',
+                        title: '🎭 Broadway & Theater District',
+                        location: 'Times Square Area',
+                        description: 'Last-minute tickets available! Experience NYC\'s world-famous theater scene tonight.',
+                        cta: 'Get Show Tickets',
+                        ctaLink: this.affiliateLinks.ticketmaster,
+                        highlight: 'DEALS',
+                        category: 'theater'
+                    },
+                    {
+                        time: '6:00 PM - 11:00 PM',
+                        title: '🍸 Speakeasy Crawl',
+                        location: 'East Village & SoHo',
+                        description: 'Hidden bars and exclusive cocktail experiences. Perfect for date night or friends night out!',
+                        cta: 'Join Crawl Tonight',
+                        ctaLink: this.affiliateLinks.headout,
+                        highlight: 'SECRET',
+                        category: 'cocktails'
+                    }
+                ];
+
+                return mixed;
+            }
+
+            // Main card rotation logic
+            startCardRotation() {
+                this.updateCards();
+                
+                setInterval(() => {
+                    this.currentCardSet = (this.currentCardSet + 1) % 3;
+                    this.updateCards();
+                    console.log(`🔄 Rotating to card set ${this.currentCardSet + 1}`);
+                }, this.cardRotationInterval);
+            }
+
+            // Update the cards with current data set
+            updateCards() {
+                let cards = [];
+                
+                switch(this.currentCardSet) {
+                    case 0:
+                        cards = this.createFilmingCards();
+                        console.log('📺 Showing filming locations');
+                        break;
+                    case 1:
+                        cards = this.createDiningCards();
+                        console.log('🍽️ Showing dining & events');
+                        break;
+                    case 2:
+                        cards = this.createEntertainmentCards();
+                        console.log('🎭 Showing entertainment mix');
+                        break;
+                }
+
+                // Ensure we always have 3 cards
+                while (cards.length < 3) {
+                    cards.push(this.createFallbackCard());
+                }
+
+                this.renderCards(cards.slice(0, 3));
+            }
+
+            // Render cards to DOM
+            renderCards(cards) {
+                const container = document.querySelector('.live-events-grid');
+                if (!container) return;
+
+                // Add rotation effect
+                container.style.opacity = '0.7';
+                
+                setTimeout(() => {
+                    container.innerHTML = cards.map(card => `
+                        <div class="event-card" data-category="${card.category}">
+                            ${card.highlight ? `<div class="card-highlight">${card.highlight}</div>` : ''}
+                            <div class="event-time">${card.time}</div>
+                            <h3 class="event-title">${card.title}</h3>
+                            <div class="event-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                ${card.location}
+                            </div>
+                            <p>${card.description}</p>
+                            <a href="${card.ctaLink}" class="event-cta" target="_blank" rel="noopener">
+                                ${card.cta}
+                            </a>
+                        </div>
+                    `).join('');
+                    
+                    container.style.opacity = '1';
+                }, 300);
+            }
+
+            // Helper functions
+            formatFilmTime(datetime) {
+                if (!datetime) return 'Tonight';
+                
+                try {
+                    const date = new Date(datetime);
+                    const options = { hour: 'numeric', minute: '2-digit', hour12: true };
+                    return `${date.toLocaleTimeString('en-US', options)} - Late`;
+                } catch {
+                    return 'Evening';
+                }
+            }
+
+            formatEventTime(datetime) {
+                if (!datetime) return 'Check Schedule';
+                
+                try {
+                    const date = new Date(datetime);
+                    return date.toLocaleDateString('en-US', { 
+                        weekday: 'short', 
+                        month: 'short', 
+                        day: 'numeric' 
+                    });
+                } catch {
+                    return 'This Week';
+                }
+            }
+
+            getNeighborhood(parkingInfo) {
+                if (!parkingInfo) return 'NYC';
+                
+                const neighborhoods = {
+                    'BROADWAY': 'Times Square',
+                    'CENTRAL PARK': 'Midtown',
+                    'WALL': 'Financial District',
+                    'SOHO': 'SoHo',
+                    'VILLAGE': 'Greenwich Village'
+                };
+                
+                for (const [key, value] of Object.entries(neighborhoods)) {
+                    if (parkingInfo.toUpperCase().includes(key)) {
+                        return value;
+                    }
+                }
+                
+                return 'Manhattan';
+            }
+
+            getRandomRestaurants(count) {
+                const shuffled = this.apiData.restaurants
+                    .filter(r => r.dba && r.street)
+                    .sort(() => 0.5 - Math.random());
+                return shuffled.slice(0, count);
+            }
+
+            createFallbackCard() {
+                return {
+                    time: '7:00 PM - Late',
+                    title: '🌟 Discover NYC Tonight',
+                    location: 'All 5 Boroughs',
+                    description: 'Explore the best of NYC nightlife with our curated recommendations and exclusive deals.',
+                    cta: 'Explore Tonight',
+                    ctaLink: this.affiliateLinks.stubhub,
+                    highlight: 'NEW',
+                    category: 'fallback'
+                };
+            }
+
+            showFallbackCards() {
+                const fallbackCards = [
+                    this.createFallbackCard(),
+                    {
+                        time: '6:00 PM - 2:00 AM',
+                        title: '🍸 Premium NYC Nightlife',
+                        location: 'Manhattan Hotspots',
+                        description: 'VIP access to NYC\'s hottest venues. Skip the lines and enjoy exclusive experiences.',
+                        cta: 'Get VIP Access',
+                        ctaLink: this.affiliateLinks.viator,
+                        highlight: 'VIP',
+                        category: 'fallback'
+                    },
+                    {
+                        time: '8:00 PM - Late',
+                        title: '🎭 Broadway & Entertainment',
+                        location: 'Theater District',
+                        description: 'Last-minute show tickets and entertainment experiences available now.',
+                        cta: 'Book Shows',
+                        ctaLink: this.affiliateLinks.ticketmaster,
+                        highlight: 'DEALS',
+                        category: 'fallback'
+                    }
+                ];
+
+                this.renderCards(fallbackCards);
+            }
+
+            // Initialize everything
+            async init() {
+                console.log('🚀 Initializing dynamic NYC event cards...');
+                
+                // Start with fallback cards immediately
+                this.showFallbackCards();
+                
+                // Then load real data
+                await this.fetchNYCData();
+            }
+        }
+
+        // Initialize the dynamic cards when page loads
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Small delay to let other scripts load first
+            setTimeout(async () => {
+                const cardManager = new NYCEventCardsManager();
+                await cardManager.init();
+                
+                // Make available globally for debugging
+                window.nycCards = cardManager;
+                
+                console.log('🎉 Dynamic NYC cards activated! Revenue optimization enabled.');
+                console.log('💰 Cards will rotate every 30 seconds for maximum affiliate exposure');
+                console.log('🔍 Type "nycCards" in console to explore the manager');
             }, 1000);
         });
     </script>
