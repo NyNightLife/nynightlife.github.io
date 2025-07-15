@@ -360,7 +360,7 @@
             color: white;
         }
 
-        /* Live Events Tonight Section */
+        /* Enhanced Interactive Tonight Section */
         .tonight-section {
             padding: 4rem 0;
             background: rgba(255, 0, 128, 0.05);
@@ -404,11 +404,153 @@
             font-size: 0.9rem;
         }
 
+        /* Interactive Event Browser Controls */
+        .event-browser-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .category-filters {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-tab {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 0, 128, 0.3);
+            color: var(--text-secondary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .filter-tab:hover::before {
+            left: 100%;
+        }
+
+        .filter-tab:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary-neon);
+            color: var(--primary-neon);
+        }
+
+        .filter-tab.active {
+            background: var(--gradient-neon-pink);
+            color: white;
+            border-color: var(--primary-neon);
+            box-shadow: var(--neon-glow-pink);
+        }
+
+        .filter-count {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+        }
+
+        .view-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .view-toggle {
+            display: flex;
+            background: var(--bg-card);
+            border-radius: 25px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            overflow: hidden;
+        }
+
+        .view-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            padding: 0.8rem 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .view-btn.active {
+            background: var(--gradient-neon-cyan);
+            color: var(--bg-dark);
+        }
+
+        .auto-play-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 25px;
+            background: var(--bg-card);
+            border-radius: 25px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-switch::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 19px;
+            height: 19px;
+            background: var(--text-secondary);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-switch.active {
+            background: var(--gradient-neon-cyan);
+            border-color: var(--secondary-neon);
+        }
+
+        .toggle-switch.active::before {
+            transform: translateX(25px);
+            background: var(--bg-dark);
+        }
+
+        /* Grid View Styles */
         .live-events-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
             transition: opacity 0.3s ease;
+            opacity: 1;
+        }
+
+        .live-events-grid.loading {
+            opacity: 0.5;
         }
 
         .event-card {
@@ -418,12 +560,156 @@
             border: 1px solid rgba(0, 255, 255, 0.3);
             transition: all 0.3s ease;
             position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .event-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .event-card:hover::before {
+            left: 100%;
         }
 
         .event-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.02);
             box-shadow: var(--neon-glow-cyan);
             border-color: var(--secondary-neon);
+        }
+
+        .event-card[data-category="filming"] {
+            border-color: #ff6600;
+        }
+
+        .event-card[data-category="dining"] {
+            border-color: #00ff41;
+        }
+
+        .event-card[data-category="event"] {
+            border-color: #ffff00;
+        }
+
+        .event-card[data-category="nightlife"] {
+            border-color: #8a2be2;
+        }
+
+        /* Carousel View Styles */
+        .events-carousel {
+            display: none;
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .events-carousel.active {
+            display: block;
+        }
+
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-card {
+            min-width: 100%;
+            background: var(--bg-card);
+            padding: 3rem;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            position: relative;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .carousel-arrows {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .carousel-arrow {
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            color: var(--text-secondary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-arrow:hover {
+            background: var(--gradient-neon-cyan);
+            color: var(--bg-dark);
+            transform: scale(1.1);
+        }
+
+        .carousel-arrow:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .carousel-dots {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: var(--gradient-neon-cyan);
+            box-shadow: var(--neon-glow-cyan);
+            transform: scale(1.2);
+        }
+
+        /* Card Content Styles */
+        .card-highlight {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--gradient-neon-pink);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 10;
+            animation: pulseHighlight 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseHighlight {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         .event-time {
@@ -451,7 +737,7 @@
             background: var(--gradient-neon-cyan);
             color: var(--bg-dark);
             border: none;
-            padding: 10px 20px;
+            padding: 12px 25px;
             border-radius: 20px;
             font-weight: 600;
             cursor: pointer;
@@ -459,50 +745,33 @@
             text-decoration: none;
             display: inline-block;
             font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .event-cta:hover {
-            transform: translateY(-2px);
+            transform: translateY(-2px) scale(1.05);
             box-shadow: var(--neon-glow-cyan);
+            color: var(--bg-dark);
         }
 
-        /* Dynamic Card Highlights */
-        .card-highlight {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: linear-gradient(135deg, #ff0080 0%, #ff4da6 100%);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            z-index: 10;
-            box-shadow: 0 0 15px rgba(255, 0, 128, 0.5);
-            animation: pulseHighlight 2s ease-in-out infinite;
+        /* Mobile Swipe Hints */
+        .swipe-hint {
+            display: none;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            animation: fadeInOut 3s ease-in-out infinite;
         }
 
-        @keyframes pulseHighlight {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        .swipe-hint.show {
+            display: block;
         }
 
-        .event-card[data-category="filming"] {
-            border-color: #ff6600;
-        }
-
-        .event-card[data-category="dining"] {
-            border-color: #00ff41;
-        }
-
-        .event-card[data-category="event"] {
-            border-color: #ffff00;
-        }
-
-        .event-card[data-category="nightlife"] {
-            border-color: #8a2be2;
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
 
         /* Section Styles */
@@ -528,115 +797,6 @@
             color: var(--text-secondary);
             margin-bottom: 3rem;
             font-size: 1.1rem;
-        }
-
-        /* Site Navigation Hub - New Design */
-        .site-nav-hub {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .nav-category {
-            background: var(--bg-card);
-            border-radius: 20px;
-            padding: 2rem;
-            border: 1px solid rgba(255, 0, 128, 0.2);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-category::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--gradient-neon-multi);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1;
-        }
-
-        .nav-category:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--neon-glow-pink);
-            border-color: var(--primary-neon);
-        }
-
-        .nav-category:hover::before {
-            opacity: 0.05;
-        }
-
-        .nav-category-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .nav-category-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .nav-category-icon {
-            font-size: 2rem;
-            background: var(--gradient-neon-pink);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-category h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: var(--text-primary);
-        }
-
-        .nav-links-list {
-            list-style: none;
-            display: grid;
-            gap: 0.8rem;
-        }
-
-        .nav-links-list li {
-            position: relative;
-        }
-
-        .nav-page-link {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            color: var(--text-secondary);
-            text-decoration: none;
-            padding: 0.8rem 1rem;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
-        }
-
-        .nav-page-link:hover {
-            color: var(--primary-neon);
-            background: rgba(255, 0, 128, 0.1);
-            border-color: rgba(255, 0, 128, 0.3);
-            transform: translateX(5px);
-        }
-
-        .nav-page-link i {
-            font-size: 1rem;
-            width: 20px;
-            text-align: center;
-        }
-
-        .nav-page-description {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-left: 2.8rem;
-            margin-top: 0.2rem;
         }
 
         /* Featured Pages Section */
@@ -755,6 +915,115 @@
             box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
             background: var(--secondary-neon);
             color: var(--bg-dark);
+        }
+
+        /* Site Navigation Hub - New Design */
+        .site-nav-hub {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .nav-category {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 0, 128, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-neon-multi);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .nav-category:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--neon-glow-pink);
+            border-color: var(--primary-neon);
+        }
+
+        .nav-category:hover::before {
+            opacity: 0.05;
+        }
+
+        .nav-category-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .nav-category-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-category-icon {
+            font-size: 2rem;
+            background: var(--gradient-neon-pink);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-category h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .nav-links-list {
+            list-style: none;
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        .nav-links-list li {
+            position: relative;
+        }
+
+        .nav-page-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .nav-page-link:hover {
+            color: var(--primary-neon);
+            background: rgba(255, 0, 128, 0.1);
+            border-color: rgba(255, 0, 128, 0.3);
+            transform: translateX(5px);
+        }
+
+        .nav-page-link i {
+            font-size: 1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .nav-page-description {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-left: 2.8rem;
+            margin-top: 0.2rem;
         }
 
         /* Blog Section with Dynamic Weekly Rotation */
@@ -1070,11 +1339,37 @@
                 font-size: 1.1rem;
             }
 
+            .event-browser-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .category-filters {
+                justify-content: center;
+            }
+
+            .view-controls {
+                justify-content: center;
+            }
+
+            .live-events-grid,
             .site-nav-hub,
             .featured-grid,
-            .blog-posts,
-            .live-events-grid {
+            .blog-posts {
                 grid-template-columns: 1fr;
+            }
+
+            .carousel-card {
+                padding: 2rem;
+            }
+
+            .swipe-hint.show {
+                display: block;
+            }
+
+            .filter-tab {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
             }
 
             .footer-content {
@@ -1132,6 +1427,15 @@
                 flex-direction: column;
                 gap: 0.5rem;
                 text-align: center;
+            }
+
+            .carousel-arrows {
+                gap: 0.5rem;
+            }
+
+            .carousel-arrow {
+                width: 40px;
+                height: 40px;
             }
         }
 
@@ -1199,15 +1503,6 @@
   gtag('js', new Date());
   gtag('config', 'G-YWT237CDDX');
 </script>
-    
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YWT237CDDX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-YWT237CDDX');
-</script>
 </head>
 <body>
     <!-- Header -->
@@ -1238,11 +1533,11 @@
         </div>
     </section>
 
-    <!-- Live Tonight Section -->
+    <!-- Enhanced Interactive Tonight Section -->
     <section id="tonight" class="tonight-section">
         <div class="container">
             <div class="tonight-header">
-                <h2 class="tonight-title">Live Events & Things to Do Tonight</h2>
+                <h2 class="tonight-title">Live Interactive Event Browser</h2>
                 <div class="weather-widget" id="weather-widget">
                     <div class="weather-icon">
                         <i class="fas fa-cloud-sun" id="weather-icon"></i>
@@ -1254,17 +1549,69 @@
                 </div>
             </div>
             
-            <div class="live-events-grid" id="live-events">
-                <!-- Dynamic events will be populated here by JavaScript -->
-                <div class="event-card">
-                    <div class="event-time">Loading...</div>
-                    <h3 class="event-title">🌃 Loading Live NYC Events...</h3>
-                    <div class="event-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        Getting real data...
+            <!-- Interactive Event Browser Controls -->
+            <div class="event-browser-controls">
+                <div class="category-filters">
+                    <div class="filter-tab active" data-category="all">
+                        All Events <span class="filter-count" id="count-all">9</span>
                     </div>
-                    <p>Fetching the latest events, filming locations, and restaurant data from NYC APIs...</p>
-                    <a href="tonight.html" class="event-cta">Loading...</a>
+                    <div class="filter-tab" data-category="filming">
+                        🎬 Filming <span class="filter-count" id="count-filming">3</span>
+                    </div>
+                    <div class="filter-tab" data-category="dining">
+                        🍽️ Dining <span class="filter-count" id="count-dining">3</span>
+                    </div>
+                    <div class="filter-tab" data-category="nightlife">
+                        🌃 Nightlife <span class="filter-count" id="count-nightlife">3</span>
+                    </div>
+                </div>
+                
+                <div class="view-controls">
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-view="grid">
+                            <i class="fas fa-th"></i>
+                            Grid
+                        </button>
+                        <button class="view-btn" data-view="carousel">
+                            <i class="fas fa-arrows-alt-h"></i>
+                            Focus
+                        </button>
+                    </div>
+                    
+                    <div class="auto-play-toggle">
+                        <span>Auto-Play</span>
+                        <div class="toggle-switch" id="auto-play-toggle"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Grid View -->
+            <div class="live-events-grid" id="live-events">
+                <!-- Dynamic events will be populated here -->
+            </div>
+            
+            <!-- Carousel View -->
+            <div class="events-carousel" id="events-carousel">
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carousel-track">
+                        <!-- Dynamic carousel cards will be populated here -->
+                    </div>
+                </div>
+                <div class="carousel-nav">
+                    <div class="carousel-arrows">
+                        <button class="carousel-arrow" id="prev-arrow">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-arrow" id="next-arrow">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <div class="carousel-dots" id="carousel-dots">
+                        <!-- Dynamic dots will be populated here -->
+                    </div>
+                </div>
+                <div class="swipe-hint" id="swipe-hint">
+                    <i class="fas fa-hand-paper"></i> Swipe left/right to browse events
                 </div>
             </div>
         </div>
@@ -1697,6 +2044,543 @@
 
         })();
 
+        // Enhanced Interactive NYC Event Browser
+        class InteractiveEventBrowser {
+            constructor() {
+                this.affiliateLinks = {
+                    stubhub: 'https://www.stubhub.com/new-york-events-tickets/grouping/81/?aid=nynightlife2025',
+                    ticketmaster: 'https://www.ticketmaster.com/new-york-tickets/segment_999?aid=nynightlife2025',
+                    opentable: 'https://www.opentable.com/new-york-metro-area?aid=nynightlife2025',
+                    resy: 'https://resy.com/cities/ny/new-york?aid=nynightlife2025',
+                    headout: 'https://www.headout.com/new-york?aid=nynightlife2025',
+                    viator: 'https://www.viator.com/New-York-City/d687?aid=nynightlife2025'
+                };
+
+                this.events = [];
+                this.filteredEvents = [];
+                this.currentCategory = 'all';
+                this.currentView = 'grid';
+                this.autoPlay = false;
+                this.carouselIndex = 0;
+                this.autoPlayInterval = null;
+                this.apiData = {
+                    filming: [],
+                    events: [],
+                    restaurants: []
+                };
+
+                this.initializeEventData();
+                this.initializeEventListeners();
+                this.initializeTouchControls();
+                this.fetchNYCData();
+            }
+
+            async fetchNYCData() {
+                console.log('🎬 Fetching live NYC data...');
+                
+                try {
+                    // 1. Film Permits - Shows what's filming tonight
+                    const filmingResponse = await fetch(
+                        'https://data.cityofnewyork.us/resource/tg4x-b46p.json?$limit=20'
+                    );
+                    this.apiData.filming = await filmingResponse.json();
+
+                    // 2. Street Events - Festivals, parades, etc.
+                    const eventsResponse = await fetch(
+                        'https://data.cityofnewyork.us/resource/tvpp-9vvx.json?$limit=20'
+                    );
+                    this.apiData.events = await eventsResponse.json();
+
+                    // 3. Top Restaurants - A-rated places
+                    const restaurantsResponse = await fetch(
+                        'https://data.cityofnewyork.us/resource/43nn-pn8j.json?boro=MANHATTAN&grade=A&$limit=50'
+                    );
+                    this.apiData.restaurants = await restaurantsResponse.json();
+
+                    console.log('✅ Live NYC data loaded!', {
+                        filming: this.apiData.filming.length,
+                        events: this.apiData.events.length,
+                        restaurants: this.apiData.restaurants.length
+                    });
+                    
+                    // Update events with real data
+                    this.enhanceEventsWithRealData();
+                    
+                } catch (error) {
+                    console.error('API Error:', error);
+                }
+            }
+
+            enhanceEventsWithRealData() {
+                // Enhance filming events with real data
+                if (this.apiData.filming.length > 0) {
+                    this.events.forEach((event, index) => {
+                        if (event.category === 'filming' && this.apiData.filming[index]) {
+                            const permit = this.apiData.filming[index];
+                            event.title = `🎬 ${permit.eventtype || 'Movie Filming'} Tonight`;
+                            event.location = `${permit.borough || 'NYC'} - ${this.getNeighborhood(permit.parkingheld)}`;
+                            event.description = `Live ${permit.eventagency || 'Hollywood production'} filming! See real movie magic happening in NYC.`;
+                        }
+                    });
+                }
+
+                // Enhance dining events with real data
+                if (this.apiData.restaurants.length > 0) {
+                    const restaurants = this.getRandomRestaurants(3);
+                    let restaurantIndex = 0;
+                    
+                    this.events.forEach(event => {
+                        if (event.category === 'dining' && restaurants[restaurantIndex]) {
+                            const restaurant = restaurants[restaurantIndex];
+                            event.title = `🍽️ ${restaurant.dba || 'Top Restaurant'}`;
+                            event.location = `${restaurant.building || ''} ${restaurant.street || ''}, ${restaurant.boro || 'NYC'}`;
+                            event.description = `${restaurant.cuisine_description || 'Amazing'} cuisine with Grade ${restaurant.grade || 'A'} rating. Perfect for tonight's dinner!`;
+                            restaurantIndex++;
+                        }
+                    });
+                }
+
+                this.updateEventCounts();
+                this.filterEvents();
+                this.renderCurrentView();
+            }
+
+            initializeEventData() {
+                // Sample events data that will be enhanced with real NYC API data
+                this.events = [
+                    // Filming Events
+                    {
+                        id: 1,
+                        category: 'filming',
+                        time: '6:00 PM - 11:00 PM',
+                        title: '🎬 Marvel Production Filming',
+                        location: 'Times Square Area',
+                        description: 'Live superhero movie filming! Watch real Hollywood magic happening in the heart of NYC.',
+                        cta: 'Find Viewing Spots',
+                        ctaLink: this.affiliateLinks.headout,
+                        highlight: 'LIVE NOW'
+                    },
+                    {
+                        id: 2,
+                        category: 'filming',
+                        time: '7:30 PM - 12:00 AM',
+                        title: '🎭 Netflix Series Production',
+                        location: 'SoHo District',
+                        description: 'Major streaming series filming night scenes. Perfect for entertainment enthusiasts!',
+                        cta: 'Get Event Tickets',
+                        ctaLink: this.affiliateLinks.stubhub,
+                        highlight: 'HOT'
+                    },
+                    {
+                        id: 3,
+                        category: 'filming',
+                        time: '8:00 PM - 2:00 AM',
+                        title: '📺 Late Night Show Taping',
+                        location: 'Midtown Manhattan',
+                        description: 'Be part of a live TV audience for tonight\'s celebrity guest appearances.',
+                        cta: 'Reserve Tickets',
+                        ctaLink: this.affiliateLinks.ticketmaster,
+                        highlight: 'FREE'
+                    },
+                    // Dining Events
+                    {
+                        id: 4,
+                        category: 'dining',
+                        time: 'Open Until 2:00 AM',
+                        title: '🍽️ Michelin Star Pop-Up',
+                        location: 'Chelsea Market',
+                        description: 'Exclusive chef collaboration featuring Grade A cuisine. Limited seating available tonight!',
+                        cta: 'Reserve Table',
+                        ctaLink: this.affiliateLinks.opentable,
+                        highlight: 'EXCLUSIVE'
+                    },
+                    {
+                        id: 5,
+                        category: 'dining',
+                        time: '6:00 PM - 12:00 AM',
+                        title: '🥂 Wine & Dine Experience',
+                        location: 'Upper East Side',
+                        description: 'Sommelier-curated wine pairing dinner with seasonal NYC ingredients.',
+                        cta: 'Book Experience',
+                        ctaLink: this.affiliateLinks.resy,
+                        highlight: 'ROMANTIC'
+                    },
+                    {
+                        id: 6,
+                        category: 'dining',
+                        time: 'Happy Hour Until 8 PM',
+                        title: '🍸 Rooftop Cocktail Hour',
+                        location: 'Brooklyn Heights',
+                        description: 'Skyline views with craft cocktails and small plates. Perfect weather tonight!',
+                        cta: 'Get Reservations',
+                        ctaLink: this.affiliateLinks.opentable,
+                        highlight: 'VIEWS'
+                    },
+                    // Nightlife Events
+                    {
+                        id: 7,
+                        category: 'nightlife',
+                        time: '9:00 PM - 4:00 AM',
+                        title: '🌃 Exclusive Speakeasy Night',
+                        location: 'East Village',
+                        description: 'Hidden bar with live jazz and craft cocktails. Password: "NYC2025"',
+                        cta: 'Join the Experience',
+                        ctaLink: this.affiliateLinks.viator,
+                        highlight: 'SECRET'
+                    },
+                    {
+                        id: 8,
+                        category: 'nightlife',
+                        time: '10:00 PM - 3:00 AM',
+                        title: '🎵 Rooftop DJ Set',
+                        location: 'Williamsburg',
+                        description: 'Top DJs spinning with Manhattan skyline backdrop. VIP packages available.',
+                        cta: 'Get VIP Access',
+                        ctaLink: this.affiliateLinks.headout,
+                        highlight: 'VIP'
+                    },
+                    {
+                        id: 9,
+                        category: 'nightlife',
+                        time: '8:00 PM - 2:00 AM',
+                        title: '🍻 Craft Beer Crawl',
+                        location: 'Lower East Side',
+                        description: 'Guided tour of NYC\'s best craft breweries with tastings and food pairings.',
+                        cta: 'Join Crawl',
+                        ctaLink: this.affiliateLinks.viator,
+                        highlight: 'GUIDED'
+                    }
+                ];
+
+                this.updateEventCounts();
+                this.filterEvents();
+            }
+
+            // Helper functions for API data processing
+            getNeighborhood(parkingInfo) {
+                if (!parkingInfo) return 'NYC';
+                
+                const neighborhoods = {
+                    'BROADWAY': 'Times Square',
+                    'CENTRAL PARK': 'Midtown',
+                    'WALL': 'Financial District',
+                    'SOHO': 'SoHo',
+                    'VILLAGE': 'Greenwich Village'
+                };
+                
+                for (const [key, value] of Object.entries(neighborhoods)) {
+                    if (parkingInfo.toUpperCase().includes(key)) {
+                        return value;
+                    }
+                }
+                
+                return 'Manhattan';
+            }
+
+            getRandomRestaurants(count) {
+                const shuffled = this.apiData.restaurants
+                    .filter(r => r.dba && r.street)
+                    .sort(() => 0.5 - Math.random());
+                return shuffled.slice(0, count);
+            }
+
+            initializeEventListeners() {
+                // Category filter tabs
+                document.querySelectorAll('.filter-tab').forEach(tab => {
+                    tab.addEventListener('click', (e) => {
+                        const category = e.target.dataset.category;
+                        this.setActiveCategory(category);
+                    });
+                });
+
+                // View toggle buttons
+                document.querySelectorAll('.view-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const view = e.target.dataset.view;
+                        this.setActiveView(view);
+                    });
+                });
+
+                // Auto-play toggle
+                document.getElementById('auto-play-toggle').addEventListener('click', () => {
+                    this.toggleAutoPlay();
+                });
+
+                // Carousel navigation
+                document.getElementById('prev-arrow').addEventListener('click', () => {
+                    this.navigateCarousel(-1);
+                });
+
+                document.getElementById('next-arrow').addEventListener('click', () => {
+                    this.navigateCarousel(1);
+                });
+            }
+
+            initializeTouchControls() {
+                let startX = 0;
+                let endX = 0;
+
+                const carousel = document.getElementById('events-carousel');
+
+                carousel.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                });
+
+                carousel.addEventListener('touchend', (e) => {
+                    endX = e.changedTouches[0].clientX;
+                    this.handleSwipe();
+                });
+
+                // Show swipe hint on mobile
+                if (window.innerWidth <= 768) {
+                    setTimeout(() => {
+                        document.getElementById('swipe-hint').classList.add('show');
+                    }, 2000);
+                }
+            }
+
+            handleSwipe() {
+                const threshold = 50;
+                const diff = startX - endX;
+
+                if (Math.abs(diff) > threshold) {
+                    if (diff > 0) {
+                        this.navigateCarousel(1); // Swipe left - next
+                    } else {
+                        this.navigateCarousel(-1); // Swipe right - prev
+                    }
+                }
+            }
+
+            setActiveCategory(category) {
+                this.currentCategory = category;
+                
+                // Update active tab
+                document.querySelectorAll('.filter-tab').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                document.querySelector(`[data-category="${category}"]`).classList.add('active');
+
+                // Filter and render events
+                this.filterEvents();
+                this.renderCurrentView();
+            }
+
+            setActiveView(view) {
+                this.currentView = view;
+                
+                // Update active view button
+                document.querySelectorAll('.view-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                document.querySelector(`[data-view="${view}"]`).classList.add('active');
+
+                // Show/hide appropriate view
+                const grid = document.getElementById('live-events');
+                const carousel = document.getElementById('events-carousel');
+
+                if (view === 'grid') {
+                    grid.style.display = 'grid';
+                    carousel.classList.remove('active');
+                    this.stopAutoPlay();
+                } else {
+                    grid.style.display = 'none';
+                    carousel.classList.add('active');
+                    this.carouselIndex = 0;
+                    this.renderCarousel();
+                    if (this.autoPlay) {
+                        this.startAutoPlay();
+                    }
+                }
+            }
+
+            toggleAutoPlay() {
+                this.autoPlay = !this.autoPlay;
+                const toggle = document.getElementById('auto-play-toggle');
+                
+                if (this.autoPlay) {
+                    toggle.classList.add('active');
+                    if (this.currentView === 'carousel') {
+                        this.startAutoPlay();
+                    } else {
+                        this.startCategoryRotation();
+                    }
+                } else {
+                    toggle.classList.remove('active');
+                    this.stopAutoPlay();
+                }
+            }
+
+            startAutoPlay() {
+                this.stopAutoPlay();
+                this.autoPlayInterval = setInterval(() => {
+                    if (this.currentView === 'carousel') {
+                        this.navigateCarousel(1);
+                    } else {
+                        this.rotateCategoryFilter();
+                    }
+                }, 4000);
+            }
+
+            stopAutoPlay() {
+                if (this.autoPlayInterval) {
+                    clearInterval(this.autoPlayInterval);
+                    this.autoPlayInterval = null;
+                }
+            }
+
+            startCategoryRotation() {
+                const categories = ['all', 'filming', 'dining', 'nightlife'];
+                let index = 0;
+                
+                this.autoPlayInterval = setInterval(() => {
+                    index = (index + 1) % categories.length;
+                    this.setActiveCategory(categories[index]);
+                }, 5000);
+            }
+
+            navigateCarousel(direction) {
+                const maxIndex = this.filteredEvents.length - 1;
+                this.carouselIndex += direction;
+
+                if (this.carouselIndex > maxIndex) {
+                    this.carouselIndex = 0;
+                } else if (this.carouselIndex < 0) {
+                    this.carouselIndex = maxIndex;
+                }
+
+                this.updateCarouselPosition();
+                this.updateCarouselDots();
+                this.updateCarouselArrows();
+            }
+
+            filterEvents() {
+                if (this.currentCategory === 'all') {
+                    this.filteredEvents = [...this.events];
+                } else {
+                    this.filteredEvents = this.events.filter(event => 
+                        event.category === this.currentCategory
+                    );
+                }
+            }
+
+            updateEventCounts() {
+                const counts = {
+                    all: this.events.length,
+                    filming: this.events.filter(e => e.category === 'filming').length,
+                    dining: this.events.filter(e => e.category === 'dining').length,
+                    nightlife: this.events.filter(e => e.category === 'nightlife').length
+                };
+
+                Object.keys(counts).forEach(category => {
+                    const countElement = document.getElementById(`count-${category}`);
+                    if (countElement) {
+                        countElement.textContent = counts[category];
+                    }
+                });
+            }
+
+            renderCurrentView() {
+                if (this.currentView === 'grid') {
+                    this.renderGrid();
+                } else {
+                    this.renderCarousel();
+                }
+            }
+
+            renderGrid() {
+                const grid = document.getElementById('live-events');
+                grid.classList.add('loading');
+
+                setTimeout(() => {
+                    grid.innerHTML = this.filteredEvents.map(event => `
+                        <div class="event-card" data-category="${event.category}">
+                            ${event.highlight ? `<div class="card-highlight">${event.highlight}</div>` : ''}
+                            <div class="event-time">${event.time}</div>
+                            <h3 class="event-title">${event.title}</h3>
+                            <div class="event-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                ${event.location}
+                            </div>
+                            <p>${event.description}</p>
+                            <a href="${event.ctaLink}" class="event-cta" target="_blank" rel="noopener">
+                                ${event.cta}
+                            </a>
+                        </div>
+                    `).join('');
+                    
+                    grid.classList.remove('loading');
+                }, 300);
+            }
+
+            renderCarousel() {
+                const track = document.getElementById('carousel-track');
+                const dots = document.getElementById('carousel-dots');
+
+                // Render carousel cards
+                track.innerHTML = this.filteredEvents.map(event => `
+                    <div class="carousel-card" data-category="${event.category}">
+                        ${event.highlight ? `<div class="card-highlight">${event.highlight}</div>` : ''}
+                        <div class="event-time">${event.time}</div>
+                        <h3 class="event-title">${event.title}</h3>
+                        <div class="event-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            ${event.location}
+                        </div>
+                        <p>${event.description}</p>
+                        <a href="${event.ctaLink}" class="event-cta" target="_blank" rel="noopener">
+                            ${event.cta}
+                        </a>
+                    </div>
+                `).join('');
+
+                // Render dots
+                dots.innerHTML = this.filteredEvents.map((_, index) => `
+                    <div class="carousel-dot ${index === 0 ? 'active' : ''}" data-index="${index}"></div>
+                `).join('');
+
+                // Add dot click handlers
+                document.querySelectorAll('.carousel-dot').forEach(dot => {
+                    dot.addEventListener('click', (e) => {
+                        this.carouselIndex = parseInt(e.target.dataset.index);
+                        this.updateCarouselPosition();
+                        this.updateCarouselDots();
+                    });
+                });
+
+                this.updateCarouselPosition();
+                this.updateCarouselArrows();
+            }
+
+            updateCarouselPosition() {
+                const track = document.getElementById('carousel-track');
+                const translateX = -this.carouselIndex * 100;
+                track.style.transform = `translateX(${translateX}%)`;
+            }
+
+            updateCarouselDots() {
+                document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+                    dot.classList.toggle('active', index === this.carouselIndex);
+                });
+            }
+
+            updateCarouselArrows() {
+                const prevArrow = document.getElementById('prev-arrow');
+                const nextArrow = document.getElementById('next-arrow');
+                
+                prevArrow.disabled = this.carouselIndex === 0;
+                nextArrow.disabled = this.carouselIndex === this.filteredEvents.length - 1;
+            }
+        }
+
+        // Initialize the Interactive Event Browser
+        document.addEventListener('DOMContentLoaded', () => {
+            window.eventBrowser = new InteractiveEventBrowser();
+            console.log('🎉 Interactive NYC Event Browser activated!');
+            console.log('🔥 Features: Category filters, dual views, auto-play, swipe controls');
+            console.log('💰 All affiliate revenue streams preserved and enhanced');
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1744,345 +2628,6 @@
                     button.style.background = 'var(--gradient-neon-cyan)';
                     input.value = '';
                 }, 2000);
-            }, 1000);
-        });
-    </script>
-
-    <!-- NYC NIGHTLIFE DYNAMIC EVENT CARDS WITH AFFILIATE REVENUE -->
-    <script>
-        // NYC Nightlife Dynamic Event Cards with Affiliate Revenue
-        class NYCEventCardsManager {
-            constructor() {
-                this.affiliateLinks = {
-                    // Update these with your actual affiliate IDs
-                    stubhub: 'https://www.stubhub.com/new-york-events-tickets/grouping/81/?aid=nynightlife2025',
-                    ticketmaster: 'https://www.ticketmaster.com/new-york-tickets/segment_999?aid=nynightlife2025',
-                    opentable: 'https://www.opentable.com/new-york-metro-area?aid=nynightlife2025',
-                    resy: 'https://resy.com/cities/ny/new-york?aid=nynightlife2025',
-                    headout: 'https://www.headout.com/new-york?aid=nynightlife2025',
-                    viator: 'https://www.viator.com/New-York-City/d687?aid=nynightlife2025'
-                };
-                
-                this.cardRotationInterval = 30000; // 30 seconds rotation
-                this.currentCardSet = 0;
-                this.apiData = {
-                    filming: [],
-                    events: [],
-                    restaurants: []
-                };
-            }
-
-            // Fetch NYC Open Data
-            async fetchNYCData() {
-                console.log('🎬 Fetching live NYC data...');
-                
-                try {
-                    // 1. Film Permits - Shows what's filming tonight
-                    const filmingResponse = await fetch(
-                        'https://data.cityofnewyork.us/resource/tg4x-b46p.json?$limit=20'
-                    );
-                    this.apiData.filming = await filmingResponse.json();
-
-                    // 2. Street Events - Festivals, parades, etc.
-                    const eventsResponse = await fetch(
-                        'https://data.cityofnewyork.us/resource/tvpp-9vvx.json?$limit=20'
-                    );
-                    this.apiData.events = await eventsResponse.json();
-
-                    // 3. Top Restaurants - A-rated places
-                    const restaurantsResponse = await fetch(
-                        'https://data.cityofnewyork.us/resource/43nn-pn8j.json?boro=MANHATTAN&grade=A&$limit=50'
-                    );
-                    this.apiData.restaurants = await restaurantsResponse.json();
-
-                    console.log('✅ Live NYC data loaded!', {
-                        filming: this.apiData.filming.length,
-                        events: this.apiData.events.length,
-                        restaurants: this.apiData.restaurants.length
-                    });
-                    
-                    this.startCardRotation();
-                    
-                } catch (error) {
-                    console.error('API Error:', error);
-                    this.showFallbackCards();
-                }
-            }
-
-            // Card Set 1: Live Filming Locations (Great for excitement!)
-            createFilmingCards() {
-                const filming = this.apiData.filming.slice(0, 3);
-                return filming.map(permit => ({
-                    time: this.formatFilmTime(permit.startdatetime),
-                    title: `🎬 ${permit.eventtype || 'Movie Filming'} Tonight`,
-                    location: `${permit.borough || 'NYC'} - ${this.getNeighborhood(permit.parkingheld)}`,
-                    description: `Live ${permit.eventagency || 'Hollywood production'} filming! See real movie magic happening in NYC.`,
-                    cta: 'Get Tickets to Tonight\'s Events',
-                    ctaLink: this.affiliateLinks.stubhub,
-                    highlight: 'HOT',
-                    category: 'filming'
-                }));
-            }
-
-            // Card Set 2: Top Restaurants + Street Events
-            createDiningCards() {
-                const restaurants = this.getRandomRestaurants(2);
-                const events = this.apiData.events.slice(0, 1);
-                
-                const cards = restaurants.map(restaurant => ({
-                    time: 'Open Now - Late',
-                    title: `🍽️ ${restaurant.dba || 'Top Restaurant'}`,
-                    location: `${restaurant.building || ''} ${restaurant.street || ''}, ${restaurant.boro || 'NYC'}`,
-                    description: `${restaurant.cuisine_description || 'Amazing'} cuisine with Grade ${restaurant.grade || 'A'} rating. Perfect for tonight's dinner!`,
-                    cta: 'Reserve Table Now',
-                    ctaLink: this.affiliateLinks.opentable,
-                    highlight: 'GRADE A',
-                    category: 'dining'
-                }));
-
-                // Add street event as 3rd card
-                if (events.length > 0) {
-                    cards.push({
-                        time: this.formatEventTime(events[0].startdatetime),
-                        title: `🎪 ${events[0].eventname || 'Street Festival'}`,
-                        location: events[0].eventlocation || 'NYC',
-                        description: `${events[0].eventtype || 'Community event'} happening now! Join the local celebration.`,
-                        cta: 'Find Events Tonight',
-                        ctaLink: this.affiliateLinks.headout,
-                        highlight: 'LIVE',
-                        category: 'event'
-                    });
-                }
-
-                return cards;
-            }
-
-            // Card Set 3: Mixed Entertainment (Maximize revenue variety)
-            createEntertainmentCards() {
-                const mixed = [
-                    {
-                        time: '7:00 PM - Late',
-                        title: '🌃 NYC Rooftop Experience',
-                        location: 'Multiple Manhattan Locations',
-                        description: 'Premium rooftop bars with skyline views. Weather is perfect tonight for outdoor venues!',
-                        cta: 'Book VIP Access',
-                        ctaLink: this.affiliateLinks.viator,
-                        highlight: 'VIP',
-                        category: 'nightlife'
-                    },
-                    {
-                        time: '8:00 PM - 2:00 AM',
-                        title: '🎭 Broadway & Theater District',
-                        location: 'Times Square Area',
-                        description: 'Last-minute tickets available! Experience NYC\'s world-famous theater scene tonight.',
-                        cta: 'Get Show Tickets',
-                        ctaLink: this.affiliateLinks.ticketmaster,
-                        highlight: 'DEALS',
-                        category: 'theater'
-                    },
-                    {
-                        time: '6:00 PM - 11:00 PM',
-                        title: '🍸 Speakeasy Crawl',
-                        location: 'East Village & SoHo',
-                        description: 'Hidden bars and exclusive cocktail experiences. Perfect for date night or friends night out!',
-                        cta: 'Join Crawl Tonight',
-                        ctaLink: this.affiliateLinks.headout,
-                        highlight: 'SECRET',
-                        category: 'cocktails'
-                    }
-                ];
-
-                return mixed;
-            }
-
-            // Main card rotation logic
-            startCardRotation() {
-                this.updateCards();
-                
-                setInterval(() => {
-                    this.currentCardSet = (this.currentCardSet + 1) % 3;
-                    this.updateCards();
-                    console.log(`🔄 Rotating to card set ${this.currentCardSet + 1}`);
-                }, this.cardRotationInterval);
-            }
-
-            // Update the cards with current data set
-            updateCards() {
-                let cards = [];
-                
-                switch(this.currentCardSet) {
-                    case 0:
-                        cards = this.createFilmingCards();
-                        console.log('📺 Showing filming locations');
-                        break;
-                    case 1:
-                        cards = this.createDiningCards();
-                        console.log('🍽️ Showing dining & events');
-                        break;
-                    case 2:
-                        cards = this.createEntertainmentCards();
-                        console.log('🎭 Showing entertainment mix');
-                        break;
-                }
-
-                // Ensure we always have 3 cards
-                while (cards.length < 3) {
-                    cards.push(this.createFallbackCard());
-                }
-
-                this.renderCards(cards.slice(0, 3));
-            }
-
-            // Render cards to DOM
-            renderCards(cards) {
-                const container = document.querySelector('.live-events-grid');
-                if (!container) return;
-
-                // Add rotation effect
-                container.style.opacity = '0.7';
-                
-                setTimeout(() => {
-                    container.innerHTML = cards.map(card => `
-                        <div class="event-card" data-category="${card.category}">
-                            ${card.highlight ? `<div class="card-highlight">${card.highlight}</div>` : ''}
-                            <div class="event-time">${card.time}</div>
-                            <h3 class="event-title">${card.title}</h3>
-                            <div class="event-location">
-                                <i class="fas fa-map-marker-alt"></i>
-                                ${card.location}
-                            </div>
-                            <p>${card.description}</p>
-                            <a href="${card.ctaLink}" class="event-cta" target="_blank" rel="noopener">
-                                ${card.cta}
-                            </a>
-                        </div>
-                    `).join('');
-                    
-                    container.style.opacity = '1';
-                }, 300);
-            }
-
-            // Helper functions
-            formatFilmTime(datetime) {
-                if (!datetime) return 'Tonight';
-                
-                try {
-                    const date = new Date(datetime);
-                    const options = { hour: 'numeric', minute: '2-digit', hour12: true };
-                    return `${date.toLocaleTimeString('en-US', options)} - Late`;
-                } catch {
-                    return 'Evening';
-                }
-            }
-
-            formatEventTime(datetime) {
-                if (!datetime) return 'Check Schedule';
-                
-                try {
-                    const date = new Date(datetime);
-                    return date.toLocaleDateString('en-US', { 
-                        weekday: 'short', 
-                        month: 'short', 
-                        day: 'numeric' 
-                    });
-                } catch {
-                    return 'This Week';
-                }
-            }
-
-            getNeighborhood(parkingInfo) {
-                if (!parkingInfo) return 'NYC';
-                
-                const neighborhoods = {
-                    'BROADWAY': 'Times Square',
-                    'CENTRAL PARK': 'Midtown',
-                    'WALL': 'Financial District',
-                    'SOHO': 'SoHo',
-                    'VILLAGE': 'Greenwich Village'
-                };
-                
-                for (const [key, value] of Object.entries(neighborhoods)) {
-                    if (parkingInfo.toUpperCase().includes(key)) {
-                        return value;
-                    }
-                }
-                
-                return 'Manhattan';
-            }
-
-            getRandomRestaurants(count) {
-                const shuffled = this.apiData.restaurants
-                    .filter(r => r.dba && r.street)
-                    .sort(() => 0.5 - Math.random());
-                return shuffled.slice(0, count);
-            }
-
-            createFallbackCard() {
-                return {
-                    time: '7:00 PM - Late',
-                    title: '🌟 Discover NYC Tonight',
-                    location: 'All 5 Boroughs',
-                    description: 'Explore the best of NYC nightlife with our curated recommendations and exclusive deals.',
-                    cta: 'Explore Tonight',
-                    ctaLink: this.affiliateLinks.stubhub,
-                    highlight: 'NEW',
-                    category: 'fallback'
-                };
-            }
-
-            showFallbackCards() {
-                const fallbackCards = [
-                    this.createFallbackCard(),
-                    {
-                        time: '6:00 PM - 2:00 AM',
-                        title: '🍸 Premium NYC Nightlife',
-                        location: 'Manhattan Hotspots',
-                        description: 'VIP access to NYC\'s hottest venues. Skip the lines and enjoy exclusive experiences.',
-                        cta: 'Get VIP Access',
-                        ctaLink: this.affiliateLinks.viator,
-                        highlight: 'VIP',
-                        category: 'fallback'
-                    },
-                    {
-                        time: '8:00 PM - Late',
-                        title: '🎭 Broadway & Entertainment',
-                        location: 'Theater District',
-                        description: 'Last-minute show tickets and entertainment experiences available now.',
-                        cta: 'Book Shows',
-                        ctaLink: this.affiliateLinks.ticketmaster,
-                        highlight: 'DEALS',
-                        category: 'fallback'
-                    }
-                ];
-
-                this.renderCards(fallbackCards);
-            }
-
-            // Initialize everything
-            async init() {
-                console.log('🚀 Initializing dynamic NYC event cards...');
-                
-                // Start with fallback cards immediately
-                this.showFallbackCards();
-                
-                // Then load real data
-                await this.fetchNYCData();
-            }
-        }
-
-        // Initialize the dynamic cards when page loads
-        document.addEventListener('DOMContentLoaded', async () => {
-            // Small delay to let other scripts load first
-            setTimeout(async () => {
-                const cardManager = new NYCEventCardsManager();
-                await cardManager.init();
-                
-                // Make available globally for debugging
-                window.nycCards = cardManager;
-                
-                console.log('🎉 Dynamic NYC cards activated! Revenue optimization enabled.');
-                console.log('💰 Cards will rotate every 30 seconds for maximum affiliate exposure');
-                console.log('🔍 Type "nycCards" in console to explore the manager');
             }, 1000);
         });
     </script>
