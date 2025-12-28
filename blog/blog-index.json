@@ -1,0 +1,25 @@
+{
+  "posts": [
+    {
+      "date": "2025-07-22",
+      "title": "Things to Do in NYC This Week: July 22–28, 2025",
+      "excerpt": "From rooftop parties and Broadway buzz to late-night eats and hidden speakeasies, here’s your insider guide to NYC nightlife this week.",
+      "url": "/blog/week-79.html",
+      "tag": "This Week"
+    },
+    {
+      "date": "2025-07-15",
+      "title": "NYC Nightlife Guide: July 15–21, 2025",
+      "excerpt": "Summer nightlife is peaking in NYC. Discover the hottest clubs, live events, outdoor parties, and exclusive experiences.",
+      "url": "/blog/week-78.html",
+      "tag": "Weekly Guide"
+    },
+    {
+      "date": "2025-07-08",
+      "title": "Best Things to Do in NYC: July 8–14, 2025",
+      "excerpt": "Fireworks, rooftop cocktails, live music, and date-night ideas across Manhattan and Brooklyn.",
+      "url": "/blog/week-77.html",
+      "tag": "Nightlife"
+    }
+  ]
+}
